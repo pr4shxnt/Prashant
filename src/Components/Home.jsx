@@ -2,6 +2,7 @@ import React, { useRef } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { useContent } from '../Utils/ContextProvider'
+import { ChevronDown } from 'lucide-react'
 
 const Home = () => {
     const { showContent } = useContent();
@@ -94,10 +95,11 @@ const Home = () => {
               />
             </div>
             <div className="btmbar text-white absolute bottom-0 left-0 w-full pt-18  px-10 bg-gradient-to-t from-black to-transparent z-[10]">
-              <div className="flex gap-4 absolute bottom-0 left-0 w-full justify-center items-center">
-                <h3 className="text-sm pb-2 text-center ">
+              <div className="flex flex-col  absolute bottom-0 left-0 w-full justify-center items-center">
+                <h3 className="text-sm  flex text-center ">
                   Scroll Down
                 </h3>
+                <ChevronDown className='text-white animate-bounce' size={18} />
               </div>
               
             </div>
