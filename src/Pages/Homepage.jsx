@@ -6,6 +6,7 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { useContent } from '../Utils/ContextProvider'
 import { NavLink } from 'react-router-dom'
+import { YoutubeIcon } from 'lucide-react'
 
 const Homepage = () => {
     
@@ -14,7 +15,9 @@ const Homepage = () => {
   return (
     <div>
       <div className="relative overflow-hidden">
-        <div className="md:hidden"><HomeResponsive /></div>
+        <a target='_blank' href="https://www.youtube.com/@lynxplays6702" className=""><div className="roadrage text-white flex flex-col font-roadrage text-xl absolute left-4 top-6 z-[999]"><h1 className='relative'><div className="absolute font-mono -top-[18px] rotate-[70deg]">:)</div><span className="text-[brown]">L</span>YN<span className='text-[brown]'>X</span></h1></div>
+</a>
+                <div className="md:hidden"><HomeResponsive /></div>
         <div className="hidden md:block lg:hidden"><HomeMD /></div>
         <div className="hidden lg:block"><Home /></div>
         <div className="hidden md:block">
@@ -33,15 +36,15 @@ const Homepage = () => {
             <img src="./github.png" alt="" className="w-6 m-2"/>
           </a>
            </div>
-          <div className="absolute links pb-2 bottom-0 left-0 flex  items-center z-[200] px-3 py-1 gap-3 font-semibold text-white">
+          <div className="absolute links pb-2 bottom-0 left-0 flex  items-center z-[200] px-3 py-1 gap-3 font-semibold text-[white]">
             <NavLink to={`/about`} className="group flex flex-col rounded-full">About
-            <div className="h-0.5 group-hover:w-full bg-white rounded-full w-0 transition-all duration-300  group-hover:block"></div>
+            <div className="h-0.5 group-hover:w-full bg-[brown] rounded-full w-0 transition-all duration-300  group-hover:block"></div>
             </NavLink>
             <NavLink to={`/projects`} className="group flex flex-col rounded-full">Projects
-            <div className="h-0.5 group-hover:w-full bg-white rounded-full w-0 transition-all duration-300  group-hover:block"></div>
+            <div className="h-0.5 group-hover:w-full bg-[brown] rounded-full w-0 transition-all duration-300  group-hover:block"></div>
             </NavLink>
             <NavLink to={`/about`} className="group flex flex-col rounded-full">CV 
-            <div className="h-0.5 group-hover:w-full bg-white rounded-full w-0 transition-all duration-300  group-hover:block"></div>
+            <div className="h-0.5 group-hover:w-full bg-[brown] rounded-full w-0 transition-all duration-300  group-hover:block"></div>
             </NavLink>
 
           </div>

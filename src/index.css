@@ -8,3 +8,14 @@ html, body {
 }
 
 
+@font-face {
+    font-family: "roadrage";
+    src: url("/Road_Rage.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.roadrage {
+    font-family: "roadrage", sans-serif;
+}
