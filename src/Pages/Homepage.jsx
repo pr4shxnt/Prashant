@@ -9,23 +9,7 @@ import { NavLink } from 'react-router-dom'
 
 const Homepage = () => {
     
-    const { showContent } = useContent();
 
-         useGSAP(() => {
-        gsap.to(".social-links", {
-          bottom: "0",
-          duration: 2,
-          delay: "-.8",
-          ease: "Expo.easeInOut",
-        });
-
-        gsap.to(".links", {
-          bottom: "0",
-          duration: 2,
-          delay: "-.8",
-          ease: "Expo.easeInOut",
-        });
-         }, [useContent])
 
   return (
     <div>
@@ -34,7 +18,7 @@ const Homepage = () => {
         <div className="hidden md:block lg:hidden"><HomeMD /></div>
         <div className="hidden lg:block"><Home /></div>
         <div className="hidden md:block">
-        <div className="absolute social-links  -bottom-100 right-0 flex items-center z-[200] px-3 py-1">
+        <div className="absolute social-links  bottom-0 right-0 flex items-center z-[200] px-3 py-1">
 
           <a target='_blank' title='email' href="mailto:prashantadhikareeey.dev@gmail.com" className="">
             <img src="./email.png" alt="" className="w-6 m-2" />
@@ -49,10 +33,16 @@ const Homepage = () => {
             <img src="./github.png" alt="" className="w-6 m-2"/>
           </a>
            </div>
-          <div className="absolute links -bottom-100 left-0 flex  items-center z-[200] px-3 py-1 text-lg gap-3 font-semibold text-white">
-            <NavLink to={`/about`} className="">About</NavLink>
-            <NavLink to={`/projects`}>Projects</NavLink>
-            <NavLink to={`/about`}>CV</NavLink>
+          <div className="absolute links pb-2 bottom-0 left-0 flex  items-center z-[200] px-3 py-1 gap-3 font-semibold text-white">
+            <NavLink to={`/about`} className="group flex flex-col rounded-full">About
+            <div className="h-0.5 group-hover:w-full bg-white rounded-full w-0 transition-all duration-300  group-hover:block"></div>
+            </NavLink>
+            <NavLink to={`/projects`} className="group flex flex-col rounded-full">Projects
+            <div className="h-0.5 group-hover:w-full bg-white rounded-full w-0 transition-all duration-300  group-hover:block"></div>
+            </NavLink>
+            <NavLink to={`/about`} className="group flex flex-col rounded-full">CV 
+            <div className="h-0.5 group-hover:w-full bg-white rounded-full w-0 transition-all duration-300  group-hover:block"></div>
+            </NavLink>
 
           </div>
         </div>
