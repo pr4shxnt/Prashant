@@ -47,7 +47,7 @@ const InitialRender = ({setShowContent}) => {
                   dominantBaseline="middle"
                   fontFamily="Arial Black"
                 >
-                 Pr4xnt
+                 X
                 </text>
               </g>
             </mask>
