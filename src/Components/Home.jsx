@@ -50,12 +50,12 @@ const Home = () => {
 
             <div className="imagesdiv relative overflow-hidden w-full h-screen">
               <img
-                className="absolute sky scale-[1.5] rotate-[-20deg] top-0 left-0 w-full h-full object-cover"
+                className="absolute sky scale-[2.8] top-0 left-0 w-full h-full object-cover"
                 src="./sky.png"
                 alt=""
               />
               <img
-                className="absolute scale-[1.8] rotate-[-3deg] bg top-0 left-0 w-full h-full object-cover"
+                className="absolute scale-[3]  bg top-0 left-0 w-full h-full object-cover"
                 src="./bg.png"
                 alt=""
               />
