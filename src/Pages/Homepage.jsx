@@ -10,6 +10,19 @@ import { YoutubeIcon } from 'lucide-react'
 
 const Homepage = () => {
     
+useGSAP(() => {
+    gsap.to(".para", {
+      rotate: 0,
+      left: "12px",
+      duration: 2,
+      delay: -0.007,
+      ease: "Expo.easeInOut",
+    });
+
+
+  })
+
+
 
 
   return (
@@ -36,6 +49,11 @@ const Homepage = () => {
             <img src="./github.png" alt="" className="w-6 m-2"/>
           </a>
            </div>
+           <div className="para absolute bottom-30 text-sm z-[999] text-gray-300 w-[25%] flex flex-col  gap-4 -left-200">
+            <p>Hi!! I am Prashant. Nice to meet you folk!! If you have been here maybe it's because we both share same kind of passion. I'm deeply interested in new and updating technologies. But recently, I've been actively improving my skills of website development. Join me through the links given in this website and hope to build something great together.</p>
+            <p>Feel free to contact me from the links given in the bottom-right of the screen or from the contact form below.</p>
+           </div>
+
           <div className="absolute links pb-2 bottom-0 left-0 flex  items-center z-[200] px-3 py-1 gap-3 font-semibold text-[white]">
             <NavLink to={`/about`} className="group flex flex-col rounded-full">About
             <div className="h-0.5 group-hover:w-full bg-[brown] rounded-full w-0 transition-all duration-300  group-hover:block"></div>
