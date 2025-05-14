@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { useContent } from '../Utils/ContextProvider'
 
 const Home = () => {
     const { showContent } = useContent();
+    const landingRef = useRef(null);
+
+
     useGSAP(() => {
         gsap.to(".sky", {
           scale: 1.1,
@@ -39,10 +42,30 @@ const Home = () => {
           delay: "-.8",
           ease: "Expo.easeInOut",
         });
+
+        const main = landingRef.current;
+
+   main?.addEventListener("mousemove", function (e) {
+      const xMove = (e.clientX / window.innerWidth - 0.5) * 40;
+      gsap.to(".sky", {
+        x: xMove,
+      });
+      gsap.to(".bg", {
+        x: xMove,
+      });
+        gsap.to(".text", {
+            y: -xMove * 1.1,
+        });
+        gsap.to(".character", {
+            y: xMove * 1.1,
+        });
+    });
+
     }, [showContent])
-    
+
+
   return (
-    <div>
+    <div className='main' ref={landingRef}>
         <div className="landing overflow-hidden relative w-full h-screen bg-black">
             <div className="navbar absolute top-0 left-0 z-[10] w-full py-10 px-10">
              
@@ -70,9 +93,9 @@ const Home = () => {
                 alt=""
               />
             </div>
-            <div className="btmbar text-white absolute bottom-0 left-0 w-full py-10 px-10 bg-gradient-to-t from-black to-transparent z-[2]">
+            <div className="btmbar text-white absolute bottom-0 left-0 w-full pt-18  px-10 bg-gradient-to-t from-black to-transparent z-[10]">
               <div className="flex gap-4 absolute bottom-0 left-0 w-full justify-center items-center">
-                <h3 className="text-sm text-center ">
+                <h3 className="text-sm pb-2 text-center ">
                   Scroll Down
                 </h3>
               </div>
