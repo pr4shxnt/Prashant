@@ -40,9 +40,9 @@ const InitialRender = ({setShowContent}) => {
                 <text
                   x="50%"
                   y="50%"
-                  fontSize="90"
+                  fontSize="8vw"
                   textAnchor="middle"
-                  letterSpacing="10"
+                  letterSpacing="1vw"
                   fill="white"
                   dominantBaseline="middle"
                   fontFamily="Arial Black"
