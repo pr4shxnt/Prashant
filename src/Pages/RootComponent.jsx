@@ -15,7 +15,7 @@ if (production === 'production') {
 }
 
 
-
+else{
   return (
     <>
        <div className=" ">
@@ -30,7 +30,7 @@ if (production === 'production') {
         </>
       )}
     </>
-  );
+  );}
 };
 
 export default RootComponent;
