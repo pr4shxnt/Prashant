@@ -21,7 +21,7 @@ const router = createBrowserRouter([
 
 export default function App() {
   return (
-  <>{ import.meta.env.NODE_ENV === "production" ? <ProdBuild/> :
+  <>{ import.meta.env.PROD? <ProdBuild/> :
        <ContentProvider>
       <RouterProvider router={router} />
     </ContentProvider>}
