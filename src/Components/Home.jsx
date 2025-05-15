@@ -60,6 +60,12 @@ const Home = () => {
         gsap.to(".character", {
             y: xMove * 1.1,
         });
+         gsap.to(".para", {
+            y: xMove * 1.1,
+        });
+         gsap.to(".para2", {
+            y: xMove * 1.1,
+        });
     });
 
     }, [showContent])
@@ -94,7 +100,7 @@ const Home = () => {
                 alt=""
               />
             </div>
-            <div className="btmbar text-white absolute bottom-0 left-0 w-full pt-18  px-10 bg-gradient-to-t from-black to-transparent z-[10]">
+            <div className="btmbar text-white absolute bottom-0 left-0 w-full pt-18  px-16 bg-gradient-to-t from-black to-transparent z-[10]">
               <div className="flex flex-col  absolute bottom-0 left-0 w-full justify-center items-center">
                 <h3 className="text-sm  flex text-center ">
                   Scroll Down

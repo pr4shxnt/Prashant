@@ -4,6 +4,9 @@ import RootComponent from "./Pages/RootComponent";
 import Homepage from "./Pages/Homepage";
 import ContentProvider from "./Utils/ContextProvider";
 import ProdBuild from "./Pages/ProdBuild";
+import AdminLogin from "./Admin/Auth/AdminLogin";
+import Rootdir from "./Admin/Pages/rootdir";
+import ProjectDisplay from "./Admin/Components/ProjectDisplay";
  
 
 const router = createBrowserRouter([
@@ -17,6 +20,19 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "/admin/login",
+    element: <AdminLogin/>,
+  },
+  {
+    path: "/admin",
+    element: <Rootdir />,
+    children: [
+      {
+        path: "projects",
+        element: <ProjectDisplay/>
+      }]
+  }
 ]);
 
 export default function App() {
