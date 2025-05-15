@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootComponent from "./Pages/RootComponent";
 import Homepage from "./Pages/Homepage";
 import ContentProvider from "./Utils/ContextProvider";
+import ProdBuild from "./Pages/ProdBuild";
  
 
 const router = createBrowserRouter([
@@ -20,10 +21,10 @@ const router = createBrowserRouter([
 
 export default function App() {
   return (
-  <>
+  <>{ import.meta.env.VITE_APP_ENV === "production" ? <ProdBuild/> :
        <ContentProvider>
       <RouterProvider router={router} />
-    </ContentProvider>
+    </ContentProvider>}
    </> 
   );
 }
