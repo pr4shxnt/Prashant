@@ -58,7 +58,7 @@ const Notepad = () => {
   }, []);
 
   return (
-    <div className="p-6 font-sans bg-gray-900 min-h-screen text-gray-100">
+    <div className=" font-sans bg-gray-900  text-gray-100">
 
       {/* Toolbar */}
       <div className="flex flex-wrap gap-2 mb-4">
@@ -99,7 +99,7 @@ const Notepad = () => {
         ref={editorRef}
         contentEditable
         onInput={handleInput}
-        className="border border-gray-700 rounded min-h-[200px] p-3 bg-gray-800 text-gray-100 focus:outline-none
+        className="border border-gray-700 rounded min-h-[300px] p-3 bg-gray-800 text-gray-100 focus:outline-none
           [&_ul]:list-disc [&_ul]:pl-5 [&_ol]:list-decimal [&_ol]:pl-5"
         suppressContentEditableWarning={true}
       >

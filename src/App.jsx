@@ -7,6 +7,7 @@ import ProdBuild from "./Pages/ProdBuild";
 import AdminLogin from "./Admin/Auth/AdminLogin";
 import Rootdir from "./Admin/Pages/rootdir";
 import ProjectDisplay from "./Admin/Components/ProjectDisplay";
+import CreateProject from "./Admin/Forms/CreateProject";
  
 
 const router = createBrowserRouter([
@@ -31,7 +32,12 @@ const router = createBrowserRouter([
       {
         path: "projects",
         element: <ProjectDisplay/>
-      }]
+      },
+      {
+        path: "projects/create",
+        element: <CreateProject/>
+      }
+    ]
   }
 ]);
 
