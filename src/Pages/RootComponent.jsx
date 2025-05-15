@@ -11,8 +11,10 @@ const [showCont, setShowCont] = useState(false);
 const production = import.meta.env.NODE_ENV;
 
 if (production === 'production') {
-      setShowCont(false);
+      return <div><ProdBuild/></div>
 }
+
+
 
   return (
     <>
@@ -23,8 +25,8 @@ if (production === 'production') {
        {showContent && (
         <>
 
-          <ProdBuild/>
-          {!showCont && <Outlet />}
+          
+          <Outlet />
         </>
       )}
     </>
