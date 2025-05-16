@@ -5,10 +5,10 @@ import { useContent } from '../Utils/ContextProvider'
 import { ChevronDown } from 'lucide-react'
 
 const Home = () => {
-    const { showContent } = useContent();
+    const { showContent, showParagraph } = useContent();
     const landingRef = useRef(null);
 
-
+console.log(showParagraph)
     useGSAP(() => {
         gsap.to(".sky", {
           scale: 1.1,
@@ -47,7 +47,9 @@ const Home = () => {
         const main = landingRef.current;
 
    main?.addEventListener("mousemove", function (e) {
+
       const xMove = (e.clientX / window.innerWidth - 0.5) * 40;
+      
       gsap.to(".sky", {
         x: xMove,
       });
@@ -60,16 +62,26 @@ const Home = () => {
         gsap.to(".character", {
             y: xMove * 1.1,
         });
-         gsap.to(".para", {
-            y: xMove * 1.1,
-        });
-         gsap.to(".para2", {
-            y: xMove * 1.1,
-        });
+       
+       
     });
 
     }, [showContent])
 
+     if(showParagraph){
+        const main = landingRef.current;
+
+   main?.addEventListener("mousemove", function (e) {
+
+      const xMove = (e.clientX / window.innerWidth - 0.5) * 40;
+            gsap.to(".para", {
+            y: xMove * 1.1,
+        });
+         gsap.to(".para2", {
+            
+            y: xMove * 1.1,
+        });
+        })}
 
   return (
     <div className='main' ref={landingRef}>
