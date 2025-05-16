@@ -1,8 +1,10 @@
-import { BookAudio, BookTypeIcon, Code2, Grid2X2Check, Home, InfoIcon, LogOut, LucideComputer, Users } from 'lucide-react'
+import { BookAudio, BookTypeIcon, Code2, Copyright, Grid2X2Check, Home, InfoIcon, LogOut, LucideComputer, Users } from 'lucide-react'
 import React, {useState} from 'react'
 import { NavLink } from 'react-router-dom'
+import { useContent } from '../../Utils/ContextProvider';
 
 const Sidebar = () => {
+      const { handleAdminLogout } = useContent();
 
     const [logoutModal, setLogoutModal] = useState(false)
 
@@ -20,7 +22,7 @@ const Sidebar = () => {
     <div className='w-full h-full'>
         <div className="w-full relative bg-gray-700 h-full">
              <div className="absolute text-center text-xs w-full bottom-0 left-0  bg-gray-600 text-white p-4">
-            <h1>Copyright | 2025</h1>
+            <h1 className='flex gap-1 justify-center'>Copyright <sup> <Copyright size={8}/> </sup>  2025</h1>
             <h1>Prashant Adhikari {`<3`}</h1>
         </div>
             <div className="flex px-3 border-b border-gray-400 pt-4 pb-6 justify-between">
@@ -53,7 +55,7 @@ const Sidebar = () => {
                     <h2 className="text-lg text-center mx-auto ">Hello there admin ! <br/> Are you sure you want to leave the admin panel??</h2>
                     <div className="flex justify-center mt-4">
                         <button onClick={() => setLogoutModal(false)} className="bg-gray-800 text-white border border-gray-800 px-4 py-1.5 rounded mr-2">Cancel</button>
-                        <button onClick={() => {setLogoutModal(false); window.location.href = '/admin/login'}} className="border-red-500 border text-red-500 hover:border-red-800 duration-500 hover:bg-red-800 hover:text-white px-4 py-1.5 rounded">Logout</button>
+                        <button onClick={() => {handleAdminLogout()}} className="border-red-500 border text-red-500 hover:border-red-800 duration-500 hover:bg-red-800 hover:text-white px-4 py-1.5 rounded">Logout</button>
                     </div>
                 </div>
             </div>

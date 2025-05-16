@@ -8,7 +8,6 @@ const Home = () => {
     const { showContent, showParagraph } = useContent();
     const landingRef = useRef(null);
 
-console.log(showParagraph)
     useGSAP(() => {
         gsap.to(".sky", {
           scale: 1.1,

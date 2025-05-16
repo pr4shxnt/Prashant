@@ -1,8 +1,18 @@
-import React from 'react'
+import React, { use, useEffect } from 'react'
 import Sidebar from '../Components/Sidebar'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
+import { useContent } from '../../Utils/ContextProvider';
 
 const Rootdir = () => {
+    const {isAdminAuthenticated,  handleAdminLogin, error, isLoading, setAdminData } = useContent();
+      const navigate = useNavigate();
+
+      useEffect(() => {
+        if (isAdminAuthenticated === false) {
+            navigate("/admin/login");
+        }
+      },[isAdminAuthenticated, navigate]);
+  
   return (
     <div>
       <div className="flex w-full min-h-screen">

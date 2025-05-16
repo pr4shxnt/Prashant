@@ -32,7 +32,6 @@ const Homepage = () => {
     }, [showParagraph]);
   }
 
-  console.log(showParagraph);
 
   return (
     <div>
