@@ -1,4 +1,4 @@
-import { BookAudio, BookTypeIcon, Code2, Copyright, Grid2X2Check, Home, InfoIcon, LogOut, LucideComputer, Users } from 'lucide-react'
+import { BookAudio, BookTypeIcon, Code2, Copyright, Grid2X2Check, Home, InfoIcon, LogOut, LucideComputer, MapPlusIcon, Users } from 'lucide-react'
 import React, {useState} from 'react'
 import { NavLink } from 'react-router-dom'
 import { useContent } from '../../Utils/ContextProvider';
@@ -11,6 +11,7 @@ const Sidebar = () => {
     const navLinks = [
         { name: "Dashboard", path: "/admin/dashboard", icon: <Grid2X2Check size={18}/> },
         { name: "Projects", path: "/admin/projects", icon: <LucideComputer size={18}/> },
+        { name: "Create Project", path: "/admin/projects-create", icon: <MapPlusIcon size={18}/>},
         { name: "Skills", path: "/admin/skills", icon: <Code2 size={18}/> },
         { name: "Panel Settings", path: "/admin/Certificates", icon: <BookAudio size={18}/> },
         { name: "Personal Info", path: "/admin/info", icon: <InfoIcon size={18}/> },

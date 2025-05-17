@@ -8,26 +8,25 @@ const toolbarCommands = [
   { command: 'createLink', label: '🔗', title: 'Insert Link' },
 ];
 
-const Notepad = () => {
+const Notepad = ({ projectData, setProjectData }) => {
   const editorRef = useRef(null);
-  const [content, setContent] = useState('');
   const [activeCommands, setActiveCommands] = useState({});
 
-  // Check which commands are active at caret position
+  // Initialize editor content when projectData.description changes
+  useEffect(() => {
+    if (editorRef.current) {
+      editorRef.current.innerHTML = projectData.description || 'Start typing here...';
+    }
+  }, [projectData.description]);
+
   const updateActiveCommands = () => {
     const newActive = {};
     toolbarCommands.forEach(({ command }) => {
-      if (command === 'createLink') {
-        // For links, queryCommandState does not work, skip
-        return;
-      }
+      if (command === 'createLink') return;
       newActive[command] = document.queryCommandState(command);
     });
     setActiveCommands(newActive);
   };
-
-
-  console.log('Active commands:', activeCommands);
 
   const format = (command, value = null) => {
     if (command === 'createLink') {
@@ -40,16 +39,17 @@ const Notepad = () => {
     } else {
       document.execCommand(command, false, null);
     }
-    setContent(editorRef.current.innerHTML);
+    const html = editorRef.current.innerHTML;
+    setProjectData(prev => ({ ...prev, description: html }));
     updateActiveCommands();
   };
 
   const handleInput = () => {
-    setContent(editorRef.current.innerHTML);
+    const html = editorRef.current.innerHTML;
+    setProjectData(prev => ({ ...prev, description: html }));
     updateActiveCommands();
   };
 
-  // Also update active commands on selection change (caret moves)
   useEffect(() => {
     document.addEventListener('selectionchange', updateActiveCommands);
     return () => {
@@ -58,9 +58,7 @@ const Notepad = () => {
   }, []);
 
   return (
-    <div className=" font-sans bg-gray-900  text-gray-100">
-
-      {/* Toolbar */}
+    <div className="font-sans bg-gray-900 text-gray-100">
       <div className="flex flex-wrap gap-2 mb-4">
         {toolbarCommands.map(({ command, label, title }) => (
           <button
@@ -75,7 +73,6 @@ const Notepad = () => {
           </button>
         ))}
 
-        {/* Font Size Selector */}
         <select
           onChange={(e) => format('fontSize', e.target.value)}
           defaultValue=""
@@ -94,7 +91,6 @@ const Notepad = () => {
         </select>
       </div>
 
-      {/* Editable Area */}
       <div
         ref={editorRef}
         contentEditable

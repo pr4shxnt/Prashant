@@ -6,12 +6,13 @@ import { useContent } from '../../Utils/ContextProvider';
 const Rootdir = () => {
     const {isAdminAuthenticated,  handleAdminLogin, error, isLoading, setAdminData } = useContent();
       const navigate = useNavigate();
-
+      console.log(isAdminAuthenticated, isLoading);
+      
       useEffect(() => {
-        if (isAdminAuthenticated === false) {
+        if (isAdminAuthenticated === false ) {
             navigate("/admin/login");
         }
-      },[isAdminAuthenticated, navigate]);
+      },[isAdminAuthenticated]);
   
   return (
     <div>
