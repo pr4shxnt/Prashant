@@ -7,8 +7,9 @@ const ProdBuild = () => {
 
   return (
     <div className='fixed z-[2000] text-white flex flex-col items-center justify-center bg-black h-screen w-screen'>
-        <h1 className='text-3xl font-bold uppercase tracking-wide'>The website is under maintenance.</h1>
-        <p className=''>Feel free to contact the developer of this website.</p>
+      <title>Maintenance Break</title>
+        <h1 className='text-3xl text-center font-bold uppercase tracking-wide'>The website is under development phase.</h1>
+        <p className='text-center'>Feel free to contact the developer of this website.</p>
         <div className=" social-links flex items-center z-[200] px-3 py-1">
 
           <a target='_blank' title='email' href="mailto:prashantadhikareeey.dev@gmail.com" className="">
