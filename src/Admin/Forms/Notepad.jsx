@@ -12,12 +12,12 @@ const Notepad = ({ projectData, setProjectData }) => {
   const editorRef = useRef(null);
   const [activeCommands, setActiveCommands] = useState({});
 
-  // Initialize editor content when projectData.description changes
+  // Initialize editor content once on mount
   useEffect(() => {
-    if (editorRef.current) {
-      editorRef.current.innerHTML = projectData.description || 'Start typing here...';
+    if (editorRef.current && !editorRef.current.innerHTML) {
+      editorRef.current.innerHTML = projectData.description || '';
     }
-  }, [projectData.description]);
+  }, []);
 
   const updateActiveCommands = () => {
     const newActive = {};
@@ -98,9 +98,8 @@ const Notepad = ({ projectData, setProjectData }) => {
         className="border border-gray-700 rounded min-h-[300px] p-3 bg-gray-800 text-gray-100 focus:outline-none
           [&_ul]:list-disc [&_ul]:pl-5 [&_ol]:list-decimal [&_ol]:pl-5"
         suppressContentEditableWarning={true}
-      >
-        Start typing here...
-      </div>
+        data-placeholder="Start typing here..."
+      />
     </div>
   );
 };
