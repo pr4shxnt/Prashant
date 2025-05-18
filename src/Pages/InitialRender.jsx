@@ -30,6 +30,9 @@ const InitialRender = ({ setShowContent }) => {
     });
   });
 
+     console.log("Do not even try to change a single line through the console. Your efforts are useless each and every routes are secured and tested properly. Thank you for your concern. -Prashant Adhikari")
+
+
   return (
     <div className="svg flex items-center justify-center fixed top-0 left-0 z-[100] w-full h-screen overflow-hidden bg-[#000]">
       <title>Welcome | Prashant Adhikari</title>

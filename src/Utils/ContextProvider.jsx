@@ -151,8 +151,6 @@ const handleCreateProject = async (projectData) => {
     window.location.href = '/';
   }
 
-  console.log(token)
-
 
 
 

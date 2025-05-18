@@ -1,5 +1,5 @@
 import Home from "../Components/Home";
-import React, { use, useState } from "react";
+import React, { use, useEffect, useRef, useState } from "react";
 import HomeResponsive from "../Components/HomeResponsive";
 import HomeMD from "../Components/HomeMD";
 import { useGSAP } from "@gsap/react";
@@ -8,35 +8,90 @@ import { NavLink } from "react-router-dom";
 import { Eye, EyeClosed } from "lucide-react";
 import AboutMeLandingpage from "../Components/Sections/AboutSection/AboutMeLandingpage";
 import { useContent } from "../Utils/ContextProvider";
+import MenuBar from "../Components/MenuBar";
 
 const Homepage = () => {
   const { setShowParagraph, showParagraph } = useContent();
+  const [showMenu, setShowMenu] = useState(false);
+  const [showHam, setShowHam] = useState(false);
 
+  const menuRef = useRef();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY >= 625) {
+        setShowHam(true);
+      } else {
+        setShowHam(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+
+
+  
+
+  
+
+ useGSAP(() => {
   if (showParagraph) {
-    useGSAP(() => {
-      gsap.to(".para", {
-        rotate: 0,
-        left: "12px",
-        duration: 2,
-        delay: -0.7,
-        ease: "Expo.easeInOut",
-      });
+    gsap.to(".para", {
+      rotate: 0,
+      left: "12px",
+      duration: 2,
+      delay: -0.7,
+      ease: "Expo.easeInOut",
+    });
 
-      gsap.to(".para2", {
-        rotate: 0,
-        right: "12px",
-        duration: 2,
-        delay: -0.7,
-        ease: "Expo.easeInOut",
-      });
-    }, [showParagraph]);
+    gsap.to(".para2", {
+      rotate: 0,
+      right: "12px",
+      duration: 2,
+      delay: -0.7,
+      ease: "Expo.easeInOut",
+    });
   }
+}, [showParagraph]);
 
+
+  useGSAP(() => {
+    if (showHam === true) {
+      gsap.to(menuRef.current, {
+        rotate: 0,
+        scale: 1,
+        duration: 2,
+        delay: -0.7,
+        ease: "Expo.easeInOut",
+      });
+    } else {
+      gsap.to(menuRef.current, {
+        scale: 0,
+        ease: "Expo.easeInOut",
+      });
+    }
+  }, [showHam]);
 
   return (
     <div>
       {/* Metadata for homepage.jsx starts */}
       <div className="">
+        <div
+          ref={menuRef}
+          className="hidden  menubar scale-0  md:block fixed bottom-2 left-2"
+        >
+          <div className="">
+            {showHam && (
+              <MenuBar showMenu={showMenu} setShowMenu={setShowMenu} />
+            )}
+          </div>
+        </div>
+        <div className="md:hidden z-[801] fixed bottom-2 left-2">
+          <MenuBar showMenu={showMenu} setShowMenu={setShowMenu} />
+        </div>
         <title>Home | Prashant Adhikari</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="Prashant Adhikari's Portfolio" />
@@ -49,7 +104,7 @@ const Homepage = () => {
       {/* Metadata for homepage.jsx ends */}
 
       <div className="relative overflow-hidden">
-        <div className="showcontent hidden md:block absolute top-3 right-4 z-[999]  items-center justify-center">
+        <div className="showcontent hidden md:block absolute top-3 right-4 z-[800]  items-center justify-center">
           <button
             className="text-xs text-white cursor-pointer uppercase tracking-widest font-semibold"
             onClick={() => setShowParagraph(!showParagraph)}
