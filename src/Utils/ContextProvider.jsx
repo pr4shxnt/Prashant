@@ -41,7 +41,7 @@ const ContentProvider = ({ children }) => {
       formData.append("live", projectData.live);
       formData.append("date", projectData.date);
       formData.append("status", projectData.status);
-      formData.append("description", projectData.description); // ✅ raw HTML
+      formData.append("description", projectData.description);
       formData.append("token", projectData.token);
 
       // Append images
@@ -55,6 +55,7 @@ const ContentProvider = ({ children }) => {
         {
           headers: {
             "Content-Type": "multipart/form-data",
+            "Authorization" : `Bearer ${token}`
           },
         }
       );

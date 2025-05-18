@@ -1,5 +1,5 @@
 import Home from "../Components/Home";
-import React, { use, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import HomeResponsive from "../Components/HomeResponsive";
 import HomeMD from "../Components/HomeMD";
 import { useGSAP } from "@gsap/react";
@@ -10,54 +10,66 @@ import AboutMeLandingpage from "../Components/Sections/AboutSection/AboutMeLandi
 import { useContent } from "../Utils/ContextProvider";
 import MenuBar from "../Components/MenuBar";
 
+import LocomotiveScroll from "locomotive-scroll";
+import "locomotive-scroll/src/locomotive-scroll.scss";
+
 const Homepage = () => {
   const { setShowParagraph, showParagraph } = useContent();
   const [showMenu, setShowMenu] = useState(false);
   const [showHam, setShowHam] = useState(false);
 
   const menuRef = useRef();
+  const scrollRef = useRef(null); // ref for the locomotive scroll container
+  const locoScrollInstance = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY >= 625) {
+    if (!scrollRef.current) return;
+
+    locoScrollInstance.current = new LocomotiveScroll({
+      el: scrollRef.current,
+      smooth: true,
+    });
+
+    locoScrollInstance.current.on("scroll", (obj) => {
+      const scrollY = obj.scroll.y;
+      if (scrollY >= 625) {
         setShowHam(true);
       } else {
         setShowHam(false);
       }
+    });
+
+    // cleanup on unmount
+    return () => {
+      if (locoScrollInstance.current) {
+        locoScrollInstance.current.destroy();
+        locoScrollInstance.current = null;
+      }
     };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // GSAP for paragraph show/hide
+  useGSAP(() => {
+    if (showParagraph) {
+      gsap.to(".para", {
+        rotate: 0,
+        left: "12px",
+        duration: 2,
+        delay: -0.7,
+        ease: "Expo.easeInOut",
+      });
 
+      gsap.to(".para2", {
+        rotate: 0,
+        right: "12px",
+        duration: 2,
+        delay: -0.7,
+        ease: "Expo.easeInOut",
+      });
+    }
+  }, [showParagraph]);
 
-  
-
-  
-
- useGSAP(() => {
-  if (showParagraph) {
-    gsap.to(".para", {
-      rotate: 0,
-      left: "12px",
-      duration: 2,
-      delay: -0.7,
-      ease: "Expo.easeInOut",
-    });
-
-    gsap.to(".para2", {
-      rotate: 0,
-      right: "12px",
-      duration: 2,
-      delay: -0.7,
-      ease: "Expo.easeInOut",
-    });
-  }
-}, [showParagraph]);
-
-
+  // GSAP for showing/hiding MenuBar
   useGSAP(() => {
     if (showHam === true) {
       gsap.to(menuRef.current, {
@@ -75,13 +87,16 @@ const Homepage = () => {
     }
   }, [showHam]);
 
+  console.log(showHam, showMenu);
+
   return (
-    <div>
+    // Add ref here and data-scroll-container for locomotive-scroll
+    <main ref={scrollRef} data-scroll-container>
       {/* Metadata for homepage.jsx starts */}
-      <div className="">
+      <div className="data-scroll-section">
         <div
           ref={menuRef}
-          className="hidden  menubar scale-0  md:block fixed bottom-2 left-2"
+          className="hidden menubar scale-0  md:block fixed bottom-2 left-2"
         >
           <div className="">
             {showHam && (
@@ -198,9 +213,8 @@ const Homepage = () => {
           {showParagraph && (
             <div className="para2 absolute top-20 text-sm z-[999] text-gray-300 w-[20%] flex flex-col  gap-4 -right-200">
               <p>
-                I'm also a gamer and a content creator. I create content on
-                Youtube and Twitch. You can check out my Youtube channel from
-                the link given in the top-left of the screen.
+                I'm also a gamer and a content creator. You can check out my
+                Youtube channel from the link given in the top-left of the screen.
               </p>
               <p>
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum
@@ -211,7 +225,7 @@ const Homepage = () => {
               </p>
             </div>
           )}
-          <div className="absolute links pb-2 bottom-0 left-0 flex  items-center z-[200] px-3 py-1 gap-3 font-semibold text-[white]">
+          <div className="absolute text-xs uppercase tracking-widest links pb-2 bottom-0 left-0 flex  items-center z-[200] px-3 py-1 gap-3 font-semibold text-[white]">
             <NavLink
               to={`/projects`}
               className="group flex flex-col rounded-full"
@@ -237,7 +251,7 @@ const Homepage = () => {
         </div>
       </div>
       <AboutMeLandingpage />
-    </div>
+    </main>
   );
 };
 

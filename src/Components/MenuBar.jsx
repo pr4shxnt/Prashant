@@ -14,9 +14,11 @@ const MenuBar = ({ showMenu, setShowMenu }) => {
     setShouldRender(false);
   };
 
+  
+
   return (
     <div className="relative flex w-full">
-      <button onClick={() => setShowMenu(!showMenu)} className="z-[400]">
+      <button onClick={() => setShowMenu(!showMenu)} className="z-[400] cursor-pointer">
         <div className=" bg-black p-1.5 flex items-center justify-center  rounded-full border-2 border-white ">
           {showMenu ? <X stroke="white" /> : <Menu stroke="white" />}
         </div>
