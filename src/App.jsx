@@ -43,10 +43,10 @@ const router = createBrowserRouter([
 
 export default function App() {
   return (
-  <>
+  <>{ import.meta.env.PROD? <ProdBuild/> :
        <ContentProvider>
       <RouterProvider router={router} />
-    </ContentProvider>
+    </ContentProvider>}
    </> 
   );
 }
