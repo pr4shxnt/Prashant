@@ -11,6 +11,8 @@ import { useContent } from "../Utils/ContextProvider";
 import MenuBar from "../Components/MenuBar";
 import LocomotiveScroll from "locomotive-scroll";
 import "locomotive-scroll/src/locomotive-scroll.scss";
+import Marquee from "../Components/MarqueeComp";
+import MarqueeComp from "../Components/MarqueeComp";
 
 const Homepage = () => {
   const { setShowParagraph, showParagraph } = useContent();
@@ -106,7 +108,7 @@ const Homepage = () => {
           />
           <meta name="author" content="Prashant Adhikari" />
         </div>
-        <div className="relative overflow-hidden">
+        <div className="relative h-screen overflow-hidden">
           <div className="showcontent hidden md:block absolute top-3 right-4 z-[800] items-center justify-center">
             <button
               className="text-xs text-white cursor-pointer uppercase tracking-widest font-semibold"
@@ -244,8 +246,8 @@ const Homepage = () => {
           </div>
         </div>
 
-        <div className="">
-          <AboutMeLandingpage/>
+        <div className="bg-black w-full h-screen">
+
         </div>
       </main>
     </>
