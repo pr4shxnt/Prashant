@@ -29,7 +29,7 @@ const MenuContent = ({ isOpen, onCloseComplete }) => {
       ref={ref}
       className="absolute bottom-0 -left-100 z-[200] mb-1.5  w-full text-white rounded-lg shadow-lg"
     >
-      <div className=" w-full text-sm md:text-xs pb-1 uppercase md:tracking-widest links bottom-0 left-0 flex  items-center z-[200] px-3 gap-3 font-semibold text-[white]">
+      <div className=" w-full text-xs pb-1 uppercase md:tracking-widest links bottom-0 left-0 flex  items-center z-[200] px-3 gap-3 font-semibold text-[white]">
         <NavLink to={`/projects`} className="group flex flex-col rounded-full">
           Projects
           <div className="h-0.5 group-hover:w-full bg-[brown] rounded-full w-0 transition-all duration-300  group-hover:block"></div>
