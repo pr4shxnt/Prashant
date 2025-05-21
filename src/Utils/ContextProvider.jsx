@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useState, useEffect, useMemo } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useMemo,
+} from "react";
 import axios from "axios";
 
 const ContentContext = createContext();
@@ -11,10 +17,11 @@ const ContentProvider = ({ children }) => {
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [allSkills, setAllSkills] = useState([])
 
   const [skillsData, setSkillsData] = useState({
     name: "",
-    image: "",
+    image: null,
     link: "",
     description: "",
   });
@@ -24,6 +31,7 @@ const ContentProvider = ({ children }) => {
     password: "",
   });
 
+  console.log(allSkills)
   const [projectData, setProjectData] = useState({
     name: "",
     images: [],
@@ -38,6 +46,21 @@ const ContentProvider = ({ children }) => {
 
   const handleCreateSkills = async (skillsData) => {
     try {
+      setIsLoading(true);
+      setError(null);
+
+      // Basic validation
+      if (!skillsData.name.trim()) {
+        setError("Skill name is required.");
+        setIsLoading(false);
+        return;
+      }
+      if (!skillsData.image) {
+        setError("Skill image is required.");
+        setIsLoading(false);
+        return;
+      }
+
       const formData = new FormData();
       formData.append("name", skillsData.name);
       formData.append("image", skillsData.image);
@@ -49,7 +72,6 @@ const ContentProvider = ({ children }) => {
         formData,
         {
           headers: {
-            "Content-Type": "multipart/form-data",
             Authorization: `Bearer ${token}`,
           },
         }
@@ -58,16 +80,34 @@ const ContentProvider = ({ children }) => {
       if (response.status === 201) {
         setSkillsData({
           name: "",
-          image: "",
+          image: null,
           link: "",
           description: "",
         });
       }
     } catch (error) {
       console.error("An error occurred while creating skills:", error);
-      setError(error);
+      setError(error.response?.data?.message || "Failed to create skill.");
+    } finally {
+      setIsLoading(false);
     }
   };
+
+
+  const skillsFetch = async()=>{
+    try {
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND}/api/skills`)
+
+      if (response.status === 201){
+       
+        setAllSkills(response.data.Skills)
+      }
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+
 
   const handleDeleteSkill = async (skillId) => {
     try {
@@ -89,6 +129,7 @@ const ContentProvider = ({ children }) => {
 
   const handleCreateProject = async (projectData) => {
     try {
+      setIsLoading(true);
       const formData = new FormData();
       formData.append("name", projectData.name);
       formData.append("technologies", projectData.technologies);
@@ -130,8 +171,12 @@ const ContentProvider = ({ children }) => {
       }
     } catch (error) {
       console.error("Error creating project:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
+
+  
 
   const isTokenExpired = (jwtToken) => {
     try {
@@ -142,6 +187,11 @@ const ContentProvider = ({ children }) => {
       return true;
     }
   };
+
+    useEffect(() => {
+    skillsFetch()
+  }, [])
+  
 
   useEffect(() => {
     const storedToken = localStorage.getItem("admin_session");
@@ -198,34 +248,40 @@ const ContentProvider = ({ children }) => {
     window.location.href = "/";
   };
 
-  const contextValue = useMemo(() => ({
-    isAdminAuthenticated,
-    token,
-    adminData,
-    setAdminData,
-    error,
-    isLoading,
-    handleAdminLogin,
-    handleAdminLogout,
-    showContent,
-    setShowContent,
-    showParagraph,
-    setShowParagraph,
-    handleCreateProject,
-    projectData,
-    setProjectData,
-    handleCreateSkills,
-    handleDeleteSkill,
-  }), [
-    isAdminAuthenticated,
-    token,
-    adminData,
-    error,
-    isLoading,
-    showContent,
-    showParagraph,
-    projectData,
-  ]);
+  const contextValue = useMemo(
+    () => ({
+      isAdminAuthenticated,
+      token,
+      adminData,
+      setAdminData,
+      error,
+      isLoading,
+      handleAdminLogin,
+      handleAdminLogout,
+      showContent,
+      setShowContent,
+      showParagraph,
+      setShowParagraph,
+      handleCreateProject,
+      projectData,
+      setProjectData,
+      handleCreateSkills,
+      handleDeleteSkill,
+      skillsData,
+      setSkillsData,
+    }),
+    [
+      isAdminAuthenticated,
+      token,
+      adminData,
+      error,
+      isLoading,
+      showContent,
+      showParagraph,
+      projectData,
+      skillsData,
+    ]
+  );
 
   return (
     <ContentContext.Provider value={contextValue}>

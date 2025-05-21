@@ -247,7 +247,7 @@ const Homepage = () => {
         </div>
 
         <div className="bg-black w-full h-screen">
-
+          <Marquee/>
         </div>
       </main>
     </>

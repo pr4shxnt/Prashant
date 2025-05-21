@@ -8,6 +8,7 @@ import AdminLogin from "./Admin/Auth/AdminLogin";
 import Rootdir from "./Admin/Pages/rootdir";
 import ProjectDisplay from "./Admin/Components/ProjectDisplay";
 import CreateProject from "./Admin/Forms/CreateProject";
+import SkillsManager from "./Admin/Forms/SkillsManager";
  
 
 const router = createBrowserRouter([
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "projects-create",
         element: <CreateProject/>
+      },
+      {
+        path: "skills-management",
+        element: <SkillsManager/>
       }
     ]
   }
