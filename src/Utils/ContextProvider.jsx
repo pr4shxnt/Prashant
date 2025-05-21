@@ -67,6 +67,7 @@ const ContentProvider = ({ children }) => {
       formData.append("link", skillsData.link);
       formData.append("description", skillsData.description);
 
+  
       const response = await axios.post(
         `${import.meta.env.VITE_BACKEND}/api/skills`,
         formData,
@@ -101,11 +102,17 @@ const ContentProvider = ({ children }) => {
       if (response.status === 201){
        
         setAllSkills(response.data.Skills)
+        console.log(response.data.Skills)
+        console.log(allSkills)
       }
     } catch (err) {
       console.error(err)
     }
   }
+
+  useEffect(()=>{
+    skillsFetch()
+  },[])
 
 
 
@@ -143,6 +150,7 @@ const ContentProvider = ({ children }) => {
       projectData.images.forEach((file) => {
         formData.append("images", file);
       });
+
 
       const response = await axios.post(
         `${import.meta.env.VITE_BACKEND}/api/projects/create`,
@@ -188,9 +196,7 @@ const ContentProvider = ({ children }) => {
     }
   };
 
-    useEffect(() => {
-    skillsFetch()
-  }, [])
+
   
 
   useEffect(() => {
