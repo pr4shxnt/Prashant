@@ -269,6 +269,7 @@ const ContentProvider = ({ children }) => {
       handleDeleteSkill,
       skillsData,
       setSkillsData,
+      allSkills
     }),
     [
       isAdminAuthenticated,
@@ -280,6 +281,7 @@ const ContentProvider = ({ children }) => {
       showParagraph,
       projectData,
       skillsData,
+      allSkills
     ]
   );
 
