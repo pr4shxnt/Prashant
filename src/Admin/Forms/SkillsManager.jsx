@@ -51,8 +51,8 @@ const SkillsManager = () => {
         <div className="grid grid-cols-2 gap-4 h-[650px] overflow-y-scroll custom-scrollbar pr-4">
           {allSkills?.map((skill) => (
             <div key={skill._id} className="text-white flex  flex-col">
-              <img src={skill.image} alt="" />
-              <div className="flex flex-col gap-2 px-3 py-2 w-full text-black text-center bg-white">
+              <img src={skill.image} alt="" className="rounded-t-lg bg-gray-200" />
+              <div className="flex flex-col gap-2 px-3 py-2 w-full text-gray-200 rounded-b-lg text-center bg-gray-600">
                 <h1>{skill.name}</h1>
                 <p className="text-xs">{skill.description.slice(0, 110) + "..."}</p>
                 <a
