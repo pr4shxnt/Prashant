@@ -20,7 +20,7 @@ const MenuBar = ({ showMenu, setShowMenu }) => {
         onClick={() => setShowMenu(!showMenu)}
         className="z-[400] cursor-pointer relative w-10 h-10"
       >
-        <div className="bg-black p-1.5 rounded-full border-2 border-white flex items-center justify-center relative w-full h-full overflow-hidden">
+        <div className="bg-gray-900 p-1.5 rounded-full border-2 border-white flex items-center justify-center relative w-full h-full overflow-hidden">
           <span
             className={clsx(
               "absolute transition-all duration-300 ease-in-out",

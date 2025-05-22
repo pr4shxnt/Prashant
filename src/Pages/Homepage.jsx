@@ -13,6 +13,7 @@ import LocomotiveScroll from "locomotive-scroll";
 import "locomotive-scroll/src/locomotive-scroll.scss";
 import Marquee from "../Components/MarqueeComp";
 import MarqueeComp from "../Components/MarqueeComp";
+import Accomplishments from "../Components/Sections/Accomplishments/Accomplishments";
 
 const Homepage = () => {
   const { setShowParagraph, showParagraph } = useContent();
@@ -246,7 +247,8 @@ const Homepage = () => {
           </div>
         </div>
 
-        <div className="bg-black w-full h-screen">
+        <div className="bg-black h-screen w-[90%] mx-auto">
+          <Accomplishments/>
           <MarqueeComp/>
         </div>
       </main>
