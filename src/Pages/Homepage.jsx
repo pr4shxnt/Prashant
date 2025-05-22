@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Home from "../Components/Home";
 import HomeResponsive from "../Components/HomeResponsive";
 import HomeMD from "../Components/HomeMD";
@@ -6,12 +6,8 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { NavLink } from "react-router-dom";
 import { Eye, EyeClosed } from "lucide-react";
-import AboutMeLandingpage from "../Components/Sections/AboutSection/AboutMeLandingpage";
 import { useContent } from "../Utils/ContextProvider";
 import MenuBar from "../Components/MenuBar";
-import LocomotiveScroll from "locomotive-scroll";
-import "locomotive-scroll/src/locomotive-scroll.scss";
-import Marquee from "../Components/MarqueeComp";
 import MarqueeComp from "../Components/MarqueeComp";
 import Accomplishments from "../Components/Sections/Accomplishments/Accomplishments";
 
@@ -19,30 +15,18 @@ const Homepage = () => {
   const { setShowParagraph, showParagraph } = useContent();
   const [showMenu, setShowMenu] = useState(false);
   const [showHam, setShowHam] = useState(false);
-
+  const [scrolled, setScrolled] = useState(0);
   const menuRef = useRef();
-  const scrollRef = useRef(null);
-  const locoScrollInstance = useRef(null);
 
   useEffect(() => {
-    if (!scrollRef.current) return;
-
-    locoScrollInstance.current = new LocomotiveScroll({
-      el: scrollRef.current,
-      smooth: true,
-    });
-
-    locoScrollInstance.current.on("scroll", (obj) => {
-      const scrollY = obj.scroll.y;
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
       setShowHam(scrollY >= 600);
-    });
-
-    return () => {
-      if (locoScrollInstance.current) {
-        locoScrollInstance.current.destroy();
-        locoScrollInstance.current = null;
-      }
+      setScrolled(scrollY);
     };
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useGSAP(() => {
@@ -54,7 +38,6 @@ const Homepage = () => {
         delay: -0.7,
         ease: "Expo.easeInOut",
       });
-
       gsap.to(".para2", {
         rotate: 0,
         right: "12px",
@@ -66,20 +49,13 @@ const Homepage = () => {
   }, [showParagraph]);
 
   useGSAP(() => {
-    if (showHam) {
-      gsap.to(menuRef.current, {
-        rotate: 0,
-        scale: 1,
-        duration: 2,
-        delay: -0.7,
-        ease: "Expo.easeInOut",
-      });
-    } else {
-      gsap.to(menuRef.current, {
-        scale: 0,
-        ease: "Expo.easeInOut",
-      });
-    }
+    gsap.to(menuRef.current, {
+      rotate: 0,
+      scale: showHam ? 1 : 0,
+      duration: 2,
+      delay: -0.7,
+      ease: "Expo.easeInOut",
+    });
   }, [showHam]);
 
   return (
@@ -95,20 +71,15 @@ const Homepage = () => {
         <MenuBar showMenu={showMenu} setShowMenu={setShowMenu} />
       </div>
 
-      <main ref={scrollRef} data-scroll-container>
+      <main>
         <div className="metatags-container">
           <title>Home | Prashant Adhikari</title>
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0"
-          />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <meta name="description" content="Prashant Adhikari's Portfolio" />
-          <meta
-            name="keywords"
-            content="Portfolio, Prashant Adhikari, Web Developer, Software Engineer, Student, Penetration tester, website development, React Developer from Nepal"
-          />
+          <meta name="keywords" content="Portfolio, Prashant Adhikari, Web Developer, Software Engineer, Student, Penetration tester, website development, React Developer from Nepal" />
           <meta name="author" content="Prashant Adhikari" />
         </div>
+
         <div className="relative h-screen overflow-hidden">
           <div className="showcontent hidden md:block absolute top-3 right-4 z-[800] items-center justify-center">
             <button
@@ -116,13 +87,9 @@ const Homepage = () => {
               onClick={() => setShowParagraph(!showParagraph)}
             >
               {showParagraph ? (
-                <h1 className="flex gap-1">
-                  Hide Content <EyeClosed size={18} />
-                </h1>
+                <h1 className="flex gap-1">Hide Content <EyeClosed size={18} /></h1>
               ) : (
-                <h1 className="flex gap-1">
-                  Show Content <Eye size={18} />
-                </h1>
+                <h1 className="flex gap-1">Show Content <Eye size={18} /></h1>
               )}
             </button>
           </div>
@@ -134,11 +101,8 @@ const Homepage = () => {
           >
             <div className="roadrage text-white flex flex-col font-roadrage text-xl absolute left-4 top-6 z-[999]">
               <h1 className="relative">
-                <div className="absolute font-mono -top-[18px] rotate-[70deg]">
-                  :)
-                </div>
-                <span className="text-[brown]">L</span>YN
-                <span className="text-[brown]">X</span>
+                <div className="absolute font-mono -top-[18px] rotate-[70deg]">:)</div>
+                <span className="text-[brown]">L</span>YN<span className="text-[brown]">X</span>
               </h1>
             </div>
           </a>
@@ -146,43 +110,25 @@ const Homepage = () => {
           <div className="md:hidden">
             <HomeResponsive />
           </div>
-
           <div className="hidden md:block lg:hidden">
             <HomeMD />
           </div>
-
           <div className="hidden lg:block">
             <Home />
           </div>
 
           <div className="hidden md:block">
             <div className="absolute social-links bottom-0 right-0 flex items-center z-[200] px-3 py-1">
-              <a
-                target="_blank"
-                title="email"
-                href="mailto:prashantadhikareeey.dev@gmail.com"
-              >
+              <a target="_blank" title="email" href="mailto:prashantadhikareeey.dev@gmail.com">
                 <img src="./email.png" alt="" className="w-6 m-2" />
               </a>
-              <a
-                target="_blank"
-                title="whatsapp"
-                href="https://wa.me/+9779742433049?text=Hello%20Prashant!"
-              >
+              <a target="_blank" title="whatsapp" href="https://wa.me/+9779742433049?text=Hello%20Prashant!">
                 <img src="./whatsapp.png" alt="" className="w-5 m-2" />
               </a>
-              <a
-                target="_blank"
-                title="instagram"
-                href="https://www.instagram.com/pr4xnt"
-              >
+              <a target="_blank" title="instagram" href="https://www.instagram.com/pr4xnt">
                 <img src="./instagram.png" alt="" className="w-8 m-1.5" />
               </a>
-              <a
-                target="_blank"
-                title="github"
-                href="https://www.github.com/pr4shxnt"
-              >
+              <a target="_blank" title="github" href="https://www.github.com/pr4shxnt">
                 <img src="./github.png" alt="" className="w-6 m-2" />
               </a>
             </div>
@@ -222,24 +168,15 @@ const Homepage = () => {
             )}
 
             <div className="absolute text-xs uppercase tracking-widest links pb-2 bottom-0 left-0 flex items-center z-[200] px-3 py-1 gap-3 font-semibold text-[white]">
-              <NavLink
-                to={`/projects`}
-                className="group flex flex-col rounded-full"
-              >
+              <NavLink to="/projects" className="group flex flex-col rounded-full">
                 Projects
                 <div className="h-0.5 group-hover:w-full bg-[brown] rounded-full w-0 transition-all duration-300 group-hover:block"></div>
               </NavLink>
-              <NavLink
-                to={`/dashboard`}
-                className="group flex flex-col rounded-full"
-              >
+              <NavLink to="/dashboard" className="group flex flex-col rounded-full">
                 Dashboard
                 <div className="h-0.5 group-hover:w-full bg-[brown] rounded-full w-0 transition-all duration-300 group-hover:block"></div>
               </NavLink>
-              <NavLink
-                to={`/curriculum-vitae`}
-                className="group flex flex-col rounded-full"
-              >
+              <NavLink to="/curriculum-vitae" className="group flex flex-col rounded-full">
                 CV
                 <div className="h-0.5 group-hover:w-full bg-[brown] rounded-full w-0 transition-all duration-300 group-hover:block"></div>
               </NavLink>
@@ -247,9 +184,11 @@ const Homepage = () => {
           </div>
         </div>
 
-        <div className="bg-black h-screen w-[90%] mx-auto">
-          <Accomplishments/>
-          <MarqueeComp/>
+        <div className="bg-black h-[70vh] md:h-screen w-[80vw] relative mx-auto">
+          <div className="absolute hidden md:block top-10 left-20 w-72 h-72 bg-[#5E4C2C]/35 rounded-full blur-3xl z-0"></div>
+          <div className="absolute hidden md:block bottom-10 right-20 w-96 h-96 bg-[#5E4C2C]/15 rounded-full blur-2xl z-0"></div>
+          <Accomplishments scrolled={scrolled} />
+          <MarqueeComp />
         </div>
       </main>
     </>

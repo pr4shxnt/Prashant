@@ -7,8 +7,8 @@ const MarqueeComp = () => {
   console.log(allSkills);
   
   return (
-    <div className='text-white h-full pt-5'>
-      <h1 className="text-lg uppercase font-bold tracking-widest pb-3">I can work with:</h1>
+    <div className='text-white  mx-auto h-full pt-5'>
+      <h1 className="text-lg  uppercase font-bold tracking-widest pb-3">Learnt <span className="text-lg  uppercase font-bold tracking-widest text-[#5E4C2C]">Technologies</span></h1>
         <Marquee  pauseOnHover={true} >
           <div className="flex gap-8 text-3xl mx-5 overflow-hidden">
             {

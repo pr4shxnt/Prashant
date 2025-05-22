@@ -5,7 +5,7 @@ const AccomplishmentsData = [
         id: 1,
         name: "Hackathons",
         count: "0",
-        description: "Prashant has contributed to total of 0 hackathons",
+        description: "Prashant has contributed to total of 0 hackathons till today.",
         link: "/curriculum-vitae",
         icon: <Code2/>
     },
@@ -13,7 +13,7 @@ const AccomplishmentsData = [
         id: 2,
         name: "Certificates",
         count: "3",
-        description: "Prashant Adhikari is a certified website developer.",
+        description: "Prashant Adhikari is a certified frontend website developer.",
         link: "/curriculum-vitae",
         icon: <BookCheck/>
     },

@@ -11,6 +11,12 @@ html, body {
 
 }
 
+[data-scroll-container] {
+  overflow: hidden; /* important to hide native scroll */
+  
+}
+
+
 @font-face {
     font-family: "roadrage";
     src: url("/Road_Rage.otf") format("opentype");
