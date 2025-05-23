@@ -32,14 +32,6 @@ const AccomplishmentsData = [
         description: "Prashant has accomplished accumulatively 14 projects with the tech stack he learnt.",
         link: "/projects",
         icon: <WorkflowIcon/>
-    },
-    {
-        id: 5,
-        name: "",
-        count: "",
-        description: "",
-        link: "",
-        icon: <></>
     }
 ]
 

@@ -19,7 +19,7 @@ const Accomplishments = ({ scrolled }) => {
   }, []);
 
   useEffect(() => {
-    setAnimate(scrolled > 250);
+    setAnimate(scrolled > 200);
   }, [scrolled]);
 
   useGSAP(() => {
@@ -28,8 +28,8 @@ const Accomplishments = ({ scrolled }) => {
     const tl = gsap.timeline();
     tl.fromTo(
       [ imageRef.current],
-      { opacity: 0, x: -100, scale: 0.5 },
-      { opacity: 1, x: 0, scale: 1, duration: 0.8, ease: 'Expo.easeInOut', stagger: 0.1 }
+      { opacity: 0, x: -100, scale: 0.95 },
+      { opacity: 1, x: 0, scale: 1, duration: 0.8, ease: 'none', stagger: 0.1 }
     );
   }, [animate]);
 
@@ -37,12 +37,12 @@ const Accomplishments = ({ scrolled }) => {
   const current = AccomplishmentsData[currentIndex];
 
   return (
-    <div className="w-[90%] mx-auto relative h-[85%] bg-transparent text-white px-10 py-6 flex items-center justify-center overflow-hidden">
+    <div className="w-[90%] mx-auto relative h-[90%] md:h-[50%] lg:h-[85%] bg-transparent text-white px-10 py-4 flex items-center justify-center overflow-hidden">
       {animate && (
         <div>
 
-          <div className=" relative z-10 grid md:grid-cols-5  max-w-7xl h-full items-center gap-6">
-            <div className="col-span-2 hidden md:flex items-center justify-center">
+          <div className=" relative z-10 grid lg:grid-cols-5  max-w-7xl h-full items-center gap-6">
+            <div className="col-span-2 hidden lg:flex items-center justify-center">
               <motion.img
                 ref={imageRef}
                 src="/side-avatar.png"
@@ -54,10 +54,10 @@ const Accomplishments = ({ scrolled }) => {
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentIndex}
-                initial={{ opacity: 0, scale: 0.95 }}
+                initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.5 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 1 }}
                 className="col-span-2 bg-white/5 backdrop-blur-md rounded-2xl p-6 shadow-lg flex flex-col items-center justify-center"
               >
                 <h1 className="text-6xl font-extrabold text-white">{current.count}</h1>
@@ -76,17 +76,17 @@ const Accomplishments = ({ scrolled }) => {
               </motion.div>
             </AnimatePresence>
 
-            <div className="col-span-1 flex md:flex-col md:px-8 justify-center md:gap-6">
+            <div className="col-span-1 flex lg:flex-col md:px-8 justify-center md:gap-6">
               {AccomplishmentsData.map((item, i) => (
                 <motion.div
                   key={i}
                   onClick={() => handleDotClick(i)}
-                  className={`cursor-pointer px-4 py-3 rounded-xl flex flex-col items-center transition-all duration-200 ${
+                  className={`cursor-pointer px-4 py-3 rounded-xl flex flex-col items-center transition-all duration-600 ${
                     currentIndex === i ? 'bg-white/10' : 'hover:bg-white/5'
                   }`}
                   initial={{ opacity: 0, x: 40 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.1 * i }}
+                  transition={{ delay: 0.05 * i }}
                 >
                   <h1 className="text-xs hidden md:block text-white">{item.name}</h1>
                   <div className="text-xl text-white">{item.icon}</div>

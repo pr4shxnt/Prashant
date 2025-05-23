@@ -81,11 +81,7 @@ const HomeMD = () => {
         </div>
 
         {/* BOTTOM BAR */}
-        <div className="btmbar text-white absolute bottom-0 left-0 w-full py-6 px-6 md:py-10 md:px-10 bg-gradient-to-t from-black to-transparent z-[2]">
-          <div className="flex justify-center items-center">
-            <h3 className="text-sm text-center">Scroll Down</h3>
-          </div>
-        </div>
+     
       </div>
     </div>
   );

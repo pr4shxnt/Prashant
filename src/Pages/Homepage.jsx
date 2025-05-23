@@ -5,11 +5,12 @@ import HomeMD from "../Components/HomeMD";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { NavLink } from "react-router-dom";
-import { Eye, EyeClosed } from "lucide-react";
+import { ChevronDown, Eye, EyeClosed } from "lucide-react";
 import { useContent } from "../Utils/ContextProvider";
 import MenuBar from "../Components/MenuBar";
 import MarqueeComp from "../Components/MarqueeComp";
 import Accomplishments from "../Components/Sections/Accomplishments/Accomplishments";
+import {ScrollToPlugin} from "gsap/ScrollToPlugin";
 
 const Homepage = () => {
   const { setShowParagraph, showParagraph } = useContent();
@@ -17,11 +18,14 @@ const Homepage = () => {
   const [showHam, setShowHam] = useState(false);
   const [scrolled, setScrolled] = useState(0);
   const menuRef = useRef();
+  
+  gsap.registerPlugin(ScrollToPlugin);
+  console.log(scrolled)
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      setShowHam(scrollY >= 600);
+      setShowHam(scrollY >= 700);
       setScrolled(scrollY);
     };
     window.addEventListener("scroll", handleScroll);
@@ -57,6 +61,15 @@ const Homepage = () => {
       ease: "Expo.easeInOut",
     });
   }, [showHam]);
+
+
+  
+const scrollDownHandler = () => {
+  console.log("Scrolling down..."); // Debug log
+  window.scrollTo(0, 735)
+};
+
+
 
   return (
     <>
@@ -167,6 +180,17 @@ const Homepage = () => {
               </div>
             )}
 
+             <div className="btmbar text-white absolute bottom-0 left-0 w-full pt-18 pb-2 px-16 bg-gradient-to-t from-black to-transparent z-[10]">
+            <button onClick={scrollDownHandler} className="flex cursor-pointer flex-col  absolute bottom-0 left-0 w-full justify-center items-center">
+                <h3 className="text-sm  flex text-center ">
+                  Scroll Down
+                </h3>
+                <ChevronDown className='text-white animate-bounce' size={18} />
+              </button>
+
+              
+            </div>
+
             <div className="absolute text-xs uppercase tracking-widest links pb-2 bottom-0 left-0 flex items-center z-[200] px-3 py-1 gap-3 font-semibold text-[white]">
               <NavLink to="/projects" className="group flex flex-col rounded-full">
                 Projects
@@ -188,7 +212,8 @@ const Homepage = () => {
           <div className="absolute hidden md:block top-10 left-20 w-72 h-72 bg-[#5E4C2C]/35 rounded-full blur-3xl z-0"></div>
           <div className="absolute hidden md:block bottom-10 right-20 w-96 h-96 bg-[#5E4C2C]/15 rounded-full blur-2xl z-0"></div>
           <Accomplishments scrolled={scrolled} />
-          <MarqueeComp />
+          <div className="h-full">
+          <MarqueeComp /></div>
         </div>
       </main>
     </>
