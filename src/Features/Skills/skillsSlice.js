@@ -55,6 +55,7 @@ export const fetchAllSkills = createAsyncThunk(
 );
 
 
+
 export const deleteSkillById = createAsyncThunk(
     'skills/delete',
     async(id, thunkAPI) => {

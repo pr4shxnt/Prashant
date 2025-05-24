@@ -9,7 +9,6 @@ const CreateProject = () => {
   const { projectData } = useSelector(state => state.projects);
   const { token, isAdminAuthenticated } = useContent()
 
-  // Local state to hold File objects (not in Redux)
   const [files, setFiles] = useState([]);
 
   const handleInputChange = (e) => {
@@ -20,12 +19,10 @@ const CreateProject = () => {
   const handleFileChange = (e) => {
     const selectedFiles = Array.from(e.target.files);
     setFiles(selectedFiles);
-    // Store only filenames (or some metadata) in Redux
     dispatch(setProjectData({ ...projectData, imagesInfo: selectedFiles.map(file => file.name) }));
   };
 
   const handleSubmit = () => {
-    // Dispatch thunk with projectData and actual files
     dispatch(createNewProject({ projectData: { ...projectData, token }, files }));
   };
 

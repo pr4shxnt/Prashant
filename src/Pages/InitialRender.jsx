@@ -30,7 +30,6 @@ const InitialRender = ({ setShowContent }) => {
     });
   });
 
-     console.log("Do not even try to change a single line through the console. Your efforts are useless each and every routes are secured and tested properly. Thank you for your concern. -Prashant Adhikari")
 
 
   return (

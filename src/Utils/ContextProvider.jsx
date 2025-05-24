@@ -31,7 +31,7 @@ const ContentProvider = ({ children }) => {
     password: "",
   });
 
-  console.log(allSkills)
+  
   const [projectData, setProjectData] = useState({
     name: "",
     images: [],
@@ -102,8 +102,6 @@ const ContentProvider = ({ children }) => {
       if (response.status === 201){
        
         setAllSkills(response.data.Skills)
-        console.log(response.data.Skills)
-        console.log(allSkills)
       }
     } catch (err) {
       console.error(err)
@@ -245,6 +243,8 @@ const ContentProvider = ({ children }) => {
       setIsLoading(false);
     }
   };
+
+  
 
   const handleAdminLogout = () => {
     setToken(null);
