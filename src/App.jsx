@@ -1,5 +1,7 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Provider } from "react-redux";
+import { store } from "./App/store";
 import RootComponent from "./Pages/RootComponent";
 import Homepage from "./Pages/Homepage";
 import ContentProvider from "./Utils/ContextProvider";
@@ -51,9 +53,10 @@ export default function App() {
   <>
   {
     import.meta.env.PROD ? <ProdBuild/> :
+    <Provider store={store}>
        <ContentProvider>
       <RouterProvider router={router} />
-    </ContentProvider>}
+    </ContentProvider></Provider>}
    </> 
   );
 }

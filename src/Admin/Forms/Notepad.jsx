@@ -1,18 +1,27 @@
-import React, { useRef, useState, useEffect } from 'react';
+import { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import {  setProjectData } from '../../Features/Project/projectSlice';
 
-const toolbarCommands = [
-  { command: 'bold', label: 'B', title: 'Bold' },
-  { command: 'italic', label: 'I', title: 'Italic' },
-  { command: 'underline', label: 'U', title: 'Underline' },
-  { command: 'insertUnorderedList', label: '• List', title: 'Unordered List' },
-  { command: 'createLink', label: '🔗', title: 'Insert Link' },
-];
-
-const Notepad = ({ projectData, setProjectData }) => {
+const Notepad = () => {
+  const dispatch = useDispatch();
+  const { projectData } = useSelector(state => state.projects);
   const editorRef = useRef(null);
   const [activeCommands, setActiveCommands] = useState({});
 
-  // Initialize editor content once on mount
+  const toolbarCommands = [
+  { command: 'bold', label: 'B', title: 'Bold' },
+  { command: 'italic', label: 'I', title: 'Italic' },
+  { command: 'underline', label: 'U', title: 'Underline' },
+  { command: 'strikeThrough', label: 'S', title: 'Strike Through' },
+  { command: 'justifyLeft', label: 'Left', title: 'Align Left' },
+  { command: 'justifyCenter', label: 'Center', title: 'Align Center' },
+  { command: 'justifyRight', label: 'Right', title: 'Align Right' },
+  { command: 'insertOrderedList', label: 'OL', title: 'Ordered List' },
+  { command: 'insertUnorderedList', label: 'UL', title: 'Unordered List' },
+  { command: 'createLink', label: 'Link', title: 'Insert Link' },
+];
+
+
   useEffect(() => {
     if (editorRef.current && !editorRef.current.innerHTML) {
       editorRef.current.innerHTML = projectData.description || '';
@@ -28,6 +37,8 @@ const Notepad = ({ projectData, setProjectData }) => {
     setActiveCommands(newActive);
   };
 
+  
+
   const format = (command, value = null) => {
     if (command === 'createLink') {
       const url = prompt('Enter the link URL:');
@@ -39,14 +50,15 @@ const Notepad = ({ projectData, setProjectData }) => {
     } else {
       document.execCommand(command, false, null);
     }
+
     const html = editorRef.current.innerHTML;
-    setProjectData(prev => ({ ...prev, description: html }));
+    dispatch(setProjectData({ ...projectData, description: html }));
     updateActiveCommands();
   };
 
   const handleInput = () => {
     const html = editorRef.current.innerHTML;
-    setProjectData(prev => ({ ...prev, description: html }));
+    dispatch(setProjectData({ ...projectData, description: html }));
     updateActiveCommands();
   };
 
