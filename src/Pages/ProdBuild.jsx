@@ -1,6 +1,32 @@
 import React from 'react'
 
 const ProdBuild = () => {
+  useEffect(() => {
+    console.log(
+      `%cDo not even try to change a single line through the console.
+  Your efforts are useless; each and every route is secured and tested properly.
+  Thank you for your concern.`,
+      `color: red;
+       font-size: 12px;
+       font-family: monospace;
+       white-space: pre-line;
+       border-radius: 5px;`
+    );
+  
+    console.log(
+      `%c
+  - Prashant Adhikari
+  github: pr4shxnt
+  instagram: pr4xnt
+  x: pr4xnt`,
+      `color: black;
+       font-size: 12px;
+       font-family: monospace;
+       white-space: pre-line;
+       border-radius: 5px;`
+    );
+  }, []);
+  
     if (import.meta.env.MODE === 'production') {
  
   
