@@ -76,7 +76,7 @@ const Accomplishments = ({ scrolled }) => {
               </motion.div>
             </AnimatePresence>
 
-            <div className="col-span-1 flex lg:flex-col md:px-8 justify-center md:gap-6">
+            <div className="col-span-1 hidden lg:flex lg:flex-col md:px-12 justify-center md:gap-6">
               {AccomplishmentsData.map((item, i) => (
                 <motion.div
                   key={i}

@@ -60,7 +60,7 @@ const InitialRender = ({ setShowContent }) => {
           </mask>
         </defs>
         <image
-          href="./initial-prev.png"
+          href="https://res.cloudinary.com/drddkl4on/image/upload/v1748102694/initial-prev_cz4bj0.png"
           width="100%"
           height="100%"
           preserveAspectRatio="xMidYMid slice"

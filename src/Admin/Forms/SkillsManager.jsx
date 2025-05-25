@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { useContent } from "../../Utils/ContextProvider";
+import { useDispatch, useSelector } from "react-redux";
+import { createNewSkill } from "../../Features/Skills/skillsSlice";
 
 const SkillsManager = () => {
   const {
@@ -10,6 +12,9 @@ const SkillsManager = () => {
     isLoading,
     error,
   } = useContent();
+
+
+  
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

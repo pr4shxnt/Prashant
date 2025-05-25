@@ -5,7 +5,7 @@ import HomeMD from "../Components/HomeMD";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { NavLink } from "react-router-dom";
-import { ChevronDown, Eye, EyeClosed } from "lucide-react";
+import { ChevronDown, ChevronUp, Eye, EyeClosed } from "lucide-react";
 import { useContent } from "../Utils/ContextProvider";
 import MenuBar from "../Components/MenuBar";
 import MarqueeComp from "../Components/MarqueeComp";
@@ -95,6 +95,9 @@ const scrollDownHandler = () => {
   window.scrollTo(0, 735)
 };
 
+const scrollHandler = (arg) => {
+  window.scrollTo(0, arg)
+}
 
 
   return (
@@ -109,6 +112,14 @@ const scrollDownHandler = () => {
       <div className="fixed bottom-2 left-2 z-[10000] md:hidden">
         <MenuBar showMenu={showMenu} setShowMenu={setShowMenu} />
       </div>
+      
+      
+        { showHam && <div className="hidden md:block fixed bottom-2 right-2 z-[10000]">
+          <button onClick={() => scrollHandler(scrolled+735)} className="text-white"><ChevronDown className='text-white animate-bounce' size={18} /></button>
+        </div>}
+      { showHam && <div className="hidden md:block fixed top-2 right-2 z-[10000]">
+          <button onClick={() => scrollHandler(scrolled-735)} className="text-white"><ChevronUp className='text-white animate-bounce' size={18} /></button>
+        </div>}
 
       <main>
         <div className="metatags-container">
@@ -234,13 +245,16 @@ const scrollDownHandler = () => {
           </div>
         </div>
 
+         <div className="h-screen w-full"></div>
+
         <div className="bg-black h-[70vh] md:h-screen w-[80vw] relative mx-auto">
           <div className="absolute hidden md:block top-10 left-20 w-72 h-72 bg-[#5E4C2C]/35 rounded-full blur-3xl z-0"></div>
           <div className="absolute hidden md:block bottom-10 right-20 w-96 h-96 bg-[#5E4C2C]/15 rounded-full blur-2xl z-0"></div>
           <Accomplishments scrolled={scrolled} />
-          <div className="h-full">
-          <MarqueeComp /></div>
+          <MarqueeComp direction="left" />
         </div>
+       
+        <div className="h-screen w-full bg-white"></div>
       </main>
     </>
   );

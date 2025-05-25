@@ -52,12 +52,12 @@ const HomeMD = () => {
         <div className="imagesdiv relative overflow-hidden w-full h-screen">
           <img
             className="absolute sky scale-[1.5] rotate-[-20deg] top-0 left-0 w-full h-full object-cover"
-            src="./sky.png"
+            src="https://res.cloudinary.com/drddkl4on/image/upload/v1748102691/sky_xuqj8i.png"
             alt=""
           />
           <img
             className="absolute bg scale-[1.8] rotate-[-3deg] top-0 left-0 w-full h-full object-cover"
-            src="./bg.png"
+            src="https://res.cloudinary.com/drddkl4on/image/upload/v1748102689/bg_catc9m.png"
             alt=""
           />
           <div className="absolute top-0 left-0 w-full h-full bg-black/60 z-[1]"></div>
@@ -75,7 +75,7 @@ const HomeMD = () => {
           {/* CHARACTER IMAGE */}
           <img
             className="absolute character3 drop-shadow-[0_15px_25px_rgba(0,0,0,0.5)] w-[70%] -bottom-[150%] left-1/2 -translate-x-1/2 scale-[3] md:scale-[2] rotate-[-20deg] z-[2]"
-            src="./photo1.png"
+            src="https://res.cloudinary.com/drddkl4on/image/upload/v1748102693/photo1_qovkxz.png"
             alt=""
           />
         </div>

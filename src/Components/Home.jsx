@@ -92,12 +92,12 @@ const Home = () => {
             <div className="imagesdiv relative overflow-hidden w-full h-screen">
               <img
                 className="absolute sky scale-[2.8] top-0 left-0 w-full h-full object-cover"
-                src="./sky.png"
+                src="https://res.cloudinary.com/drddkl4on/image/upload/v1748102691/sky_xuqj8i.png"
                 alt=""
               />
               <img
                 className="absolute scale-[3]  bg top-0 left-0 w-full h-full object-cover"
-                src="./bg.png"
+                src="https://res.cloudinary.com/drddkl4on/image/upload/v1748102689/bg_catc9m.png"
                 alt=""
               />
               <div className="absolute top-0 left-0 w-full h-full bg-black/60 z-[1]"></div>
@@ -107,7 +107,7 @@ const Home = () => {
               </div>
               <img
                 className="absolute character drop-shadow-[0_15px_25px_rgba(0,0,0,5)] w-[35%] -bottom-[200%] left-1/2 -translate-x-1/2  scale-[3] rotate-[-20deg] z-[2]"
-                src="./photo1.png"
+                src="https://res.cloudinary.com/drddkl4on/image/upload/v1748102693/photo1_qovkxz.png"
                 alt=""
               />
             </div>

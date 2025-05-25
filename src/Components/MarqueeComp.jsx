@@ -3,7 +3,7 @@ import Marquee from 'react-fast-marquee';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllSkills } from '../Features/Skills/skillsSlice';
 
-const MarqueeComp = () => {
+const MarqueeComp = ({direction}) => {
   const dispatch = useDispatch();
   const { skills, loading, error } = useSelector((state) => state.skills);
   const [initialLoad, setInitialLoad] = useState(true);
@@ -17,15 +17,14 @@ useEffect(() => {
   
 
   return (
-    <div className='text-white mx-auto pt-5'>
+    <div className='text-white mx-auto '>
       <h1 className="text-lg text-center uppercase font-bold tracking-widest pb-3">
-        Learnt <span className="text-lg uppercase font-bold tracking-widest text-[#5E4C2C]">Technologies</span>
       </h1>
 
       {loading || initialLoad ? (
         <p className="text-center">Loading skills...</p>
       ) : (
-        <Marquee direction="right" pauseOnHover={true}>
+        <Marquee direction={direction} pauseOnHover={true}>
           <div className="flex gap-8 text-3xl mx-5 overflow-hidden">
             {skills?.Skills?.map((item) => (
               <div key={item._id} className="flex items-center gap-2 rounded-lg">
