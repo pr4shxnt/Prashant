@@ -12,6 +12,16 @@ const initialState = {
     error: null,
 }
 
+ export const isTokenExpired = (jwtToken) => {
+    try {
+      const payload = JSON.parse(atob(jwtToken.split(".")[1]));
+      const currentTime = Date.now() / 1000;
+      return payload.exp < currentTime;
+    } catch {
+      return true;
+    }
+  };
+
 
 export const loginAdmin = createAsyncThunk(
     'auth/login',
@@ -23,8 +33,20 @@ export const loginAdmin = createAsyncThunk(
       );
       return response.data; 
     } catch (err) {
-      return thunkAPI.rejectWithValue(err.response?.data?.message || "Login failed");
+      return thunkAPI.rejectWithValue(err.response?.data?.message || "Login failed")
     }
+    }
+);
+
+export const logoutAdmin = createAsyncThunk(    
+    'auth/logout',
+    async (_, thunkAPI)=>{
+        try {
+            localStorage.removeItem("admin_session");
+            return null;
+        } catch (err) {
+            return thunkAPI.rejectWithValue(err.response?.data?.message || "Logout failed")
+        }
     }
 );
 
@@ -33,7 +55,7 @@ const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        setAdminData: (action, state) => {
+        setAdminData: (state, action) => {
             state.adminData = action.payload;
         },
     },
@@ -53,11 +75,28 @@ const authSlice = createSlice({
             })
             .addCase(loginAdmin.rejected, (state, action)=>{
                 state.error = action.payload;
-                state.loading = fasle;
+                state.loading = false;
                 state.isAdminAuthenticated = false;
                 state.token = null;
                 state.adminData = initialState.adminData;
             })
+            .addCase(logoutAdmin.pending, (state)=>{
+                state.loading = true;
+                state.error = null;
+                state.isAdminAuthenticated = true;
+            })
+            .addCase(logoutAdmin.fulfilled, (state)=>{
+                state.isAdminAuthenticated = false;
+                state.token = null;
+                state.adminData = initialState.adminData;
+                state.loading = false;
+                state.error = null;
+            })
+            .addCase(logoutAdmin.rejected, (state, action)=>{
+                state.error = action.payload;
+                state.loading = false;
+            });
+
     }
 })
 

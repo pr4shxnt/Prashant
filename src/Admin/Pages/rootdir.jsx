@@ -1,12 +1,15 @@
 import React, { use, useEffect } from 'react'
 import Sidebar from '../Components/Sidebar'
 import { Outlet, useNavigate } from 'react-router-dom'
-import { useContent } from '../../Utils/ContextProvider';
+import { useDispatch, useSelector } from "react-redux";
 
 const Rootdir = () => {
-    const {isAdminAuthenticated,  handleAdminLogin, error, isLoading, setAdminData } = useContent();
-      const navigate = useNavigate();
-      console.log(isAdminAuthenticated, isLoading);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();  
+
+        const { isAdminAuthenticated} = useSelector((state) => state.auth);
+        const { token } = useSelector((state) => state.auth);
+
       
       useEffect(() => {
         if (isAdminAuthenticated === false ) {

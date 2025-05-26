@@ -1,18 +1,15 @@
 import { useEffect, useState } from "react";
-import { useContent } from "../../Utils/ContextProvider";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { loginAdmin, setAdminData } from "../../Features/Auth/authSlice"
 
 const AdminLogin = () => {
-  const {
-    isAdminAuthenticated,
-    handleAdminLogin,
-    error,
-    isLoading,
-    setAdminData,
-  } = useContent();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { isAdminAuthenticated, error, loading } = useSelector((state) => state.auth);
   const [cred, setCred] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (isAdminAuthenticated === true) {
@@ -22,12 +19,8 @@ const AdminLogin = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    setAdminData((prev) => ({
-      ...prev,
-      password,
-      cred,
-    }));
-    handleAdminLogin();
+    dispatch(setAdminData({ cred, password }));
+    dispatch(loginAdmin({ cred, password }));
   };
 
   return (
@@ -63,9 +56,9 @@ const AdminLogin = () => {
           <button
             type="submit"
             className="w-full mt-3 bg-black text-white py-2 rounded-full cursor-pointer duration-300 hover:bg-gray-900"
-            disabled={isLoading}
+            disabled={loading}
           >
-            {isLoading ? "Logging in..." : "Login"}
+            {loading ? "Logging in..." : "Login"}
           </button>
         </form>
       </div>
