@@ -11,8 +11,11 @@ import MenuBar from "../Components/MenuBar";
 import MarqueeComp from "../Components/MarqueeComp";
 import Accomplishments from "../Components/Sections/Accomplishments/Accomplishments";
 import {ScrollToPlugin} from "gsap/ScrollToPlugin";
+import { useDispatch, useSelector } from "react-redux";
 
 const Homepage = () => {
+  const dispatch = useDispatch();
+  const { isAdminAuthenticated } = useSelector(state => state.auth);
   const { setShowParagraph, showParagraph } = useContent();
   const [showMenu, setShowMenu] = useState(false);
   const [showHam, setShowHam] = useState(false);
@@ -45,6 +48,7 @@ x: pr4xnt`,
 }, []);
 
 
+  console.log("isAdminAuthenticated", isAdminAuthenticated);
 
   gsap.registerPlugin(ScrollToPlugin);
 
