@@ -10,45 +10,42 @@ import { useContent } from "../Utils/ContextProvider";
 import MenuBar from "../Components/MenuBar";
 import MarqueeComp from "../Components/MarqueeComp";
 import Accomplishments from "../Components/Sections/Accomplishments/Accomplishments";
-import {ScrollToPlugin} from "gsap/ScrollToPlugin";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { useDispatch, useSelector } from "react-redux";
 
 const Homepage = () => {
   const dispatch = useDispatch();
-  const { isAdminAuthenticated } = useSelector(state => state.auth);
+  const { isAdminAuthenticated } = useSelector((state) => state.auth);
   const { setShowParagraph, showParagraph } = useContent();
   const [showMenu, setShowMenu] = useState(false);
   const [showHam, setShowHam] = useState(false);
   const [scrolled, setScrolled] = useState(0);
   const menuRef = useRef();
   useEffect(() => {
-  console.log(
-    `%cDo not even try to change a single line through the console.
+    console.log(
+      `%cDo not even try to change a single line through the console.
 Your efforts are useless; each and every route is secured and tested properly.
 Thank you for your concern.`,
-    `color: red;
+      `color: red;
      font-size: 12px;
      font-family: monospace;
      white-space: pre-line;
      border-radius: 5px;`
-  );
+    );
 
-  console.log(
-    `%c
+    console.log(
+      `%c
 - Prashant Adhikari
 github: pr4shxnt
 instagram: pr4xnt
 x: pr4xnt`,
-    `color: black;
+      `color: black;
      font-size: 12px;
      font-family: monospace;
      white-space: pre-line;
      border-radius: 5px;`
-  );
-}, []);
-
-
-  console.log("isAdminAuthenticated", isAdminAuthenticated);
+    );
+  }, []);
 
   gsap.registerPlugin(ScrollToPlugin);
 
@@ -92,17 +89,14 @@ x: pr4xnt`,
     });
   }, [showHam]);
 
+  const scrollDownHandler = () => {
+    console.log("Scrolling down..."); // Debug log
+    window.scrollTo(0, 735);
+  };
 
-  
-const scrollDownHandler = () => {
-  console.log("Scrolling down..."); // Debug log
-  window.scrollTo(0, 735)
-};
-
-const scrollHandler = (arg) => {
-  window.scrollTo(0, arg)
-}
-
+  const scrollHandler = (arg) => {
+    window.scrollTo(0, arg);
+  };
 
   return (
     <>
@@ -116,21 +110,40 @@ const scrollHandler = (arg) => {
       <div className="fixed bottom-2 left-2 z-[10000] md:hidden">
         <MenuBar showMenu={showMenu} setShowMenu={setShowMenu} />
       </div>
-      
-      
-        { showHam && <div className="hidden md:block fixed bottom-2 right-2 z-[10000]">
-          <button onClick={() => scrollHandler(scrolled+735)} className="text-white"><ChevronDown className='text-white animate-bounce' size={18} /></button>
-        </div>}
-      { showHam && <div className="hidden md:block fixed top-2 right-2 z-[10000]">
-          <button onClick={() => scrollHandler(scrolled-735)} className="text-white"><ChevronUp className='text-white animate-bounce' size={18} /></button>
-        </div>}
+
+      {showHam && (
+        <div className="hidden md:block fixed bottom-2 right-2 z-[10000]">
+          <button
+            onClick={() => scrollHandler(scrolled + 735)}
+            className="text-white"
+          >
+            <ChevronDown className="text-white animate-bounce" size={18} />
+          </button>
+        </div>
+      )}
+      {showHam && (
+        <div className="hidden md:block fixed top-2 right-2 z-[10000]">
+          <button
+            onClick={() => scrollHandler(scrolled - 735)}
+            className="text-white"
+          >
+            <ChevronUp className="text-white animate-bounce" size={18} />
+          </button>
+        </div>
+      )}
 
       <main>
         <div className="metatags-container">
           <title>Home | Prashant Adhikari</title>
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+          />
           <meta name="description" content="Prashant Adhikari's Portfolio" />
-          <meta name="keywords" content="Portfolio, Prashant Adhikari, Web Developer, Software Engineer, Student, Penetration tester, website development, React Developer from Nepal" />
+          <meta
+            name="keywords"
+            content="Portfolio, Prashant Adhikari, Web Developer, Software Engineer, Student, Penetration tester, website development, React Developer from Nepal"
+          />
           <meta name="author" content="Prashant Adhikari" />
         </div>
 
@@ -141,9 +154,13 @@ const scrollHandler = (arg) => {
               onClick={() => setShowParagraph(!showParagraph)}
             >
               {showParagraph ? (
-                <h1 className="flex gap-1">Hide Content <EyeClosed size={18} /></h1>
+                <h1 className="flex gap-1">
+                  Hide Content <EyeClosed size={18} />
+                </h1>
               ) : (
-                <h1 className="flex gap-1">Show Content <Eye size={18} /></h1>
+                <h1 className="flex gap-1">
+                  Show Content <Eye size={18} />
+                </h1>
               )}
             </button>
           </div>
@@ -155,8 +172,11 @@ const scrollHandler = (arg) => {
           >
             <div className="roadrage text-white flex flex-col font-roadrage text-xl absolute left-4 top-6 z-[999]">
               <h1 className="relative">
-                <div className="absolute font-mono -top-[18px] rotate-[70deg]">:)</div>
-                <span className="text-[brown]">L</span>YN<span className="text-[brown]">X</span>
+                <div className="absolute font-mono -top-[18px] rotate-[70deg]">
+                  :)
+                </div>
+                <span className="text-[brown]">L</span>YN
+                <span className="text-[brown]">X</span>
               </h1>
             </div>
           </a>
@@ -173,16 +193,32 @@ const scrollHandler = (arg) => {
 
           <div className="hidden md:block">
             <div className="absolute social-links bottom-0 right-0 flex items-center z-[200] px-3 py-1">
-              <a target="_blank" title="email" href="mailto:prashantadhikareeey.dev@gmail.com">
+              <a
+                target="_blank"
+                title="email"
+                href="mailto:prashantadhikareeey.dev@gmail.com"
+              >
                 <img src="./email.png" alt="" className="w-6 m-2" />
               </a>
-              <a target="_blank" title="whatsapp" href="https://wa.me/+9779742433049?text=Hello%20Prashant!">
+              <a
+                target="_blank"
+                title="whatsapp"
+                href="https://wa.me/+9779742433049?text=Hello%20Prashant!"
+              >
                 <img src="./whatsapp.png" alt="" className="w-5 m-2" />
               </a>
-              <a target="_blank" title="instagram" href="https://www.instagram.com/pr4xnt">
+              <a
+                target="_blank"
+                title="instagram"
+                href="https://www.instagram.com/pr4xnt"
+              >
                 <img src="./instagram.png" alt="" className="w-8 m-1.5" />
               </a>
-              <a target="_blank" title="github" href="https://www.github.com/pr4shxnt">
+              <a
+                target="_blank"
+                title="github"
+                href="https://www.github.com/pr4shxnt"
+              >
                 <img src="./github.png" alt="" className="w-6 m-2" />
               </a>
             </div>
@@ -221,27 +257,35 @@ const scrollHandler = (arg) => {
               </div>
             )}
 
-             <div className="btmbar text-white absolute bottom-0 left-0 w-full pt-18 pb-2 px-16 bg-gradient-to-t from-black to-transparent z-[10]">
-            <button onClick={scrollDownHandler} className="flex cursor-pointer flex-col  absolute bottom-0 left-0 w-full justify-center items-center">
-                <h3 className="text-sm  flex text-center ">
-                  Scroll Down
-                </h3>
-                <ChevronDown className='text-white animate-bounce' size={18} />
+            <div className="btmbar text-white absolute bottom-0 left-0 w-full pt-18 pb-2 px-16 bg-gradient-to-t from-black to-transparent z-[10]">
+              <button
+                onClick={scrollDownHandler}
+                className="flex cursor-pointer flex-col  absolute bottom-0 left-0 w-full justify-center items-center"
+              >
+                <h3 className="text-sm  flex text-center ">Scroll Down</h3>
+                <ChevronDown className="text-white animate-bounce" size={18} />
               </button>
-
-              
             </div>
 
             <div className="absolute text-xs uppercase tracking-widest links pb-2 bottom-0 left-0 flex items-center z-[200] px-3 py-1 gap-3 font-semibold text-[white]">
-              <NavLink to="/projects" className="group flex flex-col rounded-full">
+              <NavLink
+                to="/projects"
+                className="group flex flex-col rounded-full"
+              >
                 Projects
                 <div className="h-0.5 group-hover:w-full bg-[brown] rounded-full w-0 transition-all duration-300 group-hover:block"></div>
               </NavLink>
-              <NavLink to="/dashboard" className="group flex flex-col rounded-full">
+              <NavLink
+                to="/dashboard"
+                className="group flex flex-col rounded-full"
+              >
                 Dashboard
                 <div className="h-0.5 group-hover:w-full bg-[brown] rounded-full w-0 transition-all duration-300 group-hover:block"></div>
               </NavLink>
-              <NavLink to="/curriculum-vitae" className="group flex flex-col rounded-full">
+              <NavLink
+                to="/curriculum-vitae"
+                className="group flex flex-col rounded-full"
+              >
                 CV
                 <div className="h-0.5 group-hover:w-full bg-[brown] rounded-full w-0 transition-all duration-300 group-hover:block"></div>
               </NavLink>
@@ -249,16 +293,16 @@ const scrollHandler = (arg) => {
           </div>
         </div>
 
-         <div className="h-screen w-full"></div>
-
-        <div className="bg-black h-[70vh] md:h-screen w-[80vw] relative mx-auto">
-          <div className="absolute hidden md:block top-10 left-20 w-72 h-72 bg-[#5E4C2C]/35 rounded-full blur-3xl z-0"></div>
-          <div className="absolute hidden md:block bottom-10 right-20 w-96 h-96 bg-[#5E4C2C]/15 rounded-full blur-2xl z-0"></div>
-          <Accomplishments scrolled={scrolled} />
-          <MarqueeComp direction="left" />
+        <div className=" relative  bg-[#011e24] w-full">
+          <div className="btmbar text-white absolute top-0 left-0 w-full py-10 bg-gradient-to-b from-black to-transparent z-[10]"></div>
+          <Accomplishments />
+          <div className="w-[85%] mx-auto pt-3">
+            <MarqueeComp direction="left" />
+          </div>
         </div>
-       
-        <div className="h-screen w-full bg-white"></div>
+        <div className="relative bg-[#011e24] w-full">
+          <div className="w-[85%] mx-auto h-screen"></div>
+        </div>
       </main>
     </>
   );

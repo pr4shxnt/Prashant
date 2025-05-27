@@ -13,6 +13,7 @@ const initialState = {
     description: '',
     token: localStorage.getItem('admin_session'),
   },
+  projects: [],
   loading: false,
   error: null,
 };
@@ -21,12 +22,13 @@ export const createNewProject = createAsyncThunk(
   'projects/create',
   async ({ projectData, files }, thunkAPI) => {
     try {
-      // Create form data to send files + project info
+
       const formData = new FormData();
+
       Object.entries(projectData).forEach(([key, value]) => {
         if (key !== 'imagesInfo') formData.append(key, value);
       });
-      // Append actual files here
+
       files.forEach(file => formData.append('images', file));
 
       const token = projectData.token;
@@ -44,6 +46,21 @@ export const createNewProject = createAsyncThunk(
     }
   }
 );
+
+
+export const fetchAllProjects = createAsyncThunk(
+  'project/fetch',
+  async(_, thunkAPI) => {
+    try {
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND}/api/projects`);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(
+        error.response?.data?.message || "Failed to fetch the projects data"
+      )
+    }
+  }
+)
 
 const projectSlice = createSlice({
   name: 'projects',
@@ -66,7 +83,20 @@ const projectSlice = createSlice({
       .addCase(createNewProject.rejected, (state, action) => {
         state.error = action.payload;
         state.loading = false;
-      });
+      })
+      .addCase(fetchAllProjects.pending, (state)=>{
+        state.error = null;
+        state.loading = true;
+      })
+      .addCase(fetchAllProjects.fulfilled, (state, action)=>{
+        state.error = null;
+        state.loading = false;
+        state.projects = action.payload;
+      })
+      .addCase(fetchAllProjects.rejected, (state, action)=>{
+        state.error = action.payload;
+        state.loading = false;
+      })
   },
 });
 

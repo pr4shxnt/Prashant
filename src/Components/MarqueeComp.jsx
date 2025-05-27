@@ -27,7 +27,7 @@ useEffect(() => {
         <Marquee direction={direction} pauseOnHover={true}>
           <div className="flex gap-8 text-3xl mx-5 overflow-hidden">
             {skills?.Skills?.map((item) => (
-              <div key={item._id} className="flex items-center gap-2 rounded-lg">
+              <div key={item._id} className="flex items-center gap-2 bg-gray-800 py-1 px-1 pr-3 rounded-lg">
                 <img src={item.image} alt={item.name} className="w-8 h-8 rounded-md" />
                 <h1 className="text-sm tracking-wider">{item.name}</h1>
               </div>

@@ -3,27 +3,27 @@ import { BookCheck, BookCheckIcon, Code2, Laptop2, WorkflowIcon } from "lucide-r
 const AccomplishmentsData = [
     {
         id: 1,
-        name: "Hackathons",
-        count: "0",
+        name: "Skills",
+        count: "17+",
         description: "Prashant has contributed to total of 0 hackathons till today.",
         link: "/curriculum-vitae",
-        icon: <Code2/>
+        icon: <Code2 size={28}/>
     },
     {
         id: 2,
         name: "Certificates",
-        count: "3",
+        count: "3+",
         description: "Prashant Adhikari is a certified frontend website developer.",
         link: "/curriculum-vitae",
-        icon: <BookCheck/>
+        icon: <BookCheck size={28}/>
     },
     {
         id: 3,
-        name: "Experience",
-        count: "1 year",
+        name: "year Experience",
+        count: "1",
         description: "Prashant is a junior website developer with less than a year of experience.",
         link: "/curriculum-vitae",
-        icon: <Laptop2/>
+        icon: <Laptop2 size={28}/>
     },
     {
         id: 4,
@@ -31,7 +31,7 @@ const AccomplishmentsData = [
         count: "14",
         description: "Prashant has accomplished accumulatively 14 projects with the tech stack he learnt.",
         link: "/projects",
-        icon: <WorkflowIcon/>
+        icon: <WorkflowIcon size={28}/>
     }
 ]
 
