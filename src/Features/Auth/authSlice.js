@@ -1,16 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const initialState = {
-    isAdminAuthenticated: false,
-    token: localStorage.getItem("admin_session") || null,
-    adminData: {
-        cred: "",
-        password: "",
-    },
-    loading: false,
-    error: null,
-}
+const tokenFromStorage = localStorage.getItem("admin_session");
 
  export const isTokenExpired = (jwtToken) => {
     try {
@@ -21,6 +12,19 @@ const initialState = {
       return true;
     }
   };
+
+const initialState = {
+  isAdminAuthenticated: tokenFromStorage && !isTokenExpired(tokenFromStorage) || false,
+  token: tokenFromStorage || null,
+  adminData: {
+    cred: "",
+    password: "",
+  },
+  loading: false,
+  error: null,
+};
+
+
 
 
 export const loginAdmin = createAsyncThunk(
@@ -69,6 +73,7 @@ const authSlice = createSlice({
             .addCase(loginAdmin.fulfilled, (state, action)=>{
                 state.isAdminAuthenticated = true;
                 state.token = action.payload.token;
+                localStorage.setItem("admin_session", action.payload.token);
                 state.adminData = initialState.adminData;
                 state.loading = false;
                 state.error = null;

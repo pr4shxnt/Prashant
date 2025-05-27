@@ -95,22 +95,6 @@ const ContentProvider = ({ children }) => {
   };
 
 
-  const skillsFetch = async()=>{
-    try {
-      const response = await axios.get(`${import.meta.env.VITE_BACKEND}/api/skills`)
-
-      if (response.status === 201){
-       
-        setAllSkills(response.data.Skills)
-      }
-    } catch (err) {
-      console.error(err)
-    }
-  }
-
-  useEffect(()=>{
-    skillsFetch()
-  },[])
 
 
 

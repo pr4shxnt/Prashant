@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { loginAdmin, setAdminData } from "../../Features/Auth/authSlice"
+import { loginAdmin, setAdminData, isTokenExpired } from "../../Features/Auth/authSlice"
+
 
 const AdminLogin = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { isAdminAuthenticated, error, loading } = useSelector((state) => state.auth);
+  const { isAdminAuthenticated, error, loading, token } = useSelector((state) => state.auth);
   const [cred, setCred] = useState("");
   const [password, setPassword] = useState("");
 
@@ -16,6 +17,9 @@ const AdminLogin = () => {
       navigate("/admin");
     }
   }, [isAdminAuthenticated, navigate]);
+
+  console.log(isAdminAuthenticated, "isAdminAuthenticated");
+  
 
   const onSubmit = (e) => {
     e.preventDefault();
