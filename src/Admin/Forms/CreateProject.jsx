@@ -7,7 +7,7 @@ import { useContent } from '../../Utils/ContextProvider';
 const CreateProject = () => {
   const dispatch = useDispatch();
   const { projectData } = useSelector(state => state.projects);
-  const { token, isAdminAuthenticated } = useContent()
+  const {isAdminAuthenticated, token} = useSelector(state => state.auth);
 
   const [files, setFiles] = useState([]);
 

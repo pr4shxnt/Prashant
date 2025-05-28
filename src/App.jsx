@@ -11,7 +11,7 @@ import Rootdir from "./Admin/Pages/rootdir";
 import ProjectDisplay from "./Admin/Components/ProjectDisplay";
 import CreateProject from "./Admin/Forms/CreateProject";
 import SkillsManager from "./Admin/Forms/SkillsManager";
- 
+import ProjectIndividual from "./Components/Sections/ProjectSection.jsx/ProjectIndividual"; 
 
 const router = createBrowserRouter([
   {
@@ -22,6 +22,10 @@ const router = createBrowserRouter([
         path: "",
         element: <Homepage />,
       },
+      {
+        path: "projects/:name",
+        element: <ProjectIndividual />,
+      }
     ],
   },
   {

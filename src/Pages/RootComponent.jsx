@@ -1,6 +1,7 @@
 import InitialRender from './InitialRender';
 import { Outlet } from 'react-router-dom';
 import { useContent } from '../Utils/ContextProvider';
+import Footer from '../Components/Sections/Roots/Footer';
 
 const RootComponent = () => {
   const { showContent, setShowContent } = useContent();
@@ -16,8 +17,10 @@ const RootComponent = () => {
        {showContent && (
         <>
                   <Outlet />
+                  <Footer/>
         </>
       )}
+      
     </>
   );
 };

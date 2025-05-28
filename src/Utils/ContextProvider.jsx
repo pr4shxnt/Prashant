@@ -11,13 +11,19 @@ const ContentContext = createContext();
 export const useContent = () => useContext(ContentContext);
 
 const ContentProvider = ({ children }) => {
-  const [token, setToken] = useState(localStorage.getItem("admin_session") || "");
+  const [token, setToken] = useState(
+    localStorage.getItem("admin_session") || ""
+  );
   const [showContent, setShowContent] = useState(false);
   const [showParagraph, setShowParagraph] = useState(false);
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
+  const [showHam, setShowHam] = useState(false);
+
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [allSkills, setAllSkills] = useState([])
+  const [allSkills, setAllSkills] = useState([]);
+  const [scrolled, setScrolled] = useState(0);
 
   const [skillsData, setSkillsData] = useState({
     name: "",
@@ -31,7 +37,6 @@ const ContentProvider = ({ children }) => {
     password: "",
   });
 
-  
   const [projectData, setProjectData] = useState({
     name: "",
     images: [],
@@ -67,7 +72,6 @@ const ContentProvider = ({ children }) => {
       formData.append("link", skillsData.link);
       formData.append("description", skillsData.description);
 
-  
       const response = await axios.post(
         `${import.meta.env.VITE_BACKEND}/api/skills`,
         formData,
@@ -93,10 +97,6 @@ const ContentProvider = ({ children }) => {
       setIsLoading(false);
     }
   };
-
-
-
-
 
   const handleDeleteSkill = async (skillId) => {
     try {
@@ -133,7 +133,6 @@ const ContentProvider = ({ children }) => {
         formData.append("images", file);
       });
 
-
       const response = await axios.post(
         `${import.meta.env.VITE_BACKEND}/api/projects/create`,
         formData,
@@ -166,8 +165,6 @@ const ContentProvider = ({ children }) => {
     }
   };
 
-  
-
   const isTokenExpired = (jwtToken) => {
     try {
       const payload = JSON.parse(atob(jwtToken.split(".")[1]));
@@ -177,9 +174,6 @@ const ContentProvider = ({ children }) => {
       return true;
     }
   };
-
-
-  
 
   useEffect(() => {
     const storedToken = localStorage.getItem("admin_session");
@@ -228,7 +222,7 @@ const ContentProvider = ({ children }) => {
     }
   };
 
-  
+  console.log(showHam, showMenu)
 
   const handleAdminLogout = () => {
     setToken(null);
@@ -250,28 +244,36 @@ const ContentProvider = ({ children }) => {
       handleAdminLogout,
       showContent,
       setShowContent,
+      showMenu,
+      setShowMenu,
+      showHam,
+      setShowHam,
       showParagraph,
       setShowParagraph,
       handleCreateProject,
+      scrolled,
+      setScrolled,
       projectData,
       setProjectData,
       handleCreateSkills,
       handleDeleteSkill,
       skillsData,
       setSkillsData,
-      allSkills
+      allSkills,
     }),
     [
       isAdminAuthenticated,
       token,
       adminData,
+      showMenu,
+      showHam,
       error,
       isLoading,
       showContent,
       showParagraph,
       projectData,
       skillsData,
-      allSkills
+      allSkills,
     ]
   );
 

@@ -12,10 +12,10 @@ import MarqueeComp from "../Components/MarqueeComp";
 import Accomplishments from "../Components/Sections/Accomplishments/Accomplishments";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { useDispatch, useSelector } from "react-redux";
+import ProjectScreen from "../Components/Sections/ProjectSection.jsx/ProjectScreen";
 
 const Homepage = () => {
   const dispatch = useDispatch();
-  const { isAdminAuthenticated } = useSelector((state) => state.auth);
   const { setShowParagraph, showParagraph } = useContent();
   const [showMenu, setShowMenu] = useState(false);
   const [showHam, setShowHam] = useState(false);
@@ -147,7 +147,7 @@ x: pr4xnt`,
           <meta name="author" content="Prashant Adhikari" />
         </div>
 
-        <div className="relative h-screen overflow-hidden">
+        <div className="relative h-screen container mx-auto overflow-hidden">
           <div className="showcontent hidden md:block absolute top-3 right-4 z-[800] items-center justify-center">
             <button
               className="text-xs text-white cursor-pointer uppercase tracking-widest font-semibold"
@@ -293,16 +293,53 @@ x: pr4xnt`,
           </div>
         </div>
 
-        <div className=" relative  bg-[#011e24] w-full">
+        <div className="relative bg-[#011e24] w-full">
           <div className="btmbar text-white absolute top-0 left-0 w-full py-10 bg-gradient-to-b from-black to-transparent z-[10]"></div>
+
+          <div className="w-[85%] mx-auto h-screen"></div>
+        </div>
+         
+        <div className=" w-full relative bg-[#011e24] ">
+          <div className="flex items-center container w-[85%] mx-auto pt-28">
+            <div className="h-[0.004rem] w-full bg-white"></div>
+            <h1 className="px-6 text-white flex gap-1.5 font-light">
+              <span className="">Personal</span>
+              <span className="">Projects</span>
+            </h1>
+            <div className="h-[0.1px] w-full bg-white"></div>
+          </div>
+          <div className="w-[85%] mx-auto text-white">
+            <ProjectScreen />
+          </div>
+        </div>
+          <div className=" relative  bg-[#011e24] w-full">
+          <div className="flex container items-center w-[85%] mx-auto pt-28 justify-center">
+            <div className="h-[0.004rem] w-full bg-white"></div>
+            <h1 className="px-6 text-white flex gap-1.5 font-light">
+              <span className="">Skills </span>
+              <span className="">&</span>
+              <span className="">Accomplishments</span>
+            </h1>
+            <div className="h-[0.1px] w-full bg-white"></div>
+          </div>
           <Accomplishments />
-          <div className="w-[85%] mx-auto pt-3">
+          <div className="w-[85%] container mx-auto pt-3">
             <MarqueeComp direction="left" />
           </div>
         </div>
-        <div className="relative bg-[#011e24] w-full">
-          <div className="w-[85%] mx-auto h-screen"></div>
+        <div className=" w-full relative bg-[#011e24] ">
+          <div className="flex items-center container w-[85%] mx-auto pt-28">
+            <div className="h-[0.004rem] w-full bg-white"></div>
+            <h1 className="px-6 text-white flex gap-1.5 font-light">
+              <span className="">Testimonials</span>
+            </h1>
+            <div className="h-[0.1px] w-full bg-white"></div>
+          </div>
+          <div className="w-[85%] mx-auto text-white">
+            <ProjectScreen />
+          </div>
         </div>
+     
       </main>
     </>
   );
