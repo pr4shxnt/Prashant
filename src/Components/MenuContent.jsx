@@ -10,7 +10,7 @@ const MenuContent = ({ isOpen, onCloseComplete }) => {
     if (isOpen) {
       gsap.to(ref.current, {
         opacity: 100,
-        left: "70%",
+        left: "65%",
         display: "block",
         duration: 0.3,
       });
@@ -28,9 +28,9 @@ const MenuContent = ({ isOpen, onCloseComplete }) => {
     
     <div
       ref={ref}
-      className="absolute bottom-0 px-3 rounded-r-full shadow-2xl shadow-gray-200 -left-100 z-[200]  bg-gray-900  py-2.5 text-white  "
+      className="absolute bottom-0 px-3 rounded-r-full shadow-2xl shadow-gray-200 -left-100 z-[200]  bg-charcoal  py-2.5 text-white  "
     >
-      <div className=" w-full text-xs pb uppercase md:tracking-widest links bottom-0 left-0 flex  items-center z-[200] px-3 gap-3 font-semibold text-[white]">
+      <div className=" w-full text-xs pb uppercase md:tracking-widest links bottom-0 left-0 flex  items-center z-[200] px-3 gap-3 font-semibold text-cream">
         <NavLink to={`/projects`} className="group flex flex-col rounded-full">
           Projects
           <div className="h-0.5 group-hover:w-full bg-[brown] rounded-full w-0 transition-all duration-300  group-hover:block"></div>

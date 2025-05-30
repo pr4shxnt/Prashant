@@ -36,6 +36,7 @@ const ContentProvider = ({ children }) => {
       showHam,
       showContent,
       showParagraph,
+      scrolled
     ]
   );
 

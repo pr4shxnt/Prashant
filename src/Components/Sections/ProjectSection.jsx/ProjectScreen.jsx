@@ -1,237 +1,196 @@
-import { useEffect, useCallback, memo } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { fetchAllProjects } from "../../../Features/Project/projectSlice"
-import { AlertCircle, FolderOpen, Calendar, Clock, ExternalLink, Eye } from "lucide-react"
-import { NavLink } from "react-router-dom"
+import { useEffect, useState, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllProjects } from "../../../Features/Project/projectSlice";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-export const ProjectCard = memo(({ project, index }) => {
-  const handleImageError = useCallback((e) => {
-    e.currentTarget.src = "/placeholder.svg?height=200&width=300"
-  }, [])
+gsap.registerPlugin(ScrollTrigger);
 
-  // Format date if available
-  const formattedDate = project.updatedAt
-    ? new Date(project.updatedAt).toLocaleDateString("en-US", {
-        month: "short",
-        day: "numeric",
-        year: "numeric",
-      })
-    : "No date available"
+const SLIDE_INTERVAL = 10000;
+
+const getShortDescription = (html, maxLength = 200) => {
+  if (typeof document !== "undefined") {
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = html;
+    const textContent = tempDiv.textContent || tempDiv.innerText || "";
+    return textContent.length > maxLength
+      ? textContent.slice(0, maxLength) + "..."
+      : textContent;
+  }
+  return "";
+};
+
+const ProjectScreen = () => {
+  const dispatch = useDispatch();
+  const { projects } = useSelector((state) => state.projects);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const intervalRef = useRef(null);
+
+  const leftRef = useRef(null);
+  const rightRef = useRef(null);
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    dispatch(fetchAllProjects());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (projects.length > 0) {
+      intervalRef.current = setInterval(() => {
+        setCurrentIndex((prev) => (prev === projects.length - 1 ? 0 : prev + 1));
+      }, SLIDE_INTERVAL);
+    }
+    return () => clearInterval(intervalRef.current);
+  }, [projects]);
+
+  const handlePrev = () => {
+    clearInterval(intervalRef.current);
+    setCurrentIndex((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    clearInterval(intervalRef.current);
+    setCurrentIndex((prev) => (prev === projects.length - 1 ? 0 : prev + 1));
+  };
+
+  // ScrollTrigger animation setup
+  useEffect(() => {
+    if (!leftRef.current || !rightRef.current || !containerRef.current) return;
+
+    // Initial state: hidden and offset horizontally
+    gsap.set(leftRef.current, { opacity: 0, x: -100 });
+    gsap.set(rightRef.current, { opacity: 0, x: 100 });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top 90%", // triggers when top of container hits 90% viewport height
+        toggleActions: "play none none none",
+        // markers: true, // uncomment to debug positions
+      },
+    });
+
+    tl.to(leftRef.current, { opacity: 1, x: 0, duration: 1, ease: "power2.out" }).to(
+      rightRef.current,
+      { opacity: 1, x: 0, duration: 1, ease: "power2.out" },
+      ">0.3"
+    );
+
+    // Cleanup on unmount
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+    };
+  }, []);
+
+  if (!projects.length)
+    return <div className="text-center text-white">Loading...</div>;
 
   return (
     <div
-      className="group relative flex h-auto min-h-[160px] w-full cursor-pointer flex-col md:flex-row items-start md:items-center justify-between overflow-hidden rounded-xl transition-all duration-300 ease-in-out border border-gray-800 hover:border-gray-600  hover:bg-gray-800"
-      style={{
-        animationDelay: `${index * 100}ms`,
-        animation: "fadeIn 0.5s ease-out forwards",
-        boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)",
-      }}
-      role="button"
-      tabIndex={0}
-      aria-label={`View project ${project.name}`}
-      onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          console.log("Selected project:", project.name)
-        }
-      }}
+      ref={containerRef}
+      className="relative w-full bg-sand min-h-[100vh] pt-28"
+      style={{ paddingBottom: "5rem" }} // ensure enough space below to scroll
     >
-      <div className="flex flex-col items-start gap-2 p-6 flex-grow">
-        <div className="flex items-center justify-between w-full">
-          <div className="flex items-center">
-            <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-gray-500 to-gray-400 flex items-center justify-center text-white font-bold text-xl mr-4 shadow-lg">
-              {project.name.charAt(0).toUpperCase()}
-            </div>
-            <h2 className="text-2xl font-bold text-white group-hover:text-gray-300 transition-colors">
-              {project.name}
-            </h2>
-          </div>
-          <div className="flex items-center gap-2">
-            <button
-              className="p-2 rounded-full bg-gray-800/50 hover:bg-gray-700/70 transition-colors text-gray-300"
-              aria-label="View project details"
+      <div className="w-[85%] mx-auto flex flex-col lg:flex-row items-start gap-12">
+        <div ref={leftRef} className="w-full lg:w-1/2">
+          {/* Project Showcase */}
+          <div className="relative max-w-4xl overflow-hidden rounded-lg">
+            <div
+              className="flex transition-transform duration-700 ease-in-out"
+              style={{ transform: `translateX(${-currentIndex * 100}%)` }}
             >
-              <Eye className="h-5 w-5" />
+              {projects.slice(0, 6).map((project, i) => (
+                <div
+                  key={i}
+                  className="flex-shrink-0 w-full flex flex-col items-center justify-center"
+                >
+                  <img
+                    src={project.images[0]}
+                    alt={project.name}
+                    loading="lazy"
+                    className="w-full h-full object-cover rounded-t-lg"
+                  />
+                  <div className="bg-bronze text-cream px-3 py-3 w-full">
+                    <div className="flex justify-between items-center">
+                      <h1 className="font-semibold text-lg">{project.name}</h1>
+                      <div className="text-sm opacity-80">
+                        {new Date(project.createdAt).toLocaleDateString()}
+                      </div>
+                    </div>
+                    <p className="text-sm mt-2">
+                      {getShortDescription(project.description)}
+                    </p>
+                    <div className="flex flex-wrap gap-2 mt-3">
+                      {project.technologies?.[0]
+                        ?.split(",")
+                        .slice(0, 7)
+                        .map((tech, index) => (
+                          <span
+                            key={index}
+                            className="bg-beige/20 px-2 py-1 text-xs rounded mr-2"
+                          >
+                            {tech.trim()}
+                          </span>
+                        ))}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Chevron Controls */}
+            <button
+              onClick={handlePrev}
+              className="absolute left-1 top-1/2 -translate-y-1/2 p-2 bg-black/40 hover:bg-black/60 rounded-full"
+            >
+              <ChevronLeft size={28} />
+            </button>
+            <button
+              onClick={handleNext}
+              className="absolute right-1 top-1/2 -translate-y-1/2 p-2 bg-black/40 hover:bg-black/60 rounded-full"
+            >
+              <ChevronRight size={28} />
             </button>
           </div>
-        </div>
 
-        <p   dangerouslySetInnerHTML={{ __html: project.description }} className="text-gray-100/80 line-clamp-2 max-w-2xl">
-        </p>
-
-        <div className="flex items-center text-sm text-gray-300/70 mt-2 flex-wrap gap-4">
-          <div className="flex items-center">
-            <Calendar className="h-4 w-4 mr-1" />
-            <span>{formattedDate}</span>
-          </div>
-          <div className="flex items-center">
-            <Clock className="h-4 w-4 mr-1" />
-            <span>Last updated {new Date(project.updatedAt).toLocaleString('en-US') || "recently"}</span>
-          </div>
-          
-        </div>
-      </div>
-
-      <div className="flex items-center">
-        {project.images?.[0] && (
-          <div className="relative h-[160px] w-[240px] overflow-hidden bg-gray-900/50">
-            <div className="absolute inset-0 bg-gradient-to-r from-[#01323b]/80 via-transparent to-transparent z-10"></div>
-            <img
-              src={project.images[0] || "/placeholder.svg"}
-              alt={`${project.name} preview`}
-              className="h-full w-full object-cover transition-all duration-500 group-hover:scale-105"
-              onError={handleImageError}
-              loading="lazy"
-            />
-            <div className="absolute bottom-0 right-0 p-3 bg-gray-800/80 rounded-tl-lg opacity-0 group-hover:opacity-100 transition-opacity z-20">
-            <NavLink to={`/projects/${project.name}`}><ExternalLink className="h-5 w-5 text-white" /></NavLink>
-              
-            </div>
-          </div>
-        )}
-      </div>
-    </div>
-  )
-})
-
-ProjectCard.displayName = "ProjectCard"
-
-const LoadingSkeleton = () => (
-  <div className="flex flex-col gap-6">
-    {Array.from({ length: 4 }).map((_, i) => (
-      <div
-        key={i}
-        className="flex flex-col md:flex-row h-[160px] w-full rounded-xl border border-gray-800 bg-[#01323b] overflow-hidden"
-        style={{ boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)" }}
-      >
-        <div className="flex-grow p-6">
-          <div className="flex items-center mb-4">
-            <div className="h-12 w-12 rounded-lg bg-gray-800/50 animate-pulse mr-4"></div>
-            <div className="h-8 w-48 bg-gray-800/50 animate-pulse"></div>
-          </div>
-          <div className="h-4 w-full bg-gray-800/50 animate-pulse mb-2"></div>
-          <div className="h-4 w-2/3 bg-gray-800/50 animate-pulse mb-4"></div>
-          <div className="flex gap-4">
-            <div className="h-4 w-24 bg-gray-800/50 animate-pulse"></div>
-            <div className="h-4 w-32 bg-gray-800/50 animate-pulse"></div>
-          </div>
-        </div>
-        <div className="h-full w-[240px] bg-gray-800/50 animate-pulse"></div>
-      </div>
-    ))}
-  </div>
-)
-
-const EmptyState = () => (
-  <div
-    className="flex flex-col items-center justify-center py-16 text-center rounded-xl border border-dashed border-gray-700 p-8 bg-[#01323b]"
-    style={{ boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)" }}
-  >
-    <div className="mb-6 h-20 w-20 rounded-full bg-gray-800/50 flex items-center justify-center text-gray-300">
-      <FolderOpen size={48} />
-    </div>
-    <h3 className="mb-3 text-xl font-semibold text-white">No projects available</h3>
-    <p className="mb-6 text-gray-100/80 max-w-md">
-      There are currently no projects to display. Please check back later.
-    </p>
-  </div>
-)
-
-const ErrorState = ({ error, onRetry }) => (
-  <div
-    className="flex flex-col items-center justify-center py-16 text-center rounded-xl border border-dashed border-red-700/50 p-8 bg-[#01323b]"
-    style={{ boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)" }}
-  >
-    <div className="mb-6 h-20 w-20 rounded-full bg-red-900/30 flex items-center justify-center text-red-400">
-      <AlertCircle size={48} />
-    </div>
-    <h3 className="mb-3 text-xl font-semibold text-white">Unable to load projects</h3>
-    <p className="mb-6 text-red-300 max-w-md">{error || "An unexpected error occurred. Please try again."}</p>
-    <button
-      onClick={onRetry}
-      className="px-6 py-3 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-[#011e24]"
-    >
-      Refresh
-    </button>
-  </div>
-)
-
-const ProjectScreen = () => {
-  const { projects = [], loading, error } = useSelector((state) => state.projects || {})
-  const dispatch = useDispatch()
-
-  const loadProjects = useCallback(() => {
-    dispatch(fetchAllProjects())
-  }, [dispatch])
-
-  useEffect(() => {
-    loadProjects()
-  }, [loadProjects])
-
-  // Add some CSS for animations and background
-  useEffect(() => {
-    const style = document.createElement("style")
-    style.textContent = `
-      @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-      body {
-        background-color: #011e24;
-        color: white;
-      }
-    `
-    document.head.appendChild(style)
-    return () => document.head.removeChild(style)
-  }, [])
-
-  if (loading) {
-    return (
-      <div className="p-6 md:p-10 bg-[#011e24] min-h-screen">
-        <LoadingSkeleton />
-      </div>
-    )
-  }
-  
-
-  if (error) {
-    return (
-      <div className="p-6 md:p-10 bg-[#011e24] min-h-screen">
-        <h1 className="text-3xl font-bold text-white mb-8">Our Projects</h1>
-        <ErrorState error={error} onRetry={loadProjects} />
-      </div>
-    )
-  }
-
-  if (!projects || projects.length === 0) {
-    return (
-      <div className="p-6 md:p-10 bg-[#011e24] min-h-screen">
-        <h1 className="text-3xl font-bold text-white mb-8">Our Projects</h1>
-        <EmptyState />
-      </div>
-    )
-  }
-
-  return (
-    <div className="p-6 md:p-10 pt-0 ">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex items-center justify-end mb-8">
-          <div className="flex items-end justify-end gap-4">
-            <span className="text-gray-300/80  text-sm">
-              Show all Projects
-            </span>
+          {/* Dots */}
+          <div className="mt-7 pb-2 flex space-x-2">
+            {projects.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentIndex(i)}
+                aria-label={`Go to slide ${i + 1}`}
+                aria-current={i === currentIndex}
+                className={`w-3 h-3 rounded-full transition-colors duration-300 ${
+                  i === currentIndex
+                    ? "bg-white"
+                    : "bg-gray-500 hover:bg-gray-400"
+                }`}
+              />
+            ))}
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-6">
-          {projects.slice(0.3).map((project, index) => (
-            <ProjectCard key={project.id || project.name || index} project={project} index={index} />
-          ))}
-           
-         
+        {/* Description & CTA */}
+        <div
+          ref={rightRef}
+          className="w-full lg:w-1/2 flex flex-col items-end justify-center text-end"
+        >
+          <h1 className="text-5xl md:text-7xl lg:text-8xl text-charcoal font-bold uppercase">
+            Projects?
+          </h1>
+          <p className="text-lg md:text-xl lg:text-2xl text-brown leading-relaxed mt-2 mb-6">
+            Take a look at the craftmanship of Prashant. All the crafts are
+            built with love and honor.
+          </p>
+          <button className="bg-beige py-3 px-6 text-bronze font-semibold rounded-bl-4xl rounded-tr-4xl rounded-br-2xl rounded-tl-2xl hover:bg-cream transition-all duration-500 w-max">
+            All Projects
+          </button>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default memo(ProjectScreen)
+export default ProjectScreen;

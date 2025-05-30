@@ -9,16 +9,16 @@ const Footer = () => {
   return (
     <>
     <footer>
-        <div className="relative w-full bg-black/20 flex items-center justify-center min-h-[80vh] text-white">
+        <div className="relative w-full bg-black/20 flex items-center justify-center  py-28 min-h-[80vh] text-white">
             <div className="main h-full w-[85%] container mx-auto">
-                <div className="flex w-full  justify-between px-28 items-center h-full">
+                <div className="flex flex-col gap-24 md:flex-row w-full  justify-between md:px-28 items-center h-full">
                     <div className="item-1 h-full">
-                        <div className="image-container h-96">
+                        <div className="image-container h-72 md:h-96">
                             <img src="https://res.cloudinary.com/drddkl4on/image/upload/v1748102698/side-avatar_tplpd0.png" alt="" className="h-full" />
                         </div>
                     </div>
                     <div className="item-2 flex gap-10">
-                        <div className="flex gap-10">
+                        <div className="flex lg:flex-row flex-col gap-10">
                             <div className="">
                                 <h1 className='font-bold text-2xl'>QuickLinks</h1>
                             <ul className='font-light  pt-2 pl-2'>
@@ -39,7 +39,7 @@ const Footer = () => {
                             </ul>
                             </div>
                         </div>
-                        <div className="flex gap-10">
+                        <div className="flex flex-col lg:flex-row gap-10">
                              <div className="">
                                 <h1 className='font-bold text-2xl'>Projects</h1>
                                      <ul className='font-light  pt-2 pl-2'>

@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { ProjectCard } from './ProjectScreen'
 import { fetchAllProjects } from '../../../Features/Project/projectSlice'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -29,7 +28,7 @@ const Projects = () => {
       <div className="w-[85%] mx-auto grid grid-cols-1 gap-4">
       {
         projects.map((project, index)=>{
-          return <ProjectCard project={project} index={index} />
+          return <div className=""></div>
         })
       }
       </div>

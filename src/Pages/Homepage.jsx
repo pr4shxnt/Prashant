@@ -13,18 +13,17 @@ import Accomplishments from "../Components/Sections/Accomplishments/Accomplishme
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { useDispatch, useSelector } from "react-redux";
 import ProjectScreen from "../Components/Sections/ProjectSection.jsx/ProjectScreen";
+import Testimonials from "../Components/Sections/Testimonials/Testimonials";
+import Marquee from "react-fast-marquee";
 
 const Homepage = () => {
   const dispatch = useDispatch();
-  const { setShowParagraph, showParagraph } = useContent();
-  
+  const { setShowParagraph, showParagraph, scrolled, setScrolled } = useContent();
 
   const [showMenu, setShowMenu] = useState(false);
   const [showHam, setShowHam] = useState(false);
-  const [scrolled, setScrolled] = useState(0);
-  const menuRef = useRef();
 
-  
+  const menuRef = useRef();
 
   useEffect(() => {
     console.log(
@@ -187,7 +186,7 @@ x: pr4xnt`,
         <div className="relative h-screen container mx-auto overflow-hidden">
           <div className="showcontent hidden md:block absolute top-3 right-4 z-[800] items-center justify-center">
             <button
-              className="text-xs text-white cursor-pointer uppercase tracking-widest font-semibold"
+              className="text-xs text-cream cursor-pointer uppercase tracking-widest font-semibold"
               onClick={() => setShowParagraph(!showParagraph)}
             >
               {showParagraph ? (
@@ -207,7 +206,7 @@ x: pr4xnt`,
             href="https://www.youtube.com/@lynxplays6702"
             className=""
           >
-            <div className="roadrage text-white flex flex-col font-roadrage text-xl absolute left-4 top-6 z-[999]">
+            <div className="roadrage text-cream flex flex-col font-roadrage text-xl absolute left-4 top-6 z-[999]">
               <h1 className="relative">
                 <div className="absolute font-mono -top-[18px] rotate-[70deg]">
                   :)
@@ -260,8 +259,11 @@ x: pr4xnt`,
               </a>
             </div>
 
+                      <div className="w-full absolute bottom-0 h-20 bg-gradient-to-b from-transparent to-black z-50"></div>
+
+
             {showParagraph && (
-              <div className="para absolute bottom-30 text-sm z-[999] text-gray-300 w-[25%] flex flex-col gap-4 -left-200">
+              <div className="para absolute bottom-30 text-sm z-[999] text-cream w-[25%] flex flex-col gap-4 -left-200">
                 <p>
                   Hi!! I am Prashant. Nice to meet you folk!! If you have been
                   here maybe it's because we both share same kind of passion.
@@ -278,7 +280,7 @@ x: pr4xnt`,
             )}
 
             {showParagraph && (
-              <div className="para2 absolute top-20 text-sm z-[999] text-gray-300 w-[20%] flex flex-col gap-4 -right-200">
+              <div className="para2 absolute top-20 text-sm z-[999] text-cream w-[20%] flex flex-col gap-4 -right-200">
                 <p>
                   I'm also a gamer and a content creator. You can check out my
                   Youtube channel from the link given in the top-left of the
@@ -294,17 +296,7 @@ x: pr4xnt`,
               </div>
             )}
 
-            <div className="btmbar text-white absolute bottom-0 left-0 w-full pt-18 pb-2 px-16 bg-gradient-to-t from-black to-transparent z-[10]">
-              <button
-                onClick={scrollDownHandler}
-                className="flex cursor-pointer flex-col  absolute bottom-0 left-0 w-full justify-center items-center"
-              >
-                <h3 className="text-sm  flex text-center ">Scroll Down</h3>
-                <ChevronDown className="text-white animate-bounce" size={18} />
-              </button>
-            </div>
-
-            <div className="absolute text-xs uppercase tracking-widest links pb-2 bottom-0 left-0 flex items-center z-[200] px-3 py-1 gap-3 font-semibold text-[white]">
+            <div className="absolute text-xs uppercase tracking-widest links pb-2 bottom-0 left-0 flex items-center z-[200] px-3 py-1 gap-3 font-semibold text-cream">
               <NavLink
                 to="/projects"
                 className="group flex flex-col rounded-full"
@@ -312,10 +304,7 @@ x: pr4xnt`,
                 Projects
                 <div className="h-0.5 group-hover:w-full bg-[brown] rounded-full w-0 transition-all duration-300 group-hover:block"></div>
               </NavLink>
-              <NavLink
-                to="/"
-                className="group flex flex-col rounded-full"
-              >
+              <NavLink to="/" className="group flex flex-col rounded-full">
                 Home
                 <div className="h-0.5 group-hover:w-full bg-[brown] rounded-full w-0 transition-all duration-300 group-hover:block"></div>
               </NavLink>
@@ -330,52 +319,11 @@ x: pr4xnt`,
           </div>
         </div>
 
-        <div className="relative bg-[#011e24] w-full">
-          <div className="btmbar text-white absolute top-0 left-0 w-full py-10 bg-gradient-to-b from-black to-transparent z-[10]"></div>
+       <div className="bg-sand"><Accomplishments/></div>
+        <ProjectScreen/>
+        <div className="bg-sand pt-10"><MarqueeComp/></div>
 
-          <div className="w-[85%] mx-auto h-screen"></div>
-        </div>
-
-        <div className=" w-full relative bg-[#011e24] ">
-          <div className="flex items-center container w-[85%] mx-auto pt-28">
-            <div className="h-[0.004rem] w-full bg-white"></div>
-            <h1 className="px-6 text-white flex gap-1.5 font-light">
-              <span className="">Personal</span>
-              <span className="">Projects</span>
-            </h1>
-            <div className="h-[0.1px] w-full bg-white"></div>
-          </div>
-          <div className="w-[85%] mx-auto text-white">
-            <ProjectScreen />
-          </div>
-        </div>
-        <div className=" relative  bg-[#011e24] w-full">
-          <div className="flex container items-center w-[85%] mx-auto pt-28 justify-center">
-            <div className="h-[0.004rem] w-full bg-white"></div>
-            <h1 className="px-6 text-white flex gap-1.5 font-light">
-              <span className="">Skills </span>
-              <span className="">&</span>
-              <span className="">Accomplishments</span>
-            </h1>
-            <div className="h-[0.1px] w-full bg-white"></div>
-          </div>
-          <Accomplishments />
-          <div className="w-[85%] container mx-auto pt-3">
-            <MarqueeComp direction="left" />
-          </div>
-        </div>
-        <div className=" w-full relative bg-[#011e24] ">
-          <div className="flex items-center container w-[85%] mx-auto pt-28">
-            <div className="h-[0.004rem] w-full bg-white"></div>
-            <h1 className="px-6 text-white flex gap-1.5 font-light">
-              <span className="">Testimonials</span>
-            </h1>
-            <div className="h-[0.1px] w-full bg-white"></div>
-          </div>
-          <div className="w-[85%] mx-auto text-white">
-              
-          </div>
-        </div>
+        
       </main>
     </>
   );
