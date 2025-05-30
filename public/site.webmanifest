@@ -1,0 +1,22 @@
+{
+  "name": "Prashant's Portfolio",
+  "short_name": "Prashfolio",
+  "description": "Prashfolio is a Portfolio website that belongs to a student developer from Nepal. It showcases projects, skills, and experiences of the individual. It is designed to be a professional and personal representation of the developer's work. It includes sections for projects, skills, and contact information, making it easy for potential employers or collaborators to view the developer's work and get in touch. It is built with modern web technologies and follows best practices for performance and accessibility.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#011E24",
+  "theme_color": "#011E24",
+  "orientation": "portrait",
+  "lang": "en",
+  "icons":
+  [
+    {
+        "src":"/icons/android-chrome-512x512.png",
+        "sizes":"192x192",
+        "type":"image/png"
+    },
+    {
+        "src":"/icons/android-chrome-512x512.png",
+        "sizes":"512x512",
+        "type":"image/png"}]
+}

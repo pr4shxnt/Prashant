@@ -12,6 +12,8 @@ import ProjectDisplay from "./Admin/Components/ProjectDisplay";
 import CreateProject from "./Admin/Forms/CreateProject";
 import SkillsManager from "./Admin/Forms/SkillsManager";
 import ProjectIndividual from "./Components/Sections/ProjectSection.jsx/ProjectIndividual"; 
+import ProjectScreen from "./Components/Sections/ProjectSection.jsx/ProjectScreen";
+import Projects from "./Components/Sections/ProjectSection.jsx/Projects";
 
 const router = createBrowserRouter([
   {
@@ -21,10 +23,6 @@ const router = createBrowserRouter([
       {
         path: "",
         element: <Homepage />,
-      },
-      {
-        path: "projects/:name",
-        element: <ProjectIndividual />,
       }
     ],
   },
@@ -47,6 +45,20 @@ const router = createBrowserRouter([
       {
         path: "skills-management",
         element: <SkillsManager/>
+      }
+    ]
+  },
+  {
+    path: '/projects',
+    element: <ProjectDisplay />,
+    children: [
+      {
+        path: '',
+        element: <Projects/>
+      },
+      {
+        path: ':name',
+        element: <ProjectIndividual />
       }
     ]
   }

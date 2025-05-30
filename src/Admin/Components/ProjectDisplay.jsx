@@ -1,8 +1,12 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom'
+import Footer from '../../Components/Sections/Roots/Footer'
 
 const ProjectDisplay = () => {
   return (
-    <div>ProjectDisplay</div>
+    <div><Outlet/>
+    <Footer/>
+    </div>
   )
 }
 

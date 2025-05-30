@@ -35,15 +35,15 @@ const MenuContent = ({ isOpen, onCloseComplete }) => {
           Projects
           <div className="h-0.5 group-hover:w-full bg-[brown] rounded-full w-0 transition-all duration-300  group-hover:block"></div>
         </NavLink>
-        <NavLink to={`/dashboard`} className="group flex flex-col rounded-full">
-          Dashboard
+        <NavLink to={`/`} className="group flex flex-col rounded-full">
+          Home
           <div className="h-0.5 group-hover:w-full bg-[brown] rounded-full w-0 transition-all duration-300  group-hover:block"></div>
         </NavLink>
         <NavLink
           to={`/curriculum-vitae`}
           className="group flex flex-col rounded-full"
         >
-          CV
+          Resume
           <div className="h-0.5 group-hover:w-full bg-[brown] rounded-full w-0 transition-all duration-300  group-hover:block"></div>
         </NavLink>
       </div>

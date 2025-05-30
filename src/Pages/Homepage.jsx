@@ -17,10 +17,15 @@ import ProjectScreen from "../Components/Sections/ProjectSection.jsx/ProjectScre
 const Homepage = () => {
   const dispatch = useDispatch();
   const { setShowParagraph, showParagraph } = useContent();
+  
+
   const [showMenu, setShowMenu] = useState(false);
   const [showHam, setShowHam] = useState(false);
   const [scrolled, setScrolled] = useState(0);
   const menuRef = useRef();
+
+  
+
   useEffect(() => {
     console.log(
       `%cDo not even try to change a single line through the console.
@@ -145,6 +150,38 @@ x: pr4xnt`,
             content="Portfolio, Prashant Adhikari, Web Developer, Software Engineer, Student, Penetration tester, website development, React Developer from Nepal"
           />
           <meta name="author" content="Prashant Adhikari" />
+          <meta name="theme-color" content="#011e24" />
+          <meta property="og:title" content="Prashant Adhikari's Portfolio" />
+          <meta
+            property="og:description"
+            content="Portfolio of Prashant Adhikari, a Web Developer and Software Engineer from Nepal."
+          />
+          <meta
+            property="og:image"
+            content="./icons/android-chrome-512x512.png"
+          />
+          <meta property="og:url" content="https://prashantadhikari7.com.np" />
+          <meta property="og:type" content="website" />
+          <meta
+            property="og:site_name"
+            content="Prashant Adhikari's Portfolio"
+          />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content="Prashant Adhikari's Portfolio" />
+          <meta
+            name="twitter:description"
+            content="Portfolio of Prashant Adhikari, a Web Developer and Software Engineer from Nepal."
+          />
+          <meta
+            name="twitter:image"
+            content="./icons/android-chrome-512x512.png"
+          />
+          <meta name="twitter:site" content="@pr4xnt" />
+          <meta name="twitter:creator" content="@pr4xnt" />
+          <link rel="icon" href="./favicon.ico" />
+          <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
+          <link rel="manifest" href="./site.webmanifest" />
+          <link rel="canonical" href="https://prashantadhikari7.com.np" />
         </div>
 
         <div className="relative h-screen container mx-auto overflow-hidden">
@@ -276,17 +313,17 @@ x: pr4xnt`,
                 <div className="h-0.5 group-hover:w-full bg-[brown] rounded-full w-0 transition-all duration-300 group-hover:block"></div>
               </NavLink>
               <NavLink
-                to="/dashboard"
+                to="/"
                 className="group flex flex-col rounded-full"
               >
-                Dashboard
+                Home
                 <div className="h-0.5 group-hover:w-full bg-[brown] rounded-full w-0 transition-all duration-300 group-hover:block"></div>
               </NavLink>
               <NavLink
                 to="/curriculum-vitae"
                 className="group flex flex-col rounded-full"
               >
-                CV
+                Resume
                 <div className="h-0.5 group-hover:w-full bg-[brown] rounded-full w-0 transition-all duration-300 group-hover:block"></div>
               </NavLink>
             </div>
@@ -298,7 +335,7 @@ x: pr4xnt`,
 
           <div className="w-[85%] mx-auto h-screen"></div>
         </div>
-         
+
         <div className=" w-full relative bg-[#011e24] ">
           <div className="flex items-center container w-[85%] mx-auto pt-28">
             <div className="h-[0.004rem] w-full bg-white"></div>
@@ -312,7 +349,7 @@ x: pr4xnt`,
             <ProjectScreen />
           </div>
         </div>
-          <div className=" relative  bg-[#011e24] w-full">
+        <div className=" relative  bg-[#011e24] w-full">
           <div className="flex container items-center w-[85%] mx-auto pt-28 justify-center">
             <div className="h-[0.004rem] w-full bg-white"></div>
             <h1 className="px-6 text-white flex gap-1.5 font-light">
@@ -336,10 +373,9 @@ x: pr4xnt`,
             <div className="h-[0.1px] w-full bg-white"></div>
           </div>
           <div className="w-[85%] mx-auto text-white">
-            <ProjectScreen />
+              
           </div>
         </div>
-     
       </main>
     </>
   );
