@@ -175,7 +175,19 @@ const ProjectScreen = () => {
       className="relative w-full bg-sand pt-20"
       style={{ paddingBottom: "5rem" }}
     >
-      <div className="w-[85%] mx-auto flex flex-col lg:flex-row items-start gap-12">
+      <div className="w-[85%] container mx-auto flex flex-col lg:flex-row items-start gap-12">
+         <div  className="w-full md:hidden  lg:w-1/2 flex flex-col items-center justify-center text-center">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl text-charcoal font-bold uppercase">
+            Projects?
+          </h1>
+          <p className="text-lg md:text-xl lg:text-2xl text-brown leading-relaxed mt-2 mb-6">
+            Take a look at the craftmanship of Prashant. All the crafts are
+            built with love and honor.
+          </p>
+          <button className="bg-beige py-3 px-6 text-bronze font-semibold rounded-bl-4xl rounded-tr-4xl rounded-br-2xl rounded-tl-2xl hover:bg-beige/40 transition-all duration-500 w-max">
+            All Projects
+          </button>
+        </div>
         <div ref={leftRef} className="w-full opacity-0 lg:w-1/2">
           <div className="relative overflow-hidden rounded-lg ">
             <div
@@ -218,7 +230,7 @@ const ProjectScreen = () => {
             ))}
           </div>
         </div>
-        <div ref={rightRef} className="w-full opacity-0 lg:w-1/2 flex flex-col items-end justify-center text-end">
+        <div ref={rightRef} className="w-full hidden opacity-0 lg:w-1/2 md:flex flex-col items-end justify-center text-end">
           <h1 className="text-5xl md:text-7xl lg:text-8xl text-charcoal font-bold uppercase">
             Projects?
           </h1>
