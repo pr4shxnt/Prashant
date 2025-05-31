@@ -17,14 +17,14 @@ useEffect(() => {
   
 
   return (
-    <div className='text-white max-w-7xl mx-auto '>
+    <div className='text-white max-w-7xl mx-auto pb-5'>
       {loading || initialLoad ? (
         <p className="text-center">Loading skills...</p>
       ) : (
         <Marquee direction={direction} pauseOnHover={true}>
           <div className="flex gap-8 text-3xl mx-5 overflow-hidden">
             {skills?.Skills?.map((item) => (
-              <div title={item.description} key={item._id} className="flex items-center gap-2 bg-charcoal/50 py-1 px-1 pr-3 rounded-lg">
+              <div title={item.description} key={item._id} className="flex items-center gap-2 bg-brown/70 py-1 px-1 pr-3 rounded-lg">
                 <img src={item.image} alt={item.name} className="w-8 h-8 rounded-md" />
                 <h1 className="text-sm tracking-wider">{item.name}</h1>
               </div>

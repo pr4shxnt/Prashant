@@ -319,9 +319,9 @@ x: pr4xnt`,
           </div>
         </div>
 
-       <div className="bg-sand"><Accomplishments/></div>
+       <div className="bg-sand ">      <Accomplishments/></div>
         <ProjectScreen/>
-        <div className="bg-sand pt-10"><MarqueeComp/></div>
+        <div className="bg-sand "><MarqueeComp/></div>
 
         
       </main>
