@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="   py-20   relative bg-brown w-full">
+    <footer className="   py-20   relative bg-brown w-full">
       <div className="flex w-[85%] mx-auto container flex-col md:flex-row gap-10 items-center default_m justify-between ">
         <div className="">
           <img
@@ -101,7 +101,7 @@ const Footer = () => {
           </a>
         </p>
       </div>
-    </div>
+    </footer>
   );
 };
 

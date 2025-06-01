@@ -8,6 +8,7 @@ const RootComponent = () => {
   const { showContent, setShowContent } = useContent();
   const [render, setRender] = useState(false);
   const location = useLocation();
+  
 
 useEffect(() => {
   if (location.pathname === '/') {
@@ -30,7 +31,8 @@ useEffect(() => {
        {showContent && (
         <>
                   <Outlet />
-                  <Footer/>
+                  <div className="container mx-auto">                  <Footer/>
+</div>
         </>
       )}
       

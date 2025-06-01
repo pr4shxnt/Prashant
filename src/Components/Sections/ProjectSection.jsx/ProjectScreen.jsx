@@ -18,7 +18,7 @@ const getShortDescription = (html, maxLength = 250) => {
   return "";
 };
 
-export const ProjectCard = ({ project, i }) => {
+const ProjectCard = ({ project, i }) => {
   return (
     <div
       key={i}

@@ -13,24 +13,80 @@ const Projects = () => {
 
   console.log(projects);
   
+  
+const getShortDescription = (html, maxLength = 275) => {
+  if (typeof document !== "undefined") {
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = html;
+    const textContent = tempDiv.textContent || tempDiv.innerText || "";
+    return textContent.length > maxLength
+      ? textContent.slice(0, maxLength) + "..."
+      : textContent;
+  }
+  return "";
+};
 
+const ProjectCard = ({ project, i }) => {
+  return (
+    <div
+      key={i}
+      className="h-full bg-sand w-full flex-shrink-0 flex flex-col"
+    >
+      <div className="w-full h-[300px] overflow-hidden">
+        <img
+          src={project.images[0]}
+          alt={project.name}
+          loading="lazy"
+          className="w-full h-[100%] object-cover rounded-t-lg"
+        />
+      </div>
+      <div className="bg-bronze w-full rounded-b-lg text-cream px-3 py-3">
+        <div className="flex justify-between items-center">
+          <h1 className="font-semibold text-lg">{project.name}</h1>
+          <div className="text-sm opacity-80">
+            {new Date(project.createdAt).toLocaleDateString()}
+          </div>
+        </div>
+        <p className="text-sm">
+          {getShortDescription(project.description)}
+        </p>
+        <div className="flex flex-wrap gap-2 mt-3">
+          {project.technologies?.[0]
+            ?.split(",")
+            .slice(0, 7)
+            .map((tech, index) => (
+              <span
+                key={index}
+                className="bg-beige/20 px-2 py-1 text-xs rounded mr-2"
+              >
+                {tech.trim()}
+              </span>
+            ))}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 
   return (
-    <div>
+    <div className='bg-sand'>
       <header>
-        <div className="h-screen flex flex-col items-center gap-1.5 justify-center w-screen">
-          <h1 className="text-white font-bold text-5xl">Personal projects</h1>
-          <p className="text-white font-light ">Home / Projects</p>
+        <div className="h-screen  flex flex-col items-center gap-1.5 justify-center w-screen">
+          <h1 className="text-charcoal font-bold text-5xl">Personal projects</h1>
+          <p className="text-charcoal font-light ">Home / Projects</p>
 
         </div>
       </header>
-      <div className="w-[85%] mx-auto grid grid-cols-1 gap-4">
+      <div className="w-full ">
+      <div className="w-[85%] mx-auto grid pb-10 gap-4 grid-cols-2 ">
       {
         projects.map((project, index)=>{
-          return <div className=""></div>
+          return <div className="">
+            <ProjectCard project={project} index={index} />
+          </div>
         })
-      }
+      }</div>
       </div>
     </div>
   )

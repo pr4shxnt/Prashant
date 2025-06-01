@@ -11,9 +11,9 @@ const InitialRender = ({ setShowContent }) => {
       ease: "Power4.easeInOut",
       transformOrigin: "50% 50%",
     }).to(".vi-mask-group", {
-      scale: 10,
-      duration: 2,
-      delay: -1.8,
+      scale: 80,
+      duration: 2.5,
+      delay: -1.6,
       ease: "Expo.easeInOut",
       transformOrigin: "50% 50%",
       opacity: 0,
@@ -30,10 +30,8 @@ const InitialRender = ({ setShowContent }) => {
     });
   });
 
-
-
   return (
-    <div className="svg flex items-center justify-center fixed top-0 left-0 z-[100] w-full h-screen overflow-hidden bg-[#000]">
+    <div className="svg flex items-center justify-center fixed top-0 left-0 right-0 bottom-0 z-[100] w-screen h-screen overflow-hidden bg-sand">
       <title>Welcome | Prashant Adhikari</title>
       <svg
         viewBox="0 0 800 600"
@@ -43,18 +41,17 @@ const InitialRender = ({ setShowContent }) => {
         <defs>
           <mask id="viMask">
             <rect width="100%" height="100%" fill="black" />
-            <g className="vi-mask-group">
+            <g className="vi-mask-group" style={{ transformOrigin: "50% 50%" }}>
               <text
                 x="50%"
                 y="50%"
-                fontSize="8vw"
+                fontSize="1vw"
                 textAnchor="middle"
-                letterSpacing="1vw"
+                letterSpacing="0.1vw"
                 fill="white"
                 dominantBaseline="middle"
                 fontFamily="Arial Black"
-              >
-                X
+              >PR4XNT
               </text>
             </g>
           </mask>

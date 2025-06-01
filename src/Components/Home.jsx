@@ -12,7 +12,7 @@ const Home = () => {
         gsap.to(".sky", {
           scale: 1.1,
           rotate: 0,
-          duration: 2,
+          duration: 2.5,
           delay: "-.8",
           ease: "Expo.easeInOut",
         });
@@ -20,7 +20,7 @@ const Home = () => {
         gsap.to(".bg", {
           scale: 1.1,
           rotate: 0,
-          duration: 2,
+          duration: 2.5,
           delay: "-.8",
           ease: "Expo.easeInOut",
         });
@@ -29,7 +29,7 @@ const Home = () => {
           scale: 1,
           bottom: "-25%",
           rotate: 0,
-          duration: 2,
+          duration: 2.5,
           delay: "-.8",
           ease: "Expo.easeInOut",
         });
@@ -38,7 +38,7 @@ const Home = () => {
           scale: 1,
           rotate: 0,
           top: "15%",
-          duration: 2,
+          duration: 2.5,
           delay: "-.8",
           ease: "Expo.easeInOut",
         });
@@ -84,7 +84,7 @@ const Home = () => {
 
   return (
     <div className='main' ref={landingRef}>
-        <div className="landing overflow-hidden relative w-full h-screen bg-black">
+        <div className="landing overflow-hidden relative w-full h-screen bg-sand">
             <div className="navbar absolute top-0 left-0 z-[10] w-full py-10 px-10">
              
             </div>
@@ -100,7 +100,7 @@ const Home = () => {
                 src="https://res.cloudinary.com/drddkl4on/image/upload/v1748102689/bg_catc9m.png"
                 alt=""
               />
-              <div className="absolute top-0 left-0 w-full h-full bg-brown/40 z-[1]"></div>
+              <div className="absolute top-0 left-0 w-full h-full bg-charcoal/60 z-[1]"></div>
               <div className="text text-[#DDB884] flex flex-col gap-3 absolute -top-[200%] font-bold left-1/2 -translate-x-1/2 scale-[1.4] rotate-[-10deg] z-[2]">
                 <h1 className="text-[10rem] leading-none [-webkit-text-stroke:1.5px_#242528]">Prashant</h1>
                 <h1 className="text-[10rem] leading-none ml-40 [-webkit-text-stroke:1.5px_#242528]">Adhikari</h1>
