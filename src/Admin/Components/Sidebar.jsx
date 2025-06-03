@@ -53,6 +53,11 @@ const Sidebar = () => {
       icon: <BookAudio size={18} />,
     },
     {
+      name: "Poems manager",
+      path: "/admin/poems",
+      icon: <BookAudio size={18}/>
+    },
+    {
       name: "Personal Info",
       path: "/admin/info",
       icon: <InfoIcon size={18} />,
@@ -63,6 +68,7 @@ const Sidebar = () => {
       path: "/admin/contacts",
       icon: <BookTypeIcon size={18} />,
     },
+    
     { name: "Home", path: "/", icon: <Home size={18} /> },
   ];
   return (

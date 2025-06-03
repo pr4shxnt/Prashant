@@ -17,7 +17,7 @@ useEffect(() => {
   
 
   return (
-    <div className='text-white w-[85%] container bg-sand mx-auto pb-5'>
+    <div className='text-white w-[85%] container bg-sand mx-auto pb-16'>
       {loading || initialLoad ? (
         <p className="text-center">Loading skills...</p>
       ) : (

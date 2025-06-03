@@ -26,10 +26,10 @@ const ProjectCard = ({ project, i }) => {
           src={project.images[0]}
           alt={project.name}
           loading="lazy"
-          className="w-[50%] h-[100%] object-cover rounded-t-lg"
+          className="w-[100%] h-[100%] object-cover rounded-t-lg"
         />
       </div>
-      <div className="bg-bronze w-[50%] text-cream px-3 py-3">
+      <div className="bg-bronze w-[100%] text-cream px-3 py-3">
         <div className="flex justify-between items-center">
           <h1 className="font-semibold text-lg">{project.name}</h1>
           <div className="text-sm opacity-80">
@@ -191,7 +191,7 @@ const ProjectScreen = () => {
               className="flex transition-transform bg-bronze duration-700 rounded-lg ease-in-out will-change-transform"
               style={{
                 transform: `translateX(${-currentIndex * 100}%)`,
-                width: `${projects.length * 100}%`,
+                width: `${projects.length * 50}%`,
               }}
             >
               {projects.slice(0, 6).map((project, i) => (

@@ -12,7 +12,7 @@ import ProjectDisplay from "./Admin/Components/ProjectDisplay";
 import CreateProject from "./Admin/Forms/CreateProject";
 import SkillsManager from "./Admin/Forms/SkillsManager";
 import ProjectIndividual from "./Components/Sections/ProjectSection.jsx/ProjectIndividual"; 
-import ProjectScreen from "./Components/Sections/ProjectSection.jsx/ProjectScreen";
+import ManagePoems from "./Admin/Forms/ManagePoems";
 import Projects from "./Components/Sections/ProjectSection.jsx/Projects";
 
 const router = createBrowserRouter([
@@ -45,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "skills-management",
         element: <SkillsManager/>
+      },
+      {
+        path: "poems",
+        element: <ManagePoems/>
       }
     ]
   },

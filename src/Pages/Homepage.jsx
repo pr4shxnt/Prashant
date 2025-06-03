@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ProjectScreen from "../Components/Sections/ProjectSection.jsx/ProjectScreen";
 import Testimonials from "../Components/Sections/Testimonials/Testimonials";
 import Marquee from "react-fast-marquee";
+import Poem from "../Components/Sections/ArtSection/Poems";
 
 const Homepage = () => {
   const dispatch = useDispatch();
@@ -322,6 +323,7 @@ x: pr4xnt`,
        <div className="bg-sand ">      <Accomplishments/></div>
         <ProjectScreen/>
         <div className="bg-sand "><MarqueeComp/></div>
+        <Poem/>
 
         
       </main>
