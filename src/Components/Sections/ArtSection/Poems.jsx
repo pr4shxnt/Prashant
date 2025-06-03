@@ -114,7 +114,9 @@ const Poem = () => {
             intellectual things all day.
           </p>
           <button className="bg-beige py-3 px-6 text-bronze font-semibold rounded-bl-4xl rounded-tr-4xl rounded-br-2xl rounded-tl-2xl hover:bg-beige/40 transition-all duration-500 w-max">
-            All Projects
+            <div className="flex items-center justify-center gap-2">
+              <Instagram /> Follow
+            </div>
           </button>
         </div>
         <div
