@@ -144,7 +144,8 @@ const Poemcard = ({ poem, currentIndex, total, onPrev, onNext, setIndex }) => {
               <span>{formatTime(currentTime)}</span>
             </div>
           </div>
-          <div className="absolute left-0 text-beige text-xs">          <span>{formatTime(duration)}</span>
+          <div className="absolute right-0 text-beige text-xs">          <span>{formatTime(duration)}</span> </div>
+          <div className="absolute left-0 text-beige text-xs">          <span>0:00</span> 
 </div>
         </div>
 
