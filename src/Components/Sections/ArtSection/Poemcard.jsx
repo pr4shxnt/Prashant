@@ -112,7 +112,7 @@ const Poemcard = ({ poem, currentIndex, total, onPrev, onNext, setIndex }) => {
           <img
             src={poem.imageUrl}
             alt={poem.title}
-            className="rounded-full object-cover w-full "
+            className="rounded-full object-cover w-full h-full "
           />
         </div>
         <div className="name flex flex-col text-center text-charcoal relative z-20">

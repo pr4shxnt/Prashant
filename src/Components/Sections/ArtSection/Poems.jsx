@@ -149,7 +149,7 @@ const Poem = () => {
                 {poems?.map((poem, index) => (
                   <div
                     key={poem._id}
-                    className={`min-w-[60px] h-[60px] rounded-full overflow-hidden border-2 cursor-pointer ${
+                    className={`min-w-12 h-12 rounded-full overflow-hidden border-2 cursor-pointer ${
                       index === currentIndex
                         ? "border-beige"
                         : "border-transparent"
@@ -159,7 +159,7 @@ const Poem = () => {
                     <img
                       src={poem.imageUrl}
                       alt={poem.title}
-                      className="w-full h-full object-cover rounded-full hover:scale-105 transition-transform duration-300"
+                      className="w-12 h-12 object-cover rounded-full hover:scale-105 transition-transform duration-300"
                     />
                   </div>
                 ))}
