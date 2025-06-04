@@ -1,11 +1,14 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { fetchAllProjects } from '../../../Features/Project/projectSlice'
 import { useDispatch, useSelector } from 'react-redux'
+import { ExternalLink } from 'lucide-react';
+import { NavLink } from 'react-router-dom';
+import MenuBar from '../../MenuBar';
 
 const Projects = () => {
   const dispatch = useDispatch();
   const {projects} = useSelector((state)=> state.projects)
-
+  const [showMenu, setShowMenu] = useState(false);
   useEffect(()=>{
     dispatch(fetchAllProjects())
   },[])
@@ -32,13 +35,17 @@ const ProjectCard = ({ project, i }) => {
       key={i}
       className="h-full bg-sand w-full flex-shrink-0 flex flex-col"
     >
-      <div className="w-full h-[300px] overflow-hidden">
+    <div className="meta-tags">
+    </div>
+      <div className="w-full relative h-[300px] overflow-hidden">
         <img
           src={project.images[0]}
           alt={project.name}
           loading="lazy"
           className="w-full h-[100%] object-cover rounded-t-lg"
         />
+                <div className="absolute bottom-0 rounded-tl-2xl text-beige p-2 right-0 bg-brown/50"><NavLink to={`/projects/${project.name}`}><ExternalLink/></NavLink></div>
+
       </div>
       <div className="bg-bronze w-full rounded-b-lg text-cream px-3 py-3">
         <div className="flex justify-between items-center">
@@ -72,6 +79,7 @@ const ProjectCard = ({ project, i }) => {
   return (
     <div className='bg-sand'>
       <header>
+        <title>Projects | Prashant Adhikari</title>
         <div className="h-screen  flex flex-col items-center gap-1.5 justify-center w-screen">
           <h1 className="text-charcoal font-bold text-5xl">Personal projects</h1>
           <p className="text-charcoal font-light ">Home / Projects</p>
@@ -79,7 +87,7 @@ const ProjectCard = ({ project, i }) => {
         </div>
       </header>
       <div className="w-full ">
-      <div className="w-[85%] mx-auto grid pb-10 gap-4 grid-cols-2 ">
+      <div className="w-[85%] mx-auto grid pb-10 gap-4 grid-cols-1 md:grid-cols-2 ">
       {
         projects.map((project, index)=>{
           return <div className="">

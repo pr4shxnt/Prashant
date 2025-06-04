@@ -73,8 +73,8 @@ const Sidebar = () => {
   ];
   return (
     <div className="w-full h-full">
-      <div className="w-full relative bg-gray-700 h-full">
-        <div className="absolute text-center text-xs w-full bottom-0 left-0  bg-gray-600 text-white p-4">
+      <div className="w-full relative bg-brown h-full">
+        <div className="absolute text-center text-xs w-full bottom-0 left-0  bg-charcoal text-white p-4">
           <h1 className="flex gap-1 justify-center">
             Copyright{" "}
             <sup>
@@ -85,7 +85,7 @@ const Sidebar = () => {
           </h1>
           <h1>Prashant Adhikari {`<3`}</h1>
         </div>
-        <div className="flex px-3 border-b border-gray-400 pt-4 pb-6 justify-between">
+        <div className="flex px-3  border-b border-gray-400 pt-4 pb-6 justify-between">
           <h1 className="tracking-widest uppercase font-bold items-center text-sm text-white">
             prashant
           </h1>
@@ -101,7 +101,7 @@ const Sidebar = () => {
           >
             <div
               key={index}
-              className="p-4 text-sm text-white hover:bg-gray-800"
+              className="p-4 text-sm text-white hover:bg-bronze/30"
             >
               <div className="flex pl-2 items-center">
                 {link.icon}

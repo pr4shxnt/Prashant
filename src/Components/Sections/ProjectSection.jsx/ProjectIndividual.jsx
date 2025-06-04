@@ -26,6 +26,7 @@ if(loading) {
   return (
     <div className="h-screen flex items-center justify-center">
       <div className="text-brown font-bold text-2xl">Loading...</div>
+      <title>Project | loading</title>
     </div>
   )}else if(error) {
   return (
@@ -33,6 +34,8 @@ if(loading) {
       <div className="text-red-500 font-bold text-2xl">Error: {error}</div>
     </div>
   )}
+
+  document.title = `Project | ${project.name || 'Loading...'}`; 
 
   return (
     <div className="bg-sand min-h-screen text-brown relative py-10">

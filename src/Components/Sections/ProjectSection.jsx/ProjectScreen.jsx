@@ -1,8 +1,9 @@
 import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllProjects } from "../../../Features/Project/projectSlice";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import gsap from "gsap";
+import { NavLink } from "react-router-dom";
 
 const SLIDE_INTERVAL = 5000;
 
@@ -21,13 +22,14 @@ const getShortDescription = (html, maxLength = 250) => {
 const ProjectCard = ({ project, i }) => {
   return (
     <div key={i} className="h-full w-full flex-shrink-0 flex flex-col">
-      <div className="w-full h-[300px] overflow-hidden">
+      <div className="w-full h-[300px] overflow-hidden relative">
         <img
           src={project.images[0]}
           alt={project.name}
           loading="lazy"
           className="w-[100%] h-[100%] object-cover rounded-t-lg"
         />
+        <div className="absolute bottom-0 rounded-tl-2xl text-beige p-2 right-0 bg-brown/50"><NavLink to={`/projects/${project.name}`}><ExternalLink/></NavLink></div>
       </div>
       <div className="bg-bronze w-[100%] text-cream px-3 py-3">
         <div className="flex justify-between items-center">
@@ -182,7 +184,9 @@ const ProjectScreen = () => {
             built with love and honor.
           </p>
           <button className="bg-beige py-3 px-6 text-bronze font-semibold rounded-bl-4xl rounded-tr-4xl rounded-br-2xl rounded-tl-2xl hover:bg-beige/40 transition-all duration-500 w-max">
-            All Projects
+            <NavLink to={"/projects"} className="text-charcoal">
+              All Projects
+            </NavLink>
           </button>
         </div>
         <div ref={leftRef} className="w-full opacity-0 lg:w-1/2">
@@ -241,7 +245,9 @@ const ProjectScreen = () => {
             built with love and honor.
           </p>
           <button className="bg-beige py-3 px-6 text-bronze font-semibold rounded-bl-4xl rounded-tr-4xl rounded-br-2xl rounded-tl-2xl hover:bg-beige/40 transition-all duration-500 w-max">
-            All Projects
+            <NavLink to={"/projects"} className="text-charcoal">
+              All Projects
+            </NavLink>
           </button>
         </div>
       </div>
