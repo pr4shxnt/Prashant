@@ -53,7 +53,7 @@ const SkillsManager = () => {
   }, [skillData.image]);
 
   return (
-    <div className="flex relative mt-10 px-10">
+    <div className="flex relative mt-10 px-10 bg-gradient-to-br ">
       {/* Skills Display */}
       <div className="w-full">
         <div className="grid grid-cols-2 gap-4 h-[650px] overflow-y-scroll custom-scrollbar pr-4">
@@ -64,7 +64,7 @@ const SkillsManager = () => {
                 alt={skill.name}
                 className="rounded-t-lg bg-gray-200"
               />
-              <div className="flex flex-col gap-2 px-3 py-2 w-full text-gray-200 rounded-b-lg text-center bg-gray-600">
+              <div className="flex flex-col gap-2 px-3 py-2 w-full text-gray-200 rounded-b-lg text-center bg-brown">
                 <h1>{skill.name}</h1>
                 <p className="text-xs">
                   {skill.description?.slice(0, 110) + "..."}
@@ -84,14 +84,14 @@ const SkillsManager = () => {
       </div>
 
       {/* Skill Form */}
-      <div className="w-full p-6 h-[650px] bg-white dark:bg-gray-900 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-800 ml-6">
-        <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">
+      <div className="w-full p-6 h-[650px] bg-white/90 border-beige/30 rounded-2xl shadow-xl border  ml-6">
+        <h2 className="text-2xl font-bold mb-6 text-gray-900 ">
           Add New Skill
         </h2>
         <form onSubmit={handleSubmit} className="space-y-5">
           {/* Name */}
           <div>
-            <label className="block mb-1 text-sm font-medium text-gray-700 dark:text-gray-300">
+            <label className="block mb-1 text-sm font-medium text-charcoal ">
               Name
             </label>
             <input
@@ -99,21 +99,21 @@ const SkillsManager = () => {
               name="name"
               onChange={handleInputChange}
               value={skillData.name}
-              className="w-full px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-4 py-2 border border-beige rounded-lg focus:outline-none focus:ring-2 focus:ring-brown"
               required
             />
           </div>
 
           {/* Image Upload */}
           <div>
-            <label className="block mb-1 text-sm font-medium text-gray-700 dark:text-gray-300">
+            <label className="block mb-1 text-sm font-medium text-charcoal ">
               Image
             </label>
             <input
               type="file"
               accept="image/*"
               onChange={handleFileChange}
-              className="w-full px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100"
+              className="w-full px-4 py-2 border border-beige rounded-lg bg-white text-charcoal file:mr-4 file:py-1 file:px-2 file:rounded-full file:border-0 file:bg-brown file:text-beige hover:file:bg-charcoal"
             />
             {skillData.image && typeof skillData.image !== "string" && (
               <img
@@ -126,7 +126,7 @@ const SkillsManager = () => {
 
           {/* Link */}
           <div>
-            <label className="block mb-1 text-sm font-medium text-gray-700 dark:text-gray-300">
+            <label className="block mb-1 text-sm font-medium text-charcoal ">
               Link
             </label>
             <input
@@ -134,13 +134,13 @@ const SkillsManager = () => {
               name="link"
               onChange={handleInputChange}
               value={skillData.link}
-              className="w-full px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-4 py-2 border border-beige rounded-lg focus:outline-none focus:ring-2 focus:ring-brown"
             />
           </div>
 
           {/* Description */}
           <div>
-            <label className="block mb-1 text-sm font-medium text-gray-700 dark:text-gray-300">
+            <label className="block mb-1 text-sm font-medium text-charcoal ">
               Description
             </label>
             <input
@@ -148,7 +148,7 @@ const SkillsManager = () => {
               name="description"
               onChange={handleInputChange}
               value={skillData.description}
-              className="w-full px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-4 py-2 border border-beige rounded-lg focus:outline-none focus:ring-2 focus:ring-brown"
             />
           </div>
 
@@ -161,11 +161,7 @@ const SkillsManager = () => {
           <button
             type="submit"
             disabled={loading}
-            className={`w-full py-2 px-4 font-semibold rounded-lg shadow-md transition duration-200 ${
-              loading
-                ? "bg-gray-400 cursor-not-allowed"
-                : "bg-indigo-600 hover:bg-indigo-700 text-white"
-            }`}
+            className={`mt-6 bg-brown w-full hover:bg-charcoal text-beige font-medium py-2 rounded-lg transition-all duration-300`}
           >
             {loading ? "Submitting..." : "Submit Skill"}
           </button>

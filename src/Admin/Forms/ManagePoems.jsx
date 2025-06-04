@@ -54,7 +54,26 @@ const ManagePoems = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-beige to-white py-10 px-4 md:px-20">
-      <div className="max-w-2xl mx-auto bg-white/90 backdrop-blur-lg shadow-2xl rounded-2xl p-8 border border-beige/30">
+      <div className="flex gap-2">
+         <div className="w-full">
+        <div className="grid grid-cols-2 gap-4 h-[650px] overflow-y-scroll custom-scrollbar pr-4">
+          {poems?.map((poem) => (
+            <div key={poem._id} className="text-white flex flex-col">
+              <img
+                src={poem.imageUrl}
+                alt={poem.title}
+                className="rounded-t-lg h-64 object-cover bg-gray-200"
+              />
+              <div className="flex flex-col gap-2 px-3 py-2 w-full text-gray-200 rounded-b-lg text-center bg-brown">
+                <h1 className="">Title: {poem.title}</h1>
+                <p className="text-xs">Author: {poem.author}</p>
+                <p className="text-xs">Released: {new Date(poem.releaseDate).toLocaleDateString()}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="w-full mx-auto bg-white/90 backdrop-blur-lg shadow-2xl rounded-2xl p-8 border border-beige/30">
         <h2 className="text-2xl md:text-3xl font-semibold text-charcoal mb-6 text-center">📜 Upload New Poem</h2>
         <form onSubmit={handleSubmit} className="flex flex-col gap-5">
           <div>
@@ -122,7 +141,7 @@ const ManagePoems = () => {
 
           {error && <p className="text-red-500 text-center mt-2">{error}</p>}
         </form>
-      </div>
+      </div></div>
     </div>
   );
 };
