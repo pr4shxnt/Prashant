@@ -10,18 +10,15 @@ const ProjectDisplay = () => {
   const { name } = useParams();
   const dispatch = useDispatch();
   const [showSidebar, setShowSidebar] = useState(false);
+  const [initialLoad, setInitialLoad] = useState(true);
   const { project, loading, error } = useSelector((state) => state.projects);
   const [showMenu, setShowMenu] = useState(false);
-console.log(name)
+
+
   useEffect(() => {
     dispatch(fetchByProjectName(name));
   }, [dispatch, name]);
 
-
-const techStacks = project?.technologies?.[0]?.split(',') || []
-
-
- console.log(techStacks);
 
 
  const location = useLocation();
@@ -33,19 +30,24 @@ const techStacks = project?.technologies?.[0]?.split(',') || []
   setShowSidebar(true);
  }}, [location.pathname]);
 
- console.log(loading);
- 
+
+
+ useEffect(() => {
+  if (project && !loading) {
+    setInitialLoad(false);
+  }},[project, loading]);
+
+  console.log(initialLoad);
+  
  
   return (
-
-    <div>
-      { showSidebar && !loading ? <div className="h-screen p-5 flex flex-col items-center justify-center">
+<>
+ <div>
+      { showSidebar && <div className="h-screen p-5 flex flex-col items-center justify-center">
 
       <div className="text-brown font-bold text-5xl">{project.name}</div>
-      <div className="text-brown">{new Date(project.updatedAt).toLocaleString('en-US')}</div>
-    </div> : <div className="h-screen p-5 flex items-center justify-center">
-      <div className="text-brown font-bold text-5xl">Loading...</div>
-      </div>}
+      <div className="text-brown"> {project.updatedAt && new Date(project.updatedAt).toLocaleString('en-US')}</div>
+    </div>}
        <div className="fixed bottom-2 left-2 z-[10000] ">
         <MenuBar showMenu={showMenu} setShowMenu={setShowMenu} />
       </div>
@@ -56,6 +58,7 @@ const techStacks = project?.technologies?.[0]?.split(',') || []
     
     <Footer/>
     </div>
+</>
   )
 }
 
