@@ -48,9 +48,7 @@ const ProjectIndividual = () => {
   return (
     <>
     {project.length >= 1 || !loading  && <div className="bg-sand flex flex-col md:flex-row gap-3 min-h-screen text-brown relative pb-10">
-      <div className="fixed bottom-2 left-2 z-[10000]">
-        <MenuBar showMenu={showMenu} setShowMenu={setShowMenu} />
-      </div>
+    
 
       <div className="w-full hidden md:block md:w-[70%]">
         <h1 className="text-3xl font-bold pb-7"></h1>
