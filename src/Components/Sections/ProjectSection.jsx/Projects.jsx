@@ -8,13 +8,11 @@ import MenuBar from '../../MenuBar';
 const Projects = () => {
   const dispatch = useDispatch();
   const {projects} = useSelector((state)=> state.projects)
-  const [showMenu, setShowMenu] = useState(false);
   useEffect(()=>{
     dispatch(fetchAllProjects())
   },[])
 
 
-  console.log(projects);
   
   
 const getShortDescription = (html, maxLength = 275) => {
@@ -29,10 +27,10 @@ const getShortDescription = (html, maxLength = 275) => {
   return "";
 };
 
-const ProjectCard = ({ project, i }) => {
+const ProjectCard = ({ project }) => {
   return (
     <div
-      key={i}
+      
       className="h-full bg-sand w-full flex-shrink-0 flex flex-col"
     >
     <div className="meta-tags">
@@ -90,9 +88,7 @@ const ProjectCard = ({ project, i }) => {
       <div className="w-[85%] mx-auto grid pb-10 gap-4 grid-cols-1 md:grid-cols-2 ">
       {
         projects.map((project, index)=>{
-          return <div className="">
-            <ProjectCard project={project} index={index} />
-          </div>
+          return <div key={index} className=""><ProjectCard project={project} /></div> 
         })
       }</div>
       </div>

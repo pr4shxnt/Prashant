@@ -24,15 +24,19 @@ const ProjectDisplay = () => {
   const outletRef = useRef(null);
   const titleRef = useRef(null);
 
-  useEffect(() => {
-    dispatch(fetchByProjectName(name));
-    console.log(loading);
-    
-  }, [dispatch, name]);
+
 
   useEffect(() => {
     setShowSidebar(location.pathname !== '/projects');
-  }, [location.pathname]);
+
+  }, [location.pathname, ]);
+
+
+    useEffect(() => {
+      if (showSidebar){
+        dispatch(fetchByProjectName(name));
+      }
+  }, [dispatch, name]);
 
 useGSAP(
  
