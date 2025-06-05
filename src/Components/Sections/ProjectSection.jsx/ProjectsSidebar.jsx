@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 import { fetchAllProjects } from '../../../Features/Project/projectSlice';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-const ProjectsSidebar = () => {
+const ProjectsSidebar = ({sidebarRef}) => {
     const {projects} = useSelector((state) => state.projects);
     
     const dispatch = useDispatch();
@@ -16,8 +16,9 @@ const ProjectsSidebar = () => {
 
 
 
+
   return (
-    <div className='bg-charcoal rounded-md fixed md:relative'>
+    <div ref={sidebarRef} className='bg-charcoal rounded-md fixed md:relative'>
         <div className="">
             <h1 className="text-beige font-bold text-xl px-4 py-6">Prashant's Projects</h1>
         </div>

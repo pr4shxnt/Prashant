@@ -46,7 +46,8 @@ const ProjectIndividual = () => {
   }
 
   return (
-    <div className="bg-sand flex flex-col md:flex-row gap-3 min-h-screen text-brown relative pb-10">
+    <>
+    {project.length >= 1 || !loading  && <div className="bg-sand flex flex-col md:flex-row gap-3 min-h-screen text-brown relative pb-10">
       <div className="fixed bottom-2 left-2 z-[10000]">
         <MenuBar showMenu={showMenu} setShowMenu={setShowMenu} />
       </div>
@@ -96,7 +97,7 @@ const ProjectIndividual = () => {
         <div className="mt-4">
          
           {
-            techStacks.length > 0 && (
+            techStacks.length >= 1 && (
               <div className="mt-2">
                 <h2 className="md:text-lg text-2xl font-bold md:font-semibold">Technologies Used:</h2>
                 <div className="flex flex-wrap gap-2 mt-3">
@@ -186,7 +187,8 @@ const ProjectIndividual = () => {
           </div>
         </div>
       )}
-    </div>
+    </div>}
+    </>
   );
 };
 
