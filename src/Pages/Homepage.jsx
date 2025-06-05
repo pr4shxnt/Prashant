@@ -38,6 +38,8 @@ Thank you for your concern.`,
      border-radius: 5px;`
     );
 
+    alert("This website is still under development. Please be patient.");
+
     console.log(
       `%c
 - Prashant Adhikari
@@ -102,6 +104,7 @@ x: pr4xnt`,
   const scrollHandler = (arg) => {
     window.scrollTo(0, arg);
   };
+  
 
   return (
     <>
