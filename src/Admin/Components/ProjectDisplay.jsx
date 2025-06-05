@@ -98,7 +98,7 @@ useGSAP(
   return (
     <div>
       {showSidebar && (
-        <div ref={titleRef} className="min-h-screen overflow-hidden p-5 flex flex-col gap-0.5 items-center justify-center">
+        <div ref={titleRef} className="min-h-screen  p-5 flex flex-col gap-0.5 items-center justify-center">
           <p className="text-brown">
             {project.updatedAt && new Date(project.updatedAt).toLocaleString('en-US')}
           </p>
