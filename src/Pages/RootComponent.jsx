@@ -13,6 +13,7 @@ const RootComponent = () => {
 useEffect(() => {
   if (location.pathname === '/') {
     setRender(true);
+    setShowContent(false);
   } else {
     setRender(false);
     setShowContent(true);
@@ -23,7 +24,7 @@ useEffect(() => {
 
   return (
     <>
-       <div className=" ">{ render &&
+       <div className=" ">{ render && 
                 <InitialRender setShowContent={setShowContent} />
                 }      
                 </div>

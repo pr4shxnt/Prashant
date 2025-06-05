@@ -80,7 +80,7 @@ const ProjectCard = ({ project, i }) => {
     <div className='bg-sand'>
       <header>
         <title>Projects | Prashant Adhikari</title>
-        <div className="h-screen  flex flex-col items-center gap-1.5 justify-center w-screen">
+        <div className="h-screen  flex flex-col items-center gap-1.5 justify-center w-full">
           <h1 className="text-charcoal font-bold text-5xl">Personal projects</h1>
           <p className="text-charcoal font-light ">Home / Projects</p>
 
