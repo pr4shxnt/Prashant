@@ -17,7 +17,7 @@ const ProjectsSidebar = ({ sidebarRef }) => {
   return (
     <div ref={sidebarRef} className="bg-charcoal rounded-md fixed md:relative">
       <div>
-        <h1 className="text-beige font-bold text-xl px-4 py-6">Prashant's Projects</h1>
+        <h1 className="text-beige font-bold text-xl px-4 py-6"><NavLink to={`/`}>Prashant's Projects</NavLink></h1>
       </div>
       <div className="h-full px-8 w-72 flex flex-col items-start gap-2">
         <button className="text-beige cursor-pointer flex items-center gap-2 p-2 py-2 hover:bg-brown/50 rounded-md w-full">
