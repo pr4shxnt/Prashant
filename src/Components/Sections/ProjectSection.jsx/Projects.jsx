@@ -21,7 +21,7 @@ const Projects = () => {
     image: project.images?.[0] || '',
   }));
 
-  const getShortDescription = (html, maxLength = 275) => {
+  const getShortDescription = (html, maxLength = 100) => {
     if (typeof document !== 'undefined') {
       const tempDiv = document.createElement('div');
       tempDiv.innerHTML = html;
@@ -84,15 +84,25 @@ const Projects = () => {
       </header>
 
       <div className="w-full">
-        <div className="w-[85%] mx-auto pb-10">
+        <div className="w-full pb-10">
           {error && (
             <div className="text-center text-red-500">Failed to load projects.</div>
           )}
 
           {!error && projects.length > 0 && (
-            <div style={{ height: '200px', position: 'relative' }}>
+            <>
+            <div className='relative h-[200px] hidden md:block'>
               <FlowingMenu items={items} />
             </div>
+             <div className="w-[85%] mx-auto md:hidden grid pb-10 gap-4 grid-cols-1  ">
+      {
+        projects.map((project, index)=>{
+          return <div className="">
+            <ProjectCard project={project} index={index} />
+          </div>
+        })
+      }</div>
+            </>
           )}
         </div>
       </div>
