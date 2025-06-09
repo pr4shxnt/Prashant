@@ -19,6 +19,7 @@ const LoadingPage = () => {
 
   return (
     <div className="flex items-center justify-center h-20  gap-1">
+        <title>Loading | Prashant Adhikari</title>
       {Array.from({ length: 3 }).map((_, index) => (
         <div
           key={index}
