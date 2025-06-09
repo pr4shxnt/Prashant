@@ -16,9 +16,11 @@ const ProjectIndividual = () => {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [imagesModelOpen, setImagesModelOpen] = useState(false);
 
-  useEffect(() => {
-    dispatch(fetchByProjectName(name));
-  }, [dispatch, name]);
+  
+
+  // useEffect(() => {
+  //   dispatch(fetchByProjectName(name));
+  // }, [dispatch, name]);
 
   useEffect(() => {
     document.title = `Project | ${project?.name || "Loading..."}`;

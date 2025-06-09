@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios'; // assuming you're using axios
+import axios from 'axios';
 
 const initialState = {
   projectData: {
@@ -14,7 +14,7 @@ const initialState = {
     token: localStorage.getItem('admin_session'),
   },
   projects: [],
-  project: [],
+  project: {},
   loading: false,
   error: null,
 };
@@ -23,61 +23,66 @@ export const createNewProject = createAsyncThunk(
   'projects/create',
   async ({ projectData, files }, thunkAPI) => {
     try {
+      const formData = new FormData();
 
-    const formData = new FormData();
+      Object.entries(projectData).forEach(([key, value]) => {
+        if (key !== 'imagesInfo') formData.append(key, value);
+      });
 
-    Object.entries(projectData).forEach(([key, value]) => {
-      if (key !== 'imagesInfo') formData.append(key, value);
-    });
+      files.forEach((file) => formData.append('images', file));
 
-    files.forEach(file => formData.append('images', file));
+      const token = projectData.token;
+      const response = await axios.post(
+        `${import.meta.env.VITE_BACKEND}/api/projects/create`,
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
-    const token = projectData.token;
-    const response = await axios.post(`${import.meta.env.VITE_BACKEND}/api/projects/create`, 
-      formData, {
-      headers: {
-       'Content-Type': 'multipart/form-data',
-       Authorization: `Bearer ${token}`,
-      },
-    });
-
-    return response.data;
-      
-  } catch (err) {
-    return thunkAPI.rejectWithValue(
-      err.response?.data?.message || 'Project creation failed'
-    );
-  }
+      return response.data;
+    } catch (err) {
+      return thunkAPI.rejectWithValue(
+        err.response?.data?.message || 'Project creation failed'
+      );
+    }
   }
 );
 
-
 export const fetchAllProjects = createAsyncThunk(
   'project/fetch',
-  async(_, thunkAPI) => {
+  async (_, thunkAPI) => {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_BACKEND}/api/projects`);
+      const response = await axios.get(
+        `${import.meta.env.VITE_BACKEND}/api/projects`
+      );
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(
-       error.response?.data?.message || "Failed to fetch the projects data"
-      )
+        error.response?.data?.message || 'Failed to fetch the projects data'
+      );
     }
   }
-)
+);
 
 export const fetchByProjectName = createAsyncThunk(
-  'project/fetchById',async(name, thunkAPI)=>{
+  'project/fetchById',
+  async (name, thunkAPI) => {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_BACKEND}/api/projects/${name}`)
+      const response = await axios.get(
+        `${import.meta.env.VITE_BACKEND}/api/projects/${name}`
+      );
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(
-        error.response?.data?.message || "Failed to fetch the project by ID"
-      )
+        error.response?.data?.message || 'Failed to fetch the project by ID'
+      );
     }
   }
-)
+);
 
 const projectSlice = createSlice({
   name: 'projects',
@@ -101,29 +106,31 @@ const projectSlice = createSlice({
         state.error = action.payload;
         state.loading = false;
       })
-      .addCase(fetchAllProjects.pending, (state)=>{
+      .addCase(fetchAllProjects.pending, (state) => {
         state.error = null;
         state.loading = true;
       })
-      .addCase(fetchAllProjects.fulfilled, (state, action)=>{
+      .addCase(fetchAllProjects.fulfilled, (state, action) => {
         state.error = null;
         state.loading = false;
         state.projects = action.payload;
       })
-      .addCase(fetchAllProjects.rejected, (state, action)=>{
+      .addCase(fetchAllProjects.rejected, (state, action) => {
         state.error = action.payload;
         state.loading = false;
       })
-      .addCase(fetchByProjectName.pending, (state)=>{
+      .addCase(fetchByProjectName.pending, (state) => {
         state.error = null;
         state.loading = true;
       })
-      .addCase(fetchByProjectName.fulfilled, (state, action)=>{
+      .addCase(fetchByProjectName.fulfilled, (state, action) => {
         state.error = null;
         state.loading = false;
-        state.project = action.payload[0];
+        state.project = Array.isArray(action.payload)
+          ? action.payload[0] || {}
+          : action.payload || {};
       })
-      .addCase(fetchByProjectName.rejected, (state, action)=>{
+      .addCase(fetchByProjectName.rejected, (state, action) => {
         state.error = action.payload;
         state.loading = false;
       });
