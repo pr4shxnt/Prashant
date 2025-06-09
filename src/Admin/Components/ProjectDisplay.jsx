@@ -37,13 +37,14 @@ const ProjectDisplay = () => {
   }, [location.pathname]);
 
   useEffect(() => {
-    if (showSidebar) {
+    if (showSidebar && name) {
       dispatch(fetchByProjectName(name));
     }
   }, [dispatch, name, showSidebar]);
 
   useGSAP(
     () => {
+      if (loading || showLoading) return;
       if (!project?.name) return;
 
       const sidebarAnim =
@@ -90,7 +91,7 @@ const ProjectDisplay = () => {
         ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       };
     },
-    { dependencies: [project?.name, showSidebar] }
+    { dependencies: [loading, showLoading, project?.name, showSidebar] }
   );
 
   if (error) {
@@ -102,7 +103,7 @@ const ProjectDisplay = () => {
   if (loading || showLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center text-xl font-semibold text-charcoal">
-        <LoadingPage/>
+        <LoadingPage />
       </div>
     );
   }
