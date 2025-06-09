@@ -1,26 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchByProjectName } from "../../../Features/Project/projectSlice";
-import MenuBar from "../../MenuBar";
+import {  useSelector } from "react-redux";
 import DOMPurify from "dompurify";
 import { X } from "lucide-react";
 import { createPortal } from "react-dom";
 import LoadingPage from "../../../Utils/loadingpage";
 
 const ProjectIndividual = () => {
-  const { name } = useParams();
-  const dispatch = useDispatch();
   const { project, loading, error } = useSelector((state) => state.projects);
-  const [showMenu, setShowMenu] = useState(false);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [imagesModelOpen, setImagesModelOpen] = useState(false);
 
   
 
-  // useEffect(() => {
-  //   dispatch(fetchByProjectName(name));
-  // }, [dispatch, name]);
 
   useEffect(() => {
     document.title = `Project | ${project?.name || "Loading..."}`;

@@ -120,7 +120,7 @@ const ProjectDisplay = () => {
               new Date(project.updatedAt).toLocaleString('en-US')}
           </p>
 
-          <h1 className="text-brown font-bold text-5xl">{project.name}</h1>
+          <h1 className="text-brown text-center font-bold text-5xl">{project.name}</h1>
           <p className="mt-1">Home/Projects/{project?.name}</p>
         </div>
       )}
