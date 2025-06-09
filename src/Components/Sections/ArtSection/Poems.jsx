@@ -4,6 +4,7 @@ import { Instagram } from "lucide-react";
 import gsap from "gsap";
 import Poemcard from "./Poemcard";
 import { fetchAllPoems } from "../../../Features/Art/poemSlice";
+import LoadingPage from "../../../Utils/loadingpage";
 
 const Poem = () => {
   const dispatch = useDispatch();
@@ -79,7 +80,7 @@ const Poem = () => {
   if (loading)
     return (
       <div className="text-center bg-sand h-screen w-full text-brown">
-        Loading...
+        <LoadingPage/>
       </div>
     );
   if (error)

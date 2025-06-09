@@ -6,6 +6,7 @@ import MenuBar from "../../MenuBar";
 import DOMPurify from "dompurify";
 import { X } from "lucide-react";
 import { createPortal } from "react-dom";
+import LoadingPage from "../../../Utils/loadingpage";
 
 const ProjectIndividual = () => {
   const { name } = useParams();
@@ -29,10 +30,10 @@ const ProjectIndividual = () => {
     setActiveImageIndex(index);
   };
 
-  if (loading) {
+  if (loading && !project.name) {
     return (
       <div className="h-screen flex items-center justify-center">
-        <div className="text-brown font-bold text-2xl">Loading...</div>
+        <LoadingPage/>
       </div>
     );
   }
@@ -49,7 +50,6 @@ const ProjectIndividual = () => {
     <>
       {(project?.name || !loading) && (
         <div className="bg-sand flex flex-col md:flex-row gap-3 min-h-screen text-brown relative pb-10">
-          {/* Description Section */}
           <div className="w-full hidden md:block md:w-[70%]">
             <h1 className="text-3xl font-bold pb-7"></h1>
             <div className="text-brown">
@@ -62,7 +62,6 @@ const ProjectIndividual = () => {
             </div>
           </div>
 
-          {/* Images and Info Section */}
           <div className="w-full md:w-[30%] flex flex-col">
             {project?.images?.length > 0 && (
               <>
@@ -110,7 +109,8 @@ const ProjectIndividual = () => {
                 </div>
               )}
 
-              <h1 className="md:text-lg text-2xl font-bold md:font-semibold mt-6">{project.name}</h1>
+
+              { project.name && <div className=""> <h1 className="md:text-lg text-2xl font-bold md:font-semibold mt-6">{project.name}</h1>
               <p className="md:text-sm text-gray-600">
                 Created on: {new Date(project.createdAt).toLocaleDateString()}
               </p>
@@ -143,7 +143,7 @@ const ProjectIndividual = () => {
               </p>
 
               <h1 className="md:text-lg text-2xl font-bold md:font-semibold mt-6">Status</h1>
-              <span className="md:text-sm font-normal">{project.status}</span>
+              <span className="md:text-sm font-normal">{project.status}</span> </div>}
             </div>
           </div>
 

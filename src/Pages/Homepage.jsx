@@ -119,6 +119,7 @@ x: pr4xnt`,
         <MenuBar showMenu={showMenu} setShowMenu={setShowMenu} />
       </div>
 
+
       {showHam && (
         <div className="hidden md:block fixed bottom-2 right-2 z-[10000]">
           <button

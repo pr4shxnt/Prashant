@@ -14,6 +14,7 @@ import SkillsManager from "./Admin/Forms/SkillsManager";
 import ProjectIndividual from "./Components/Sections/ProjectSection.jsx/ProjectIndividual"; 
 import ManagePoems from "./Admin/Forms/ManagePoems";
 import Projects from "./Components/Sections/ProjectSection.jsx/Projects";
+import LoadingPage from "./Utils/loadingpage";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "",
         element: <Homepage />,
+      },
+      {
+        path: "/a",
+        element: <LoadingPage/>
       }
     ],
   },

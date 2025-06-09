@@ -4,6 +4,7 @@ import { fetchAllProjects } from "../../../Features/Project/projectSlice";
 import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import gsap from "gsap";
 import { NavLink } from "react-router-dom";
+import LoadingPage from "../../../Utils/loadingpage";
 
 const SLIDE_INTERVAL = 5000;
 
@@ -160,9 +161,7 @@ const ProjectScreen = () => {
 
   if (!projects.length)
     return (
-      <div className="text-center bg-sand h-screen w-full text-brown">
-        Loading...
-      </div>
+      <LoadingPage/>
     );
 
   return (
