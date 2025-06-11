@@ -226,7 +226,7 @@ const ProjectScreen = () => {
                 aria-label={`Go to slide ${i + 1}`}
                 aria-current={i === currentIndex}
                 className={`w-3 h-3 rounded-full transition-colors duration-300 ${
-                  i === currentIndex ? "bg-beige" : "bg-charcoal hover:bg-brown"
+                  i === currentIndex ? "bg-charcoal" : "bg-beige hover:bg-brown"
                 }`}
               />
             ))}
