@@ -30,7 +30,9 @@ const ProjectCard = ({ project, i }) => {
           loading="lazy"
           className="w-[100%] h-[100%] object-cover rounded-t-lg"
         />
-        <div className="absolute bottom-0 rounded-tl-2xl text-beige p-2 right-0 bg-brown/50"><NavLink to={`/projects/${project.name}`}><ExternalLink/></NavLink></div>
+        <div className="absolute hidden md:block bottom-0 rounded-tl-2xl text-beige p-2 right-0 bg-brown/50"><NavLink to={`/projects/${project.name}`}><ExternalLink/></NavLink></div>
+                <div className="absolute md:hidden top-0 rounded-bl-2xl text-beige p-2 right-0 bg-brown/50"><NavLink to={`/projects/${project.name}`}><ExternalLink/></NavLink></div>
+
       </div>
       <div className="bg-bronze w-[100%] text-cream px-3 py-3">
         <div className="flex justify-between items-center">
