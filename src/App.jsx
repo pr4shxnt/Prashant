@@ -15,6 +15,7 @@ import ProjectIndividual from "./Components/Sections/ProjectSection.jsx/ProjectI
 import ManagePoems from "./Admin/Forms/ManagePoems";
 import Projects from "./Components/Sections/ProjectSection.jsx/Projects";
 import LoadingPage from "./Utils/loadingpage";
+import ResumeManager from "./Admin/Components/ResumeManager";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
       {
         path: "poems",
         element: <ManagePoems/>
+      },
+      {
+        path: "resume",
+        element: <ResumeManager/>
       }
     ]
   },

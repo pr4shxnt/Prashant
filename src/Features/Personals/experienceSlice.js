@@ -22,6 +22,7 @@ export const addExperience = createAsyncThunk(
     "resume/create-experience",
     async (experienceData, ThunkAPI)=>{
         try {
+            
             const formData = new FormData();
 
             Object.entries(experienceData).forEach(([key, value]) => {
@@ -33,7 +34,6 @@ export const addExperience = createAsyncThunk(
             const response = await axios.post(`${import.meta.env.VITE_BACKEND}/api/resume/create-experience`,
                formData, {
                     headers: {
-                        'Content-Type': 'multipart/form-data',
                         Authorization: `Bearer ${token}`,
                     },
                 }       
@@ -45,6 +45,21 @@ export const addExperience = createAsyncThunk(
         }
     }
 )
+
+export const fetchAllExperience = createAsyncThunk(
+    "resume/fetch-experience",
+    async (_, ThunkAPI)=>{
+        try {
+           
+            const response = await axios.get(`${import.meta.env.VITE_BACKEND}/api/resume/experience`);
+    return response.data;
+
+        } catch (error) {
+          return ThunkAPI.rejectWithValue(error.response?.data?.message || "Failed to fetch experience block")  
+        }
+    }
+)
+
 
 
 const experienceSlice = createSlice({
@@ -63,9 +78,21 @@ const experienceSlice = createSlice({
         .addCase(addExperience.fulfilled, (state, action)=>{
             state.loading = false;
             state.error = null;
-            state.experiences = action.payload;
         })
         .addCase(addExperience.rejected, (state, action)=>{
+            state.loading = false;
+            state.error = action.payload;
+        })
+        .addCase(fetchAllExperience.pending, (state)=>{
+            state.loading = true;
+            state.error = null;
+        })
+        .addCase(fetchAllExperience.fulfilled, (state, action)=>{
+            state.loading = false;
+            state.error = null;
+            state.experiences = action.payload;
+        })
+        .addCase(fetchAllExperience.rejected, (state, action)=>{
             state.loading = false;
             state.error = action.payload;
         })

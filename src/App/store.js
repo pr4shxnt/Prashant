@@ -3,6 +3,7 @@ import projectReducer from '../Features/Project/projectSlice';
 import skillReducer from '../Features/Skills/skillsSlice';
 import authReducer from '../Features/Auth/authSlice';
 import poemsReducer from '../Features/Art/poemSlice'
+import experienceReducer from '../Features/Personals/experienceSlice'
 
 export const store = configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export const store = configureStore({
     skills: skillReducer,
     auth: authReducer,
     poems: poemsReducer,
+    experience: experienceReducer,
   },
 });

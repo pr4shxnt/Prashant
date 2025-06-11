@@ -58,8 +58,8 @@ const Sidebar = () => {
       icon: <BookAudio size={18}/>
     },
     {
-      name: "Personal Info",
-      path: "/admin/info",
+      name: "Personal Resume",
+      path: "/admin/resume",
       icon: <InfoIcon size={18} />,
     },
     { name: "Social Links", path: "/admin/socials", icon: <Users size={18} /> },
