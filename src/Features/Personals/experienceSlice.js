@@ -34,6 +34,7 @@ export const addExperience = createAsyncThunk(
             const response = await axios.post(`${import.meta.env.VITE_BACKEND}/api/resume/create-experience`,
                formData, {
                     headers: {
+                        'Content-Type': 'multipart/form-data',
                         Authorization: `Bearer ${token}`,
                     },
                 }       

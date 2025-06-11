@@ -38,25 +38,15 @@ const ManageExperience = () => {
       alert("Please fill in all fields.");
       return;
     }
+    
 
     dispatch(addExperience(formData));
 
-    // Reset form
-    setFormData({
-      role: "",
-      company: "",
-      startingDate: "",
-      endDate: "",
-      description: "",
-      companyEmail: "",
-      companySite: "",
-      companyPhone: "",
-      companyAddress: "",
-    });
+  
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-beige to-white py-10 px-4 md:px-20">
+    <div className="min-h-screen bg-sand py-10 px-4 md:px-20">
       <div className="flex flex-col md:flex-row gap-8">
         {/* Left: Experience List */}
         <div className="w-full md:w-1/2 h-[650px] overflow-y-scroll custom-scrollbar pr-4">
