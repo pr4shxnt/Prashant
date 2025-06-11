@@ -194,7 +194,7 @@ const ProjectScreen = () => {
               className="flex transition-transform bg-bronze duration-700 rounded-lg ease-in-out will-change-transform"
               style={{
                 transform: `translateX(${-currentIndex * 100}%)`,
-                width: `${projects.length * 50}%`,
+                width: `${projects.length * (100/projects.length)}%`,
               }}
             >
               {projects.slice(0, 6).map((project, i) => (
