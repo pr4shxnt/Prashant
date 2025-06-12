@@ -7,6 +7,9 @@ export const isTokenExpired = (jwtToken) => {
   try {
     const payload = JSON.parse(atob(jwtToken.split(".")[1]));
     const currentTime = Date.now() / 1000;
+    if(payload.exp < currentTime){
+            localStorage.removeItem("admin_session");
+    }
     return payload.exp < currentTime;
   } catch {
     localStorage.removeItem("admin_session");
@@ -43,11 +46,10 @@ export const loginAdmin = createAsyncThunk(
   }
 );
 
-
 export const logoutAdmin = () => {
-    localStorage.removeItem("admin_session");
-    window.location.href = "/";
-  };
+  localStorage.removeItem("admin_session");
+  window.location.href = "/";
+};
 
 const authSlice = createSlice({
   name: "auth",
@@ -78,7 +80,7 @@ const authSlice = createSlice({
         state.isAdminAuthenticated = false;
         state.token = null;
         state.adminData = initialState.adminData;
-      })
+      });
   },
 });
 
