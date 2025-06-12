@@ -70,7 +70,7 @@ function MenuItem({ link, text, image }) {
   ));
 
   return (
-    <div className="menu__item" ref={itemRef}>
+    <div className="menu__item hover:w-[80%] bg-beige text-charcoal shadow-2xl w-[90%] mx-auto transition-all duration-300 py-10" ref={itemRef}>
       <a
         className="menu__item-link"
         href={link}
@@ -79,9 +79,9 @@ function MenuItem({ link, text, image }) {
       >
         {text}
       </a>
-      <div className="marquee" ref={marqueeRef}>
+      <div className="marquee " ref={marqueeRef}>
         <div className="marquee__inner-wrap" ref={marqueeInnerRef}>
-          <div className="marquee__inner" aria-hidden="true">
+          <div className="marquee__inner " aria-hidden="true">
             {repeatedMarqueeContent}
           </div>
         </div>

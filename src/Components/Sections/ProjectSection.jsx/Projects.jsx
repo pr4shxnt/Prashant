@@ -91,7 +91,7 @@ const Projects = () => {
 
           {!error && projects.length > 0 && (
             <>
-            <div className='relative h-[200px] hidden md:block'>
+            <div className='relative  hidden md:block'>
               <FlowingMenu items={items} />
             </div>
              <div className="w-[85%] mx-auto md:hidden grid pb-10 gap-4 grid-cols-1  ">
