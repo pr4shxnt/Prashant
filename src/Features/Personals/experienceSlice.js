@@ -13,7 +13,7 @@ const initialState = {
             companyPhone: "",
             companyAddress: "",
         },
-    loading: false,
+    loading: undefined,
     error: null,
     experiences: []
 }

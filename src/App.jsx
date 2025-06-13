@@ -16,6 +16,9 @@ import ManagePoems from "./Admin/Forms/ManagePoems";
 import Projects from "./Components/Sections/ProjectSection.jsx/Projects";
 import LoadingPage from "./Utils/loadingpage";
 import ResumeManager from "./Admin/Components/ResumeManager";
+import ResumeViewer from "./Pages/ResumeViewer";
+import ExperienceBlock from "./Components/ResumePage/ExperienceBlock";
+import PersonalInformation from "./Components/ResumePage/PersonalInformation";
 
 const router = createBrowserRouter([
   {
@@ -26,10 +29,7 @@ const router = createBrowserRouter([
         path: "",
         element: <Homepage />,
       },
-      {
-        path: "/a",
-        element: <LoadingPage/>
-      }
+      
     ],
   },
   {
@@ -56,10 +56,6 @@ const router = createBrowserRouter([
         path: "poems",
         element: <ManagePoems/>
       },
-      {
-        path: "resume",
-        element: <ResumeManager/>
-      }
     ]
   },
   {
@@ -75,6 +71,21 @@ const router = createBrowserRouter([
         element: <ProjectIndividual />
       }
     ]
+  },
+  {
+  path: "/curriculum-vitae",
+  element: <ResumeViewer />,
+  children: [
+    {
+      path: "overview",
+      element: <PersonalInformation/>
+    },
+    {
+      path: "experience",
+      element: <ExperienceBlock />,
+    }
+  ]
+
   }
 ]);
 
