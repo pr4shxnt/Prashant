@@ -47,10 +47,10 @@ const ResumeViewer = () => {
           <NavLink  className='group' to="/curriculum-vitae/overview">Overview <div className="w-0 underl group-hover:w-full h-[1.7px]   rounded-2xl transition-all ease-in-out duration-300 bg-beige "></div> </NavLink>
           <NavLink className='group' to="/curriculum-vitae/experience">Experience <div className="w-0 underl group-hover:w-full h-[1.7px]   rounded-2xl transition-all ease-in-out duration-300 bg-beige "></div> </NavLink>
           <NavLink className='group' to="/curriculum-vitae/education">Education <div className="w-0 group-hover:w-full h-[1.7px] underl  rounded-2xl transition-all ease-in-out duration-300 bg-beige "></div> </NavLink>
-          <NavLink className='group' to="/projects">Projects <div className="w-0 group-hover:w-full h-[1.7px] underl  rounded-2xl transition-all ease-in-out duration-300 bg-beige "></div> </NavLink>
+          <NavLink className='group hidden md:block' to="/projects">Projects <div className="w-0 group-hover:w-full h-[1.7px] underl  rounded-2xl transition-all ease-in-out duration-300 bg-beige "></div> </NavLink>
           <NavLink className='group' to="/curriculum-vitae/certificates">Certificates <div className="w-0 group-hover:w-full h-[1.7px] underl  rounded-2xl transition-all ease-in-out duration-300 bg-beige "></div> </NavLink>
         </div>
-          <div className="">
+          <div className="hidden md:block">
             <NavLink>
                 <Home size={20}/>
             </NavLink>
