@@ -79,16 +79,11 @@ const Poem = () => {
 
   if (loading)
     return (
-      <div className="text-center bg-sand h-screen w-full text-brown">
-        <LoadingPage/>
+      <div className="h-[50vh] flex items-center justify-center">
+        <LoadingPage />
       </div>
     );
-  if (error)
-    return (
-      <div className="text-center bg-sand h-screen w-full text-brown">
-        Error: {error}
-      </div>
-    );
+
   if (!poems.length)
     return (
       <div className="text-center bg-sand h-screen w-full text-brown">
@@ -115,7 +110,11 @@ const Poem = () => {
             intellectual things all day.
           </p>
           <button className="bg-beige py-3 px-6 text-bronze font-semibold rounded-bl-4xl rounded-tr-4xl rounded-br-2xl rounded-tl-2xl hover:bg-beige/40 transition-all duration-500 w-max">
-            <a href="https://www.instagram.com/pr4xnt" target="_blank" className="flex items-center justify-center gap-2">
+            <a
+              href="https://www.instagram.com/pr4xnt"
+              target="_blank"
+              className="flex items-center justify-center gap-2"
+            >
               <Instagram /> Follow
             </a>
           </button>
@@ -132,7 +131,11 @@ const Poem = () => {
             intellectual things all day.
           </p>
           <button className="bg-beige py-3 px-6 text-bronze font-semibold rounded-bl-4xl rounded-tr-4xl rounded-br-2xl rounded-tl-2xl hover:bg-beige/40 transition-all duration-500 w-max">
-            <a href="https://www.instagram.com/pr4xnt" target="_blank" className="flex items-center justify-center gap-2">
+            <a
+              href="https://www.instagram.com/pr4xnt"
+              target="_blank"
+              className="flex items-center justify-center gap-2"
+            >
               <Instagram /> Follow
             </a>
           </button>

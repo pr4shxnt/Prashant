@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Marquee from 'react-fast-marquee';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllSkills } from '../Features/Skills/skillsSlice';
+import LoadingPage from '../Utils/loadingpage';
 
 const MarqueeComp = ({direction}) => {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ useEffect(() => {
   return (
     <div className='text-white w-[85%] container bg-sand mx-auto pb-16'>
       {loading || initialLoad ? (
-        <p className="text-center">Loading skills...</p>
+        <p className="h-[50vh] flex items-center justify-center"><LoadingPage/></p>
       ) : (
         <Marquee direction={direction} pauseOnHover={true}>
           <div className="flex gap-8 text-3xl mx-5 overflow-hidden">

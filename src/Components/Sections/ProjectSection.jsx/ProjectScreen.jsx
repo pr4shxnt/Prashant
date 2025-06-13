@@ -163,7 +163,8 @@ const ProjectScreen = () => {
 
   if (!projects.length)
     return (
-      <LoadingPage/>
+              <div className="h-[50vh] flex items-center justify-center"><LoadingPage/></div>
+
     );
 
   return (
