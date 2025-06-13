@@ -41,7 +41,7 @@ const ResumeViewer = () => {
         <MenuBar showMenu={showMenu} setShowMenu={setShowMenu} />
       </div>
         <div className="">
-        <nav className={`fixed  left-1/2 transform -translate-x-1/2  py-6 w-[90%] md:w-[45%] h-10 ${isScrolled > 40 ? " top-3" : " top-7"} transition-all duration-100 ease-in-out bg-white   rounded-full  shadow-2xl shadow-black`}>
+        <nav className={`fixed  left-1/2 transform -translate-x-1/2  py-6 w-[95%] md:w-[45%] h-10 ${isScrolled > 40 ? " top-3" : " top-7"} transition-all duration-100 ease-in-out bg-white   rounded-full  shadow-2xl shadow-black`}>
         <div className={` flex items-center h-full justify-between px-5 text-charcoal `}>
          <div className="damndumn flex items-center gap-6">
           <NavLink  className='group' to="/curriculum-vitae/overview">Overview <div className="w-0 underl group-hover:w-full h-[1.7px]   rounded-2xl transition-all ease-in-out duration-300 bg-beige "></div> </NavLink>

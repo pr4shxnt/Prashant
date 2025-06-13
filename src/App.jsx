@@ -19,6 +19,7 @@ import ResumeManager from "./Admin/Components/ResumeManager";
 import ResumeViewer from "./Pages/ResumeViewer";
 import ExperienceBlock from "./Components/ResumePage/ExperienceBlock";
 import PersonalInformation from "./Components/ResumePage/PersonalInformation";
+import EducationBlock from "./Components/ResumePage/EducationBlock";
 
 const router = createBrowserRouter([
   {
@@ -83,6 +84,10 @@ const router = createBrowserRouter([
     {
       path: "experience",
       element: <ExperienceBlock />,
+    },
+    {
+      path: "education",
+      element: <EducationBlock/>
     }
   ]
 

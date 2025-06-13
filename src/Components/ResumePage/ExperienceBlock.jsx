@@ -32,18 +32,17 @@ const ExperienceBlock = () => {
         const isExpanded = expandedIndex === index;
 
         return (
-            <div className="flex w-full  text-charcoal px-7  gap-6 py-7 rounded-4xl  shadow-charcoal transition-all duration-300">
+            <div className="flex w-full my-3  text-charcoal px-7  gap-6 py-7 rounded-2xl hover:bg-white/60  transition-all duration-300">
                 <div className="bg-brown h-max p-2 rounded-xl hidden md:block"><Laptop size={35} color="wheat"/></div>
           <div
             key={index}
             className=""
           >
-            <div className="flex justify-between">
+            <div className="flex justify-between mb-2">
               <div>
                 <h1 className="text-xl font-semibold">{experience.role}</h1>
                 <div className="flex flex-col md:flex-row md:gap-2 md:items-center text-bronze">
-                  <p className="font-semibold">
-                    at{" "}
+                  <p className="font-semibold mt-1">
                     <a
                       href={experience.companySite}
                       className="hover:underline"
