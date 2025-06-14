@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ExternalLink } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 import FlowingMenu from './projectsFlow';
+import Waves from '../../Waves';
 
 const Projects = () => {
   const dispatch = useDispatch();
@@ -74,11 +75,14 @@ const Projects = () => {
   );
 
   return (
-    <div className="bg-sand w-full">
-      <header className="w-full">
+    <div className="bg-sand w-full ">
+      <header className="w-full relative">
         <title>Projects | Prashant Adhikari</title>
+        <div className="absolute h-full w-full">
+          <Waves/>
+        </div>
         <div className="h-screen flex flex-col items-center gap-1.5 justify-center w-full">
-          <h1 className="text-charcoal font-bold text-5xl">Personal projects</h1>
+          <h1 className="text-charcoal text-center font-bold text-5xl">Personal projects</h1>
           <p className="text-charcoal font-light">Home / Projects</p>
         </div>
       </header>
@@ -91,7 +95,7 @@ const Projects = () => {
 
           {!error && projects.length > 0 && (
             <>
-            <div className='relative  hidden md:block'>
+            <div className='relative pt-10  hidden md:block'>
               <FlowingMenu items={items} />
             </div>
              <div className="w-[85%] mx-auto md:hidden grid pb-10 gap-4 grid-cols-1  ">

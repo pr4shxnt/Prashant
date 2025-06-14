@@ -9,6 +9,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import LoadingPage from '../../Utils/loadingpage';
+import Waves from '../../Components/Waves';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -51,16 +52,35 @@ const ProjectDisplay = () => {
         sidebarRef.current && showSidebar
           ? gsap.fromTo(
               sidebarRef.current,
-              { autoAlpha: 0, x: -50 },
+              { autoAlpha: 0,},
               {
                 autoAlpha: 1,
-                x: 0,
-                duration: 2,
-                ease: 'power2.out',
+                duration: 3,
+                ease: 'expo.out',
+                delay: 0.2,
                 scrollTrigger: {
                   trigger: sidebarRef.current,
                   start: 'top 90%',
-                  toggleActions: 'play none none none',
+                  
+                  once: true,
+                },
+              }
+            )
+          : null;
+      const titleAnim =
+        titleRef.current
+          ? gsap.fromTo(
+              titleRef.current,
+              { autoAlpha: 0,},
+              {
+                autoAlpha: 1,
+                duration: 3,
+                ease: 'expo.out',
+                delay: 0.2,
+                scrollTrigger: {
+                  trigger: titleRef.current,
+                  start: 'top 90%',
+                  
                   once: true,
                 },
               }
@@ -70,17 +90,16 @@ const ProjectDisplay = () => {
       const outletAnim = outletRef.current
         ? gsap.fromTo(
             outletRef.current,
-            { autoAlpha: 0, x: 50 },
+            { opacity: 0, },
             {
-              autoAlpha: 1,
-              x: 0,
-              duration: 2,
+              opacity: 1,
+              duration: 3,
               ease: 'expo.out',
-              delay: 0.2,
+              delay: 0.9,
               scrollTrigger: {
                 trigger: outletRef.current,
                 start: 'top 90%',
-                toggleActions: 'play none none none',
+                
                 once: true,
               },
             }
@@ -111,18 +130,20 @@ const ProjectDisplay = () => {
   return (
     <div>
       {showSidebar && (
-        <div
-          ref={titleRef}
-          className="min-h-screen p-5 flex flex-col gap-0.5 items-center justify-center"
+        <header ref={titleRef}
+          className="min-h-screen p-5 relative flex flex-col gap-0.5 items-center justify-center"
         >
-          <p className="text-brown">
+          <div className="h-full w-full absolute">
+            <Waves/>
+          </div>
+          <p className="text-black">
             {project.updatedAt &&
               new Date(project.updatedAt).toLocaleString('en-US')}
           </p>
 
-          <h1 className="text-brown text-center font-bold text-5xl">{project.name}</h1>
+          <h1 className="text-black text-center font-bold text-5xl">{project.name}</h1>
           <p className="mt-1">Home/Projects/{project?.name}</p>
-        </div>
+        </header>
       )}
 
       <div className="fixed bottom-2 left-2 z-[10000]">
@@ -130,7 +151,7 @@ const ProjectDisplay = () => {
       </div>
 
       <div
-        className={`relative flex gap-3 ${
+        className={`relative  flex gap-3 ${
           showSidebar ? 'w-[90%]' : 'w-[100%]'
         } mx-auto pb-5`}
       >

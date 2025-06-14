@@ -33,7 +33,7 @@ const ProjectIndividual = () => {
 
   if (error) {
     return (
-      <div className="h-screen flex items-center justify-center">
+      <div className="h-screen  flex items-center justify-center">
         <div className="text-red-500 font-bold text-2xl">Error: {error}</div>
       </div>
     );
@@ -42,7 +42,7 @@ const ProjectIndividual = () => {
   return (
     <>
       {(project?.name || !loading) && (
-        <div className="bg-sand flex flex-col md:flex-row gap-3 min-h-screen text-brown relative pb-10">
+        <div className="bg-sand flex pt-10 flex-col md:flex-row gap-3 min-h-screen text-brown relative pb-10">
           <div className="w-full hidden md:block md:w-[70%]">
             <h1 className="text-3xl font-bold pb-7"></h1>
             <div className="text-brown">

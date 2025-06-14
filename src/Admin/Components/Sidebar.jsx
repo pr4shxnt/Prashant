@@ -72,7 +72,7 @@ const Sidebar = () => {
     { name: "Home", path: "/", icon: <Home size={18} /> },
   ];
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full pt-10">
       <div className="w-full relative bg-brown h-full">
         <div className="absolute text-center text-xs w-full bottom-0 left-0  bg-charcoal text-white p-4">
           <h1 className="flex gap-1 justify-center">

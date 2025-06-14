@@ -15,7 +15,7 @@ const ProjectsSidebar = ({ sidebarRef }) => {
   }, [dispatch, projects]);
 
   return (
-    <div ref={sidebarRef} className="bg-charcoal rounded-md fixed md:relative">
+    <div ref={sidebarRef} className="bg-charcoal mt-10 rounded-md fixed md:relative">
       <div>
         <h1 className="text-beige font-bold text-xl px-4 py-6"><NavLink to={`/`}>Prashant's Projects</NavLink></h1>
       </div>
