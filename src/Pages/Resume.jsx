@@ -25,13 +25,13 @@ const Resume = () => {
                   className="h-[245px] w-full rounded-4xl object-cover"
                 />
               </div>
-              <div className="w-full md:w-[70%] h-max bg-white/80 shadow-2xl shadow-charcoal px-4 rounded-4xl pt-5 flex items-start flex-col gap-8">
-                <h1 className="text-xl font-semibold pt-2">
-                  Hi, I'm Prashant Adhikari{" "}
+              <div className="w-full md:w-[70%] h-max bg-white/80 shadow-2xl shadow-charcoal px-5 rounded-4xl pt-5 flex items-start flex-col gap-8">
+                <h1 className="text-2xl font-semibold pt-2">
+                  Prashant Adhikari{" "}
                 </h1>
                 <p className="">
-                  17yo | CS/AI | @ Sunway | ML @ Birmingham City Uni | Builder &
-                  ML Researcher
+                  17yo | CS/AI/ML | @ Sunway College | @ Birmingham City Uni | Developer &
+                  AI/ML Researcher
                 </p>
                 <button className="bg-charcoal flex gap-3 text-sand py-2 px-5 rounded-full items-center">
                   Hire Dev <ArrowRight size={15} />
