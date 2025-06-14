@@ -46,11 +46,12 @@ const InitialRender = ({ setShowContent }) => {
                 x="50%"
                 y="50%"
                 fontSize="1vw"
+                fontWeight="700"
                 textAnchor="middle"
                 letterSpacing="0.1vw"
                 fill="white"
                 dominantBaseline="middle"
-                fontFamily="Arial Black"
+                fontFamily="Ubuntu"
               >PR4XNT
               </text>
             </g>
