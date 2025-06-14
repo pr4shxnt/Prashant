@@ -96,10 +96,6 @@ x: pr4xnt`,
     });
   }, [showHam]);
 
-  const scrollDownHandler = () => {
-    console.log("Scrolling down..."); // Debug log
-    window.scrollTo(0, 735);
-  };
 
   const scrollHandler = (arg) => {
     window.scrollTo(0, arg);
