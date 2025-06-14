@@ -35,8 +35,7 @@
   font-size: 4vh;
 }
 
-.menu:hover {
-}
+
 
 .menu:focus:not(:focus-visible) {
   color: var(--color-charcoal);

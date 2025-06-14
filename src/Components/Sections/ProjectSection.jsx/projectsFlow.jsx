@@ -8,14 +8,14 @@ function FlowingMenu({ items = [] }) {
     <div className="menu-wrap">
       <nav className="menu">
         {items.map((item, idx) => (
-          <MenuItem key={idx} {...item} />
+          <MenuItem key={idx} index={idx} {...item} />
         ))}
       </nav>
     </div>
   );
 }
 
-function MenuItem({ link, text, image }) {
+function MenuItem({ link, text, image, index }) {
   const itemRef = React.useRef(null);
   const marqueeRef = React.useRef(null);
   const marqueeInnerRef = React.useRef(null);
@@ -67,17 +67,21 @@ function MenuItem({ link, text, image }) {
         style={{ backgroundImage: `url(${image})` }}
       />
     </React.Fragment>
+    
+    
   ));
 
   return (
-    <div className="menu__item hover:w-[80%] w-[90%] bg-beige/50 text-black/40   mx-auto transition-all duration-300 py-6 " ref={itemRef}>
+    <div className="menu__item hover:w-[80%] w-[90%] bg-beige/50 text-black/40   mx-auto transition-all duration-300 " ref={itemRef}>
       <a
-        className="menu__item-link"
+        className="menu__item-link py-6 "
         href={link}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
+        {index+1}. {" "}
         {text}
+        
       </a>
       <div className="marquee " ref={marqueeRef}>
         <div className="marquee__inner-wrap" ref={marqueeInnerRef}>
