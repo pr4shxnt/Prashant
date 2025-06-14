@@ -102,8 +102,8 @@ const Home = () => {
               />
               <div className="absolute top-0 left-0 w-full h-full bg-charcoal/60 z-[1]"></div>
               <div className="text text-[#DDB884] flex flex-col gap-3 absolute -top-[200%] font-bold left-1/2 -translate-x-1/2 scale-[1.4] rotate-[-10deg] z-[2]">
-                <h1 className="text-[10rem] leading-none [-webkit-text-stroke:1.5px_#242528]">Prashant</h1>
-                <h1 className="text-[10rem] leading-none ml-40 [-webkit-text-stroke:1.5px_#242528]">Adhikari</h1>
+                <h1 className="text-[10rem]  leading-none [-webkit-text-stroke:1.5px_#242528]">Prashant</h1>
+                <h1 className="text-[10rem]  leading-none ml-40 [-webkit-text-stroke:1.5px_#242528]">Adhikari</h1>
               </div>
               <img
                 className="absolute character drop-shadow-[0_15px_25px_rgba(0,0,0,5)] w-[35%] -bottom-[200%] left-1/2 -translate-x-1/2  scale-[3] rotate-[-20deg] z-[2]"

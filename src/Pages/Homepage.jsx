@@ -297,7 +297,7 @@ x: pr4xnt`,
               </div>
             )}
 
-            <div className="absolute text-xs uppercase tracking-widest links pb-2 bottom-0 left-0 flex items-center z-[200] px-3 py-1 gap-3 font-semibold text-cream">
+            <div className="absolute nunito text-xs uppercase tracking-widest links pb-2 bottom-0 left-0 flex items-center z-[200] px-3 py-1 gap-3 font-semibold text-cream">
               <NavLink
                 to="/projects"
                 className="group flex flex-col rounded-full"

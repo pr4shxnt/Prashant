@@ -35,17 +35,15 @@ const EducationBlock = () => {
           return (
             <div
               key={index}
-              className="flex  w-full shadow-2xl shadow-charcoal text-charcoal px-4 md:px-7 bg-white  gap-6 py-7 rounded-2xl   transition-all duration-300"
+              className="flex items-center w-full shadow-2xl shadow-charcoal text-charcoal px-4 md:px-7 bg-white  gap-6 py-7 rounded-2xl   transition-all duration-300"
             >
-              <div className="bg-brown h-max p-2 rounded-xl hidden md:block">
-                <University size={35} color="wheat" />
-              </div>
+             
               <div className="w-full">
-                <div className="flex w-full justify-between mb-2">
+                <div className="flex px-5 w-full justify-between mb-2">
                   <div className="w-full">
                     <div className="flex justify-between w-full">
                       <h1 className="md:text-xl text-lg w-[60%] font-semibold">
-                        <span className="">{education.Level} in </span>
+                        <span className="">{education.Level} - </span>
                         {education.Field}
                       </h1>
                       <p className="w-[50%] text-end">
@@ -65,7 +63,7 @@ const EducationBlock = () => {
                       </p>
                     </div>
                     <div className="flex flex-col md:flex-row md:gap-2 md:items-center text-bronze">
-                      <p className="font-semibold md:text-lg text-sm mt-1">
+                      <p className="font-nunito md:text-[1rem]  text-sm mt-1">
                         <a
                           href={`https://www.${education.Website}`}
                           className="hover:underline"
@@ -82,14 +80,7 @@ const EducationBlock = () => {
                   </div>
                 </div>
 
-                <div className="flex flex-col  w-full items-end text-xs text-brown gap-1">
-                  <a
-                    href={`mailto:info@${education.Wesbite}`}
-                    className="hover:underline hover:text-purple-500 flex gap-2 items-center"
-                  >
-                    <Mail size={14} /> {`info@${education.Website}`}
-                  </a>
-                </div>
+               
               </div>
             </div>
           );
