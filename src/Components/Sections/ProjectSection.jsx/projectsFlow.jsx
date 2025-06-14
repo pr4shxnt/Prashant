@@ -70,7 +70,7 @@ function MenuItem({ link, text, image }) {
   ));
 
   return (
-    <div className="menu__item hover:w-[80%] bg-beige text-charcoal shadow-2xl w-full mx-auto transition-all duration-300 py-10" ref={itemRef}>
+    <div className="menu__item hover:w-[80%] w-[90%] bg-beige/50 text-black/40   mx-auto transition-all duration-300 py-6 " ref={itemRef}>
       <a
         className="menu__item-link"
         href={link}
