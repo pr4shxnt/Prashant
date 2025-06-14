@@ -34,7 +34,7 @@ const Resume = () => {
                   ML Researcher
                 </p>
                 <button className="bg-charcoal flex gap-3 text-sand py-2 px-5 rounded-full items-center">
-                  Learn More <ArrowRight size={15} />
+                  Hire Dev <ArrowRight size={15} />
                 </button>
                 <div className=""></div>
               </div>
