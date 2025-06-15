@@ -20,7 +20,7 @@ useEffect(() => {
   return (
     <div className='text-white w-[85%] container bg-sand mx-auto pb-16'>
       {loading || initialLoad ? (
-        <p className="h-[50vh] flex items-center justify-center"><LoadingPage/></p>
+        <div className="h-[50vh] flex items-center justify-center"><LoadingPage/></div>
       ) : (
         <Marquee direction={direction} pauseOnHover={true}>
           <div className="flex gap-8 text-3xl mx-5 overflow-hidden">

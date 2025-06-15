@@ -10,7 +10,7 @@ const initialState = {
     certificateUrl: "",
     credentialId: "",
   },
-  loading: false,
+  loading: undefined,
   error: null,
   certificates: [],
 };

@@ -3,18 +3,10 @@ import ExperienceBlock from "../Components/ResumePage/ExperienceBlock";
 import EducationBlock from "../Components/ResumePage/EducationBlock";
 import MenuBar from "../Components/MenuBar";
 import { useState } from "react";
+import CertificateBlock from "../Components/ResumePage/CertificateBlock";
 
-
-
-const Resume = () => {
-
-  const [showMenu, setShowMenu] = useState(false)
-  return (
-    <div className=" lg:w-[50%] mx-auto w-[80%] mb-11">
-      <div className="fixed bottom-2 left-2 z-[10000] ">
-        <MenuBar showMenu={showMenu} setShowMenu={setShowMenu} />
-      </div>
-      <div className="h-screen flex flex-col justify-center">
+export const Intro = () => {
+       return <div className="h-screen flex flex-col justify-center">
         <div className=" flex ">
           <div className=" w-full">
             <div className="flex flex-col md:flex-row md:h-[245px] w-full gap-10">
@@ -101,8 +93,20 @@ const Resume = () => {
           </div>
         </div>
       </div>
+}
+
+const Resume = () => {
+
+  const [showMenu, setShowMenu] = useState(false)
+  return (
+    <div className=" lg:w-[50%] mx-auto w-[80%] mb-11">
+      <div className="fixed bottom-2 left-2 z-[10000] ">
+        <MenuBar showMenu={showMenu} setShowMenu={setShowMenu} />
+      </div>
+      <Intro/>
       <ExperienceBlock />
       <EducationBlock />
+      <CertificateBlock/>
     </div>
   );
 };

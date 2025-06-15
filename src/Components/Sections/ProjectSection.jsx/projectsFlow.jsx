@@ -72,9 +72,9 @@ function MenuItem({ link, text, image, index }) {
   ));
 
   return (
-    <div className="menu__item hover:w-[80%] w-[90%] bg-beige/50 text-black/40   mx-auto transition-all duration-300 " ref={itemRef}>
+    <div className="menu__item  hover:w-[80%] w-[90%] bg-beige/50  text-black/40   mx-auto transition-all duration-300 " ref={itemRef}>
       <a
-        className="menu__item-link py-6 "
+        className="menu__item-link  py-6 "
         href={link}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}

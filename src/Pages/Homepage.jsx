@@ -16,10 +16,12 @@ import ProjectScreen from "../Components/Sections/ProjectSection.jsx/ProjectScre
 import Testimonials from "../Components/Sections/Testimonials/Testimonials";
 import Marquee from "react-fast-marquee";
 import Poem from "../Components/Sections/ArtSection/Poems";
+import { Intro } from "./Resume";
 
 const Homepage = () => {
   const dispatch = useDispatch();
-  const { setShowParagraph, showParagraph, scrolled, setScrolled } = useContent();
+  const { setShowParagraph, showParagraph, scrolled, setScrolled } =
+    useContent();
 
   const [showMenu, setShowMenu] = useState(false);
   const [showHam, setShowHam] = useState(false);
@@ -96,11 +98,9 @@ x: pr4xnt`,
     });
   }, [showHam]);
 
-
   const scrollHandler = (arg) => {
     window.scrollTo(0, arg);
   };
-  
 
   return (
     <>
@@ -114,7 +114,6 @@ x: pr4xnt`,
       <div className="fixed bottom-2 left-2 z-[10000] md:hidden">
         <MenuBar showMenu={showMenu} setShowMenu={setShowMenu} />
       </div>
-
 
       {showHam && (
         <div className="hidden md:block fixed bottom-2 right-2 z-[10000]">
@@ -260,8 +259,7 @@ x: pr4xnt`,
               </a>
             </div>
 
-                      <div className="w-full absolute bottom-0 h-20 bg-gradient-to-b from-transparent to-black z-50"></div>
-
+            <div className="w-full absolute bottom-0 h-20 bg-gradient-to-b from-transparent to-black z-50"></div>
 
             {showParagraph && (
               <div className="para absolute bottom-30 text-sm z-[999] text-cream w-[25%] flex flex-col gap-4 -left-200">
@@ -320,12 +318,16 @@ x: pr4xnt`,
           </div>
         </div>
 
-       <div className="bg-sand ">      <Accomplishments/></div>
-        <ProjectScreen/>
-        <div className="bg-sand "><MarqueeComp/></div>
-        <Poem/>
+        <div className="bg-sand ">
+          {" "}
+          <Accomplishments />
+        </div>
 
-        
+        <ProjectScreen />
+        <div className="bg-sand ">
+          <MarqueeComp />
+        </div>
+        <Poem />
       </main>
     </>
   );

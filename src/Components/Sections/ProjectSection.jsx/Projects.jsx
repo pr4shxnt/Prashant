@@ -95,13 +95,13 @@ const Projects = () => {
 
           {!error && projects.length > 0 && (
             <>
-            <div className='relative pt-10  hidden md:block'>
+            <div className='relative pt-10 min-h-screen  items-center hidden md:flex'>
               <FlowingMenu items={items} />
             </div>
              <div className="w-[85%] mx-auto md:hidden grid pb-10 gap-4 grid-cols-1  ">
       {
         projects.map((project, index)=>{
-          return <div className="">
+          return <div key={index} className="mt-10">
             <ProjectCard project={project} index={index} />
           </div>
         })

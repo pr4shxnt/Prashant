@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import AccomplishmentData from "../Accomplishments/Data";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { NavLink } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -38,7 +39,7 @@ const Accomplishments = () => {
   return (
     <div className="w-[85%] container mx-auto pt-5 accomplishment-container">
       <div className="flex items-end justify-end gap-4 pb-5">
-        <span className="text-brown text-sm">Show in CV</span>
+        <NavLink to={`curriculum-vitae`} className="text-brown text-sm hover:underline">Show in CV</NavLink>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-20 pt-2">
