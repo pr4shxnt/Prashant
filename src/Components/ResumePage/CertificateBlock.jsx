@@ -56,6 +56,10 @@ const CertificateBlock = () => {
           >
             <Page pageNumber={1} width={widths[index] || 300} />
           </Document>
+          <div className="mt-4 px-4 text-lg font-semibold">
+            <h1 className="">{certificate.issuer} certified {certificate.title}</h1>
+            <p className="">{}</p>
+          </div>
         </div>
       ))}
     </div></div>

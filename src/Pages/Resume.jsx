@@ -100,6 +100,7 @@ const Resume = () => {
   const [showMenu, setShowMenu] = useState(false)
   return (
     <div className=" lg:w-[50%] mx-auto w-[80%] mb-11">
+      <title> Resume | Prashant Adhikari </title>
       <div className="fixed bottom-2 left-2 z-[10000] ">
         <MenuBar showMenu={showMenu} setShowMenu={setShowMenu} />
       </div>
