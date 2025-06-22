@@ -31,45 +31,47 @@ const InitialRender = ({ setShowContent }) => {
   });
 
   return (
-    <div className="svg flex items-center justify-center fixed top-0 left-0 right-0 bottom-0 z-[100] w-screen h-screen overflow-hidden bg-sand">
+    <>
       <title>Welcome | Prashant Adhikari</title>
-      <svg
-        viewBox="0 0 800 600"
-        preserveAspectRatio="xMidYMid slice"
-        className="w-full h-full"
-      >
-        <defs>
-          <mask id="viMask">
-            <rect width="100%" height="100%" fill="black" />
-            <g className="vi-mask-group" style={{ transformOrigin: "50% 50%" }}>
-              <text
-                x="50%"
-                y="50%"
-                fontSize="1vw"
-                fontWeight="700"
-                textAnchor="middle"
-                letterSpacing="0.1vw"
-                fill="white"
-                dominantBaseline="middle"
-                fontFamily="Ubuntu"
-              >PR4XNT
-              </text>
-            </g>
-          </mask>
-        </defs>
-        <image
-          href="https://res.cloudinary.com/drddkl4on/image/upload/v1748102694/initial-prev_cz4bj0.png"
-          width="100%"
-          height="100%"
+      <div className="svg flex items-center justify-center fixed top-0 left-0 right-0 bottom-0 z-[100] w-screen h-screen overflow-hidden bg-sand">
+        <svg
+          viewBox="0 0 800 600"
           preserveAspectRatio="xMidYMid slice"
-          mask="url(#viMask)"
-          onError={(e) => {
-            console.error("Error loading initial preview image");
-            setShowContent(true);
-          }}
-        />
-      </svg>
-    </div>
+          className="w-full h-full"
+        >
+          <defs>
+            <mask id="viMask">
+              <rect width="100%" height="100%" fill="black" />
+              <g className="vi-mask-group" style={{ transformOrigin: "50% 50%" }}>
+                <text
+                  x="50%"
+                  y="50%"
+                  fontSize="1vw"
+                  fontWeight="700"
+                  textAnchor="middle"
+                  letterSpacing="0.1vw"
+                  fill="white"
+                  dominantBaseline="middle"
+                  fontFamily="Ubuntu"
+                >PR4XNT
+                </text>
+              </g>
+            </mask>
+          </defs>
+          <image
+            href="https://res.cloudinary.com/drddkl4on/image/upload/v1748102694/initial-prev_cz4bj0.png"
+            width="100%"
+            height="100%"
+            preserveAspectRatio="xMidYMid slice"
+            mask="url(#viMask)"
+            onError={(e) => {
+              console.error("Error loading initial preview image");
+              setShowContent(true);
+            }}
+          />
+        </svg>
+      </div>
+    </>
   );
 };
 

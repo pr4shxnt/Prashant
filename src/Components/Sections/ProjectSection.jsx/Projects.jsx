@@ -75,42 +75,44 @@ const Projects = () => {
   );
 
   return (
-    <div className="bg-sand w-full ">
-      <header className="w-full relative">
-        <title>Projects | Prashant Adhikari</title>
-        <div className="absolute h-full w-full">
-          <Waves/>
-        </div>
-        <div className="h-screen flex flex-col items-center gap-1.5 justify-center w-full">
-          <h1 className="text-charcoal text-center font-bold text-5xl">Personal projects</h1>
-          <p className="text-charcoal font-light">Home / Projects</p>
-        </div>
-      </header>
-
-      <div className="w-full">
-        <div className="w-full pb-10">
-          {error && (
-            <div className="text-center text-red-500">Failed to load projects.</div>
-          )}
-
-          {!error && projects.length > 0 && (
-            <>
-            <div className='relative pt-10 min-h-screen  items-center hidden md:flex'>
-              <FlowingMenu items={items} />
-            </div>
-             <div className="w-[85%] mx-auto md:hidden grid pb-10 gap-4 grid-cols-1  ">
-      {
-        projects.map((project, index)=>{
-          return <div key={index} className="mt-10">
-            <ProjectCard project={project} index={index} />
+    <>
+      <title>Projects | Prashant Adhikari</title>
+      <div className="bg-sand w-full ">
+        <header className="w-full relative">
+          <div className="absolute h-full w-full">
+            <Waves/>
           </div>
-        })
-      }</div>
-            </>
-          )}
+          <div className="h-screen flex flex-col items-center gap-1.5 justify-center w-full">
+            <h1 className="text-charcoal text-center font-bold text-5xl">Personal projects</h1>
+            <p className="text-charcoal font-light">Home / Projects</p>
+          </div>
+        </header>
+
+        <div className="w-full">
+          <div className="w-full pb-10">
+            {error && (
+              <div className="text-center text-red-500">Failed to load projects.</div>
+            )}
+
+            {!error && projects.length > 0 && (
+              <>
+              <div className='relative pt-10 min-h-screen  items-center hidden md:flex'>
+                <FlowingMenu items={items} />
+              </div>
+               <div className="w-[85%] mx-auto md:hidden grid pb-10 gap-4 grid-cols-1  ">
+        {
+          projects.map((project, index)=>{
+            return <div key={index} className="mt-10">
+              <ProjectCard project={project} index={index} />
+            </div>
+          })
+        }</div>
+              </>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

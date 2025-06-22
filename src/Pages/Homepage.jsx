@@ -104,6 +104,29 @@ x: pr4xnt`,
 
   return (
     <>
+      <title>Home | Prashant Adhikari</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="Prashant Adhikari's Portfolio" />
+      <meta name="keywords" content="Portfolio, Prashant Adhikari, Web Developer, Software Engineer, Student, Penetration tester, website development, React Developer from Nepal" />
+      <meta name="author" content="Prashant Adhikari" />
+      <meta name="theme-color" content="#011e24" />
+      <meta property="og:title" content="Prashant Adhikari's Portfolio" />
+      <meta property="og:description" content="Portfolio of Prashant Adhikari, a Web Developer and Software Engineer from Nepal." />
+      <meta property="og:image" content="./icons/android-chrome-512x512.png" />
+      <meta property="og:url" content="https://prashantadhikari7.com.np" />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="Prashant Adhikari's Portfolio" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="Prashant Adhikari's Portfolio" />
+      <meta name="twitter:description" content="Portfolio of Prashant Adhikari, a Web Developer and Software Engineer from Nepal." />
+      <meta name="twitter:image" content="./icons/android-chrome-512x512.png" />
+      <meta name="twitter:site" content="@pr4xnt" />
+      <meta name="twitter:creator" content="@pr4xnt" />
+      <link rel="icon" href="./favicon.ico" />
+      <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
+      <link rel="manifest" href="./site.webmanifest" />
+      <link rel="canonical" href="https://prashantadhikari7.com.np" />
+
       <div
         ref={menuRef}
         className="fixed bottom-2 left-2 z-[10000] hidden md:block scale-0"
@@ -137,52 +160,6 @@ x: pr4xnt`,
       )}
 
       <main>
-        <div className="metatags-container">
-          <title>Home | Prashant Adhikari</title>
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0"
-          />
-          <meta name="description" content="Prashant Adhikari's Portfolio" />
-          <meta
-            name="keywords"
-            content="Portfolio, Prashant Adhikari, Web Developer, Software Engineer, Student, Penetration tester, website development, React Developer from Nepal"
-          />
-          <meta name="author" content="Prashant Adhikari" />
-          <meta name="theme-color" content="#011e24" />
-          <meta property="og:title" content="Prashant Adhikari's Portfolio" />
-          <meta
-            property="og:description"
-            content="Portfolio of Prashant Adhikari, a Web Developer and Software Engineer from Nepal."
-          />
-          <meta
-            property="og:image"
-            content="./icons/android-chrome-512x512.png"
-          />
-          <meta property="og:url" content="https://prashantadhikari7.com.np" />
-          <meta property="og:type" content="website" />
-          <meta
-            property="og:site_name"
-            content="Prashant Adhikari's Portfolio"
-          />
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content="Prashant Adhikari's Portfolio" />
-          <meta
-            name="twitter:description"
-            content="Portfolio of Prashant Adhikari, a Web Developer and Software Engineer from Nepal."
-          />
-          <meta
-            name="twitter:image"
-            content="./icons/android-chrome-512x512.png"
-          />
-          <meta name="twitter:site" content="@pr4xnt" />
-          <meta name="twitter:creator" content="@pr4xnt" />
-          <link rel="icon" href="./favicon.ico" />
-          <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
-          <link rel="manifest" href="./site.webmanifest" />
-          <link rel="canonical" href="https://prashantadhikari7.com.np" />
-        </div>
-
         <div className="relative h-screen container mx-auto overflow-hidden">
           <div className="showcontent hidden md:block absolute top-3 right-4 z-[800] items-center justify-center">
             <button

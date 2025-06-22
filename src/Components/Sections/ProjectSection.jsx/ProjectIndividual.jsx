@@ -41,6 +41,7 @@ const ProjectIndividual = () => {
 
   return (
     <>
+      <title>{`Project | ${project?.name || "Loading..."}`}</title>
       {(project?.name || !loading) && (
         <div className="bg-sand flex pt-10 flex-col md:flex-row gap-3 min-h-screen text-brown relative pb-10">
           <div className="w-full hidden md:block md:w-[70%]">
