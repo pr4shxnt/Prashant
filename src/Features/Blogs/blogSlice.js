@@ -6,6 +6,7 @@ const initialState = {
   error: null,
   blogData: {
     title: "",
+    slug: "",
     authors: "",
     content: "",
     tags: [],

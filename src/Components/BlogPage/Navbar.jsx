@@ -39,9 +39,9 @@ const Navbar = () => {
                 />
                  <button
                     type="submit"
-                    className=" absolute right-0 top-0 flex rounded-r-full gap-2 bg-beige/50 py-3 px-6 text-purple-500 w-max"
+                    className=" absolute right-0 top-0 flex rounded-r-full gap-2 bg-beige/50 py-3 px-5 text-purple-500 w-max"
                 >
-                    <Search/> Search
+                    <Search/>
                 </button>
                </div>
             </form>

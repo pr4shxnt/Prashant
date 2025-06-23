@@ -17,6 +17,7 @@ import ResumeManager from "./Admin/Components/ResumeManager";
 import Resume from "./Pages/Resume";
 import BlogHomePage from "./Components/BlogPage/BlogHomePage";
 import BlogRoot from "./Pages/BlogRoot";
+import NoDirectory from "./Pages/NoDirectory";
 
 const router = createBrowserRouter([
   {
@@ -89,6 +90,11 @@ const router = createBrowserRouter([
         element: <BlogHomePage/>
       }
     ]
+  }
+  ,
+  {
+    path: "*",
+    element: <NoDirectory/>
   }
 ]);
 
