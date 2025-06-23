@@ -5,7 +5,6 @@ import { store } from "./App/store";
 import RootComponent from "./Pages/RootComponent";
 import Homepage from "./Pages/Homepage";
 import ContentProvider from "./Utils/ContextProvider";
-import ProdBuild from "./Pages/ProdBuild";
 import AdminLogin from "./Admin/Auth/AdminLogin";
 import Rootdir from "./Admin/Pages/rootdir";
 import ProjectDisplay from "./Admin/Components/ProjectDisplay";
@@ -14,9 +13,10 @@ import SkillsManager from "./Admin/Forms/SkillsManager";
 import ProjectIndividual from "./Components/Sections/ProjectSection.jsx/ProjectIndividual"; 
 import ManagePoems from "./Admin/Forms/ManagePoems";
 import Projects from "./Components/Sections/ProjectSection.jsx/Projects";
-import LoadingPage from "./Utils/loadingpage";
 import ResumeManager from "./Admin/Components/ResumeManager";
 import Resume from "./Pages/Resume";
+import BlogHomePage from "./Components/BlogPage/BlogHomePage";
+import BlogRoot from "./Pages/BlogRoot";
 
 const router = createBrowserRouter([
   {
@@ -79,6 +79,17 @@ const router = createBrowserRouter([
   },
   {path: "/curriculum-vitae",
   element: <Resume />,}
+  ,
+  {
+    path: "blogs",
+    element: <BlogRoot/>,
+    children: [
+      {
+        path: "",
+        element: <BlogHomePage/>
+      }
+    ]
+  }
 ]);
 
 export default function App() {
