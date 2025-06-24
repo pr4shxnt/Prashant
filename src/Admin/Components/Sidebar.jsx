@@ -62,7 +62,7 @@ const Sidebar = () => {
       path: "/admin/resume",
       icon: <InfoIcon size={18} />,
     },
-    { name: "Social Links", path: "/admin/socials", icon: <Users size={18} /> },
+    { name: "Blogs manager", path: "/admin/blogs", icon: <Users size={18} /> },
     {
       name: "Contacts",
       path: "/admin/contacts",
@@ -72,7 +72,7 @@ const Sidebar = () => {
     { name: "Home", path: "/", icon: <Home size={18} /> },
   ];
   return (
-    <div className="w-full h-full pt-10">
+    <div className="w-full h-full">
       <div className="w-full relative bg-brown h-full">
         <div className="absolute text-center text-xs w-full bottom-0 left-0  bg-charcoal text-white p-4">
           <h1 className="flex gap-1 justify-center">

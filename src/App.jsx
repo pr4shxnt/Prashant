@@ -18,6 +18,8 @@ import Resume from "./Pages/Resume";
 import BlogHomePage from "./Components/BlogPage/BlogHomePage";
 import BlogRoot from "./Pages/BlogRoot";
 import NoDirectory from "./Pages/NoDirectory";
+import BlogHome from "./Pages/BlogHome";
+import BlogsAdmin from "./Admin/Pages/BlogsAdmin";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +60,10 @@ const router = createBrowserRouter([
       {
         path: "resume",
         element: <ResumeManager/>
+      },
+      {
+        path: "blogs",
+        element: <BlogsAdmin/>
       }
 
     ]
@@ -87,7 +93,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <BlogHomePage/>
+        element: <BlogHome/>
       }
     ]
   }
