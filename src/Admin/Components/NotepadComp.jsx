@@ -78,6 +78,7 @@ console.log(blogData);
           <button
             key={command}
             onClick={() => format(command)}
+            type="button"
             title={title}
             className={`px-3 py-1 border border-gray-700 rounded hover:bg-gray-700 ${
               activeCommands[command] ? 'bg-gray-700 text-white' : ''
