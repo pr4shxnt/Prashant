@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import LatestBlog from "../../Components/BlogPage/LatestBlog";
 
 const initialState = {
   loading: false,
@@ -18,6 +19,7 @@ const initialState = {
   },
   blogs: [],
   blog: {},
+  latestBlog: {},
 };
 
  export const createBlog = createAsyncThunk(
@@ -75,6 +77,21 @@ export const fetchBlogByResearchId = createAsyncThunk(
     }
   }
 );
+export const fetchLatestBlog = createAsyncThunk(
+  "blogs/fetchLatest",
+  async (_, ThunkAPI) => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_BACKEND}/api/blogs/latest`
+      );
+      return response.data;
+    } catch (error) {
+      return ThunkAPI.rejectWithValue(
+        error.response?.data?.message || "Latest Blog fetch failed"
+      );
+    }
+  }
+);
 
 const blogSlice = createSlice({
   name: "blogs",
@@ -111,6 +128,19 @@ reducers: {
         state.error = null;      
       })
       .addCase(createBlog.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(fetchLatestBlog.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchLatestBlog.fulfilled, (state, action) => {
+        state.loading = false;
+        state.latestBlog = action.payload;
+        state.error = null;      
+      })
+      .addCase(fetchLatestBlog.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });

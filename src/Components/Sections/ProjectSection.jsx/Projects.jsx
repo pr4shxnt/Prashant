@@ -77,6 +77,27 @@ const Projects = () => {
   return (
     <>
       <title>Projects | Prashant Adhikari</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="Prashant Adhikari's Projects" />
+      <meta name="keywords" content="Projects, Prashant Adhikari, Projects, Web Developer, Software Engineer, Student, Penetration tester, website development, React Developer from Nepal" />
+      <meta name="author" content="Prashant Adhikari" />
+      <meta name="theme-color" content="#011e24" />
+      <meta property="og:title" content="Prashant Adhikari's Projects" />
+      <meta property="og:description" content="Projects of Prashant Adhikari, a Web Developer and Software Engineer from Nepal." />
+      <meta property="og:image" content="./icons/android-chrome-512x512.png" />
+      <meta property="og:url" content="https://prashantadhikari7.com.np" />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="Prashant Adhikari's Projects" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="Prashant Adhikari's Projects" />
+      <meta name="twitter:description" content="Projects of Prashant Adhikari, a Web Developer and Software Engineer from Nepal." />
+      <meta name="twitter:image" content="./icons/android-chrome-512x512.png" />
+      <meta name="twitter:site" content="@pr4xnt" />
+      <meta name="twitter:creator" content="@pr4xnt" />
+      <link rel="icon" href="./favicon.ico" />
+      <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
+      <link rel="canonical" href="https://prashantadhikari7.com.np" />
+
       <div className="bg-sand w-full ">
         <header className="w-full relative">
           <div className="absolute h-full w-full">

@@ -17,6 +17,7 @@ import Testimonials from "../Components/Sections/Testimonials/Testimonials";
 import Marquee from "react-fast-marquee";
 import Poem from "../Components/Sections/ArtSection/Poems";
 import { Intro } from "./Resume";
+import LatestBlog from "../Components/BlogPage/LatestBlog";
 
 const Homepage = () => {
   const dispatch = useDispatch();
@@ -305,6 +306,7 @@ x: pr4xnt`,
           <MarqueeComp />
         </div>
         <Poem />
+        <LatestBlog/>
       </main>
     </>
   );
