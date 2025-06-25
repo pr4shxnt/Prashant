@@ -41,7 +41,6 @@ Thank you for your concern.`,
      border-radius: 5px;`
     );
 
-    alert("This website is still under development. Please be patient.");
 
     console.log(
       `%c
