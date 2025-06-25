@@ -263,11 +263,7 @@ x: pr4xnt`,
                   screen.
                 </p>
                 <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum
-                  debitis illum perspiciatis? Quia doloribus nostrum doloremque
-                  accusantium at vel aspernatur vero natus aut debitis, sit
-                  consectetur id quo repudiandae in illum nisi possimus quod
-                  similique.
+                  I am currently enrolled in Bachelors in Computer Science (Hons.) with Artificial Intillegence at Sunway College Kathmandu @ Birmingham City University. I am a AI/ML researcher as well as a full-stack website developer.
                 </p>
               </div>
             )}
