@@ -16,7 +16,7 @@ const BlogIndividual = () => {
 
   useEffect(() => {
     dispatch(fetchBlogBySlug(slug));
-  }, [dispatch]);
+  }, [dispatch, slug]);
 
   useEffect(() => {
     if (blog?.tags?.length && blog?._id) {
@@ -61,7 +61,7 @@ const BlogIndividual = () => {
   return (
     <>
       <div className="w-[80%]  mx-auto flex flex-col md:flex-row gap-6">
-        <div className="pt-32 container w-[95%] md:w-[70%] h-full flex flex-col mx-auto">
+        <div className="pt-32 container w-full md:w-[70%] h-full flex flex-col mx-auto">
           <p className="mb-8 nunito font-light underline text-gray-400">
             Blog /{" "}
             <span className="text-black">
@@ -83,7 +83,7 @@ const BlogIndividual = () => {
           </h1>
           <img src={blog.coverImage} alt="" className="mt-4" />
           <p
-            className="mt-10 px-3 [&_a]:hover:underline [&_a]:text-sm  [&_a]:text-purple-500   [&_ul]:list-disc [&_ul]:pl-5 [&_ol]:list-decimal [&_ol]:pl-5"
+            className="mt-10 md:px-3 [&_a]:hover:underline [&_a]:text-sm  [&_a]:text-purple-500   [&_ul]:list-disc [&_ul]:pl-5 [&_ol]:list-decimal [&_ol]:pl-5"
             dangerouslySetInnerHTML={{ __html: blog?.content }}
           ></p>
           <p className="mt-40 text-sm font-light">
