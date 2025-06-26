@@ -20,9 +20,10 @@ const initialState = {
   blogs: [],
   blog: {},
   latestBlog: {},
+  recommended: [],
 };
 
- export const createBlog = createAsyncThunk(
+export const createBlog = createAsyncThunk(
   "blogs/create",
   async (blogData, ThunkAPI) => {
     try {
@@ -30,7 +31,7 @@ const initialState = {
 
       Object.entries(blogData).forEach(([key, value]) => {
         if (key === "coverImage") {
-          formData.append("coverImage", value);  
+          formData.append("coverImage", value);
         } else if (Array.isArray(value)) {
           value.forEach((v) => formData.append(key, v));
         } else {
@@ -39,7 +40,6 @@ const initialState = {
       });
 
       console.log(blogData);
-      
 
       const token = localStorage.getItem("admin_session");
 
@@ -67,7 +67,7 @@ export const fetchBlogBySlug = createAsyncThunk(
   async (slug, ThunkAPI) => {
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_BACKEND}/api/blogs/${slug}`
+        `${import.meta.env.VITE_BACKEND}/api/blogs/slug/${slug}`
       );
       return response.data;
     } catch (error) {
@@ -92,15 +92,32 @@ export const fetchLatestBlog = createAsyncThunk(
     }
   }
 );
+export const fetchRecommendedBlogs = createAsyncThunk(
+  "blogs/fetchRecommended",
+  async ({ tags, excludeId }, ThunkAPI) => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_BACKEND}/api/blogs/recommended?tags=${tags.join(
+          ","
+        )}&excludeId=${excludeId}`
+      );
+      return response.data;
+    } catch (error) {
+      return ThunkAPI.rejectWithValue(
+        error.response?.data?.message || "Recommended Blogs fetch failed"
+      );
+    }
+  }
+);
 
 const blogSlice = createSlice({
   name: "blogs",
   initialState,
-reducers: {
+  reducers: {
     setBlogData: (state, action) => {
       state.blogData = {
         ...state.blogData,
-        ...action.payload, 
+        ...action.payload,
       };
     },
   },
@@ -125,7 +142,7 @@ reducers: {
       .addCase(createBlog.fulfilled, (state, action) => {
         state.loading = false;
         state.blogData = initialState.blogData;
-        state.error = null;      
+        state.error = null;
       })
       .addCase(createBlog.rejected, (state, action) => {
         state.loading = false;
@@ -138,14 +155,26 @@ reducers: {
       .addCase(fetchLatestBlog.fulfilled, (state, action) => {
         state.loading = false;
         state.latestBlog = action.payload;
-        state.error = null;      
+        state.error = null;
       })
       .addCase(fetchLatestBlog.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(fetchRecommendedBlogs.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchRecommendedBlogs.fulfilled, (state, action) => {
+        state.loading = false;
+        state.recommended = action.payload;
+      })
+      .addCase(fetchRecommendedBlogs.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });
   },
 });
 
-export const {setBlogData} = blogSlice.actions;
+export const { setBlogData } = blogSlice.actions;
 export default blogSlice.reducer;

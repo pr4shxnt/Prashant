@@ -40,8 +40,9 @@ const LatestBlog = () => {
     <p className="text-base md:text-lg text-white/80 mb-4 md:line-clamp-4 max-w-3xl">
       {latestBlog.metaDescription} 
       <br />
-      <NavLink to={`/blogs/${latestBlog.slug}`} className={`text-beige hover:underline text-sm`}>Read More...</NavLink>
+     
     </p>
+     <NavLink to={`/blogs/${latestBlog.slug}`} className={`text-beige hover:underline text-sm`}>Read More...</NavLink>
 
     <div className="flex gap-2 flex-wrap mt-2">
       {latestBlog.tags?.map((tag) => (
