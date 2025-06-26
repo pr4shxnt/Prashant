@@ -12,7 +12,7 @@ const initialState = {
     content: "",
     tags: [],
     coverImage: "",
-    researchId: "",
+    Slug: "",
     researchLink: "",
     metaTitle: "",
     metaDescription: "",
@@ -62,12 +62,12 @@ const initialState = {
   }
 );
 
-export const fetchBlogByResearchId = createAsyncThunk(
-  "blogs/fetchByResearchId",
-  async (researchId, ThunkAPI) => {
+export const fetchBlogBySlug = createAsyncThunk(
+  "blogs/fetchBySlug",
+  async (slug, ThunkAPI) => {
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_BACKEND}/api/${researchId}`
+        `${import.meta.env.VITE_BACKEND}/api/blogs/${slug}`
       );
       return response.data;
     } catch (error) {
@@ -106,15 +106,15 @@ reducers: {
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchBlogByResearchId.pending, (state) => {
+      .addCase(fetchBlogBySlug.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchBlogByResearchId.fulfilled, (state, action) => {
+      .addCase(fetchBlogBySlug.fulfilled, (state, action) => {
         state.loading = false;
         state.blog = action.payload;
       })
-      .addCase(fetchBlogByResearchId.rejected, (state, action) => {
+      .addCase(fetchBlogBySlug.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       })

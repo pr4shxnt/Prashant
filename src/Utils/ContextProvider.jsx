@@ -12,7 +12,7 @@ export const useContent = () => useContext(ContentContext);
 
 const ContentProvider = ({ children }) => {
   const [showContent, setShowContent] = useState(false);
-  const [showParagraph, setShowParagraph] = useState(true);
+  const [showParagraph, setShowParagraph] = useState(false);
    const [showMenu, setShowMenu] = useState(false);
   const [showHam, setShowHam] = useState(false);
   const [scrolled, setScrolled] = useState(0);

@@ -72,7 +72,7 @@ console.log(blogData);
   }, []);
 
   return (
-    <div className="font-sans bg-gray-100 text-gray-900">
+    <div className="font-sans bg-white text-gray-900">
       <div className="flex flex-wrap gap-2 mb-4">
         {toolbarCommands.map(({ command, label, title }) => (
           <button
@@ -80,7 +80,7 @@ console.log(blogData);
             onClick={() => format(command)}
             type="button"
             title={title}
-            className={`px-3 py-1 border border-gray-700 rounded hover:bg-gray-700 ${
+            className={`px-3 py-1 border border-gray-700 rounded hover:bg-gray-700 hover:text-white ${
               activeCommands[command] ? 'bg-gray-700 text-white' : ''
             }`}
           >
@@ -91,7 +91,7 @@ console.log(blogData);
         <select
           onChange={(e) => format('fontSize', e.target.value)}
           defaultValue=""
-          className="px-3 py-1 border border-gray-700 rounded bg-gray-100 text-gray-700 hover:bg-gray-300"
+          className="px-3 py-1 border border-gray-700 rounded bg-white text-gray-700 hover:bg-gray-300"
           title="Font Size"
         >
           <option value="" disabled>
@@ -110,7 +110,7 @@ console.log(blogData);
         ref={editorRef}
         contentEditable
         onInput={handleInput}
-        className="border border-gray-700 rounded min-h-[300px] p-3 bg-gray-100 text-gray-900 focus:outline-none
+        className="border border-gray-700 rounded min-h-[300px] p-3 bg-white text-gray-900 focus:outline-none
           [&_ul]:list-disc [&_ul]:pl-5 [&_ol]:list-decimal [&_ol]:pl-5"
         suppressContentEditableWarning={true}
         data-placeholder="Start typing your content here..."
