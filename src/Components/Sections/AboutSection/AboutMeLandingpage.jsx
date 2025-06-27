@@ -49,7 +49,7 @@ const AboutMeLandingpage = () => {
  
     
       </div>
-      <iframe className="my-5 hidden md:block rounded-2xl mx-auto md:w-[80%] md:h-[500px]"  src="https://www.youtube.com/embed/8BkravMhqtg?si=ZPxxgl1NLYBX99Un&amp;start=5100" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <iframe className="my-5 h-0 rounded-2xl mx-auto md:w-[80%] md:h-[500px]"  src="https://www.youtube.com/embed/8BkravMhqtg?si=ZPxxgl1NLYBX99Un&amp;start=5100" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <SpotlightCard
           className="custom-spotlight-card hover:scale-105 hover:shadow-2xl transition-all duration-300"
