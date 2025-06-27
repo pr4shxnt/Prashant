@@ -92,6 +92,21 @@ export const fetchLatestBlog = createAsyncThunk(
     }
   }
 );
+export const fetchBlogs = createAsyncThunk(
+  "blogs/fetchAll",
+  async (_, ThunkAPI) => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_BACKEND}/api/blogs`
+      );
+      return response.data;
+    } catch (error) {
+      return ThunkAPI.rejectWithValue(
+        error.response?.data?.message || "Blogs fetch failed"
+      );
+    }
+  }
+);
 export const fetchRecommendedBlogs = createAsyncThunk(
   "blogs/fetchRecommended",
   async ({ tags, excludeId }, ThunkAPI) => {
@@ -170,6 +185,19 @@ const blogSlice = createSlice({
         state.recommended = action.payload;
       })
       .addCase(fetchRecommendedBlogs.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(fetchBlogs.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchBlogs.fulfilled, (state, action) => {
+        state.loading = false;
+        state.blogs = action.payload;
+        state.error = null;
+      })
+      .addCase(fetchBlogs.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });

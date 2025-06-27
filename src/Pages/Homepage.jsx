@@ -5,7 +5,7 @@ import HomeMD from "../Components/HomeMD";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { NavLink } from "react-router-dom";
-import { ChevronDown, ChevronUp, Eye, EyeClosed } from "lucide-react";
+import { BookCopy, ChevronDown, ChevronUp, Eye, EyeClosed } from "lucide-react";
 import { useContent } from "../Utils/ContextProvider";
 import MenuBar from "../Components/MenuBar";
 import MarqueeComp from "../Components/MarqueeComp";
@@ -18,6 +18,10 @@ import Marquee from "react-fast-marquee";
 import Poem from "../Components/Sections/ArtSection/Poems";
 import { Intro } from "./Resume";
 import LatestBlog from "../Components/BlogPage/LatestBlog";
+import CardSwap, { Card } from "../Components/BlogPage/BlogsViewer";
+import { fetchBlogs } from "../Features/Blogs/blogSlice";
+import BlogForHOme from "../Components/BlogPage/BlogForHOme";
+import AboutMeLandingpage from "../Components/Sections/AboutSection/AboutMeLandingpage";
 
 const Homepage = () => {
   const dispatch = useDispatch();
@@ -41,7 +45,6 @@ Thank you for your concern.`,
      border-radius: 5px;`
     );
 
-
     console.log(
       `%c
 - Prashant Adhikari
@@ -57,6 +60,8 @@ x: pr4xnt`,
   }, []);
 
   gsap.registerPlugin(ScrollToPlugin);
+
+  
 
   useEffect(() => {
     const handleScroll = () => {
@@ -107,18 +112,27 @@ x: pr4xnt`,
       <title>Home | Prashant Adhikari</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta name="description" content="Prashant Adhikari's Portfolio" />
-      <meta name="keywords" content="Portfolio, Prashant Adhikari, Web Developer, Software Engineer, Student, Penetration tester, website development, React Developer from Nepal" />
+      <meta
+        name="keywords"
+        content="Portfolio, Prashant Adhikari, Web Developer, Software Engineer, Student, Penetration tester, website development, React Developer from Nepal"
+      />
       <meta name="author" content="Prashant Adhikari" />
       <meta name="theme-color" content="#011e24" />
       <meta property="og:title" content="Prashant Adhikari's Portfolio" />
-      <meta property="og:description" content="Portfolio of Prashant Adhikari, a Web Developer and Software Engineer from Nepal." />
+      <meta
+        property="og:description"
+        content="Portfolio of Prashant Adhikari, a Web Developer and Software Engineer from Nepal."
+      />
       <meta property="og:image" content="./icons/android-chrome-512x512.png" />
       <meta property="og:url" content="https://prashantadhikari7.com.np" />
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content="Prashant Adhikari's Portfolio" />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content="Prashant Adhikari's Portfolio" />
-      <meta name="twitter:description" content="Portfolio of Prashant Adhikari, a Web Developer and Software Engineer from Nepal." />
+      <meta
+        name="twitter:description"
+        content="Portfolio of Prashant Adhikari, a Web Developer and Software Engineer from Nepal."
+      />
       <meta name="twitter:image" content="./icons/android-chrome-512x512.png" />
       <meta name="twitter:site" content="@pr4xnt" />
       <meta name="twitter:creator" content="@pr4xnt" />
@@ -263,7 +277,10 @@ x: pr4xnt`,
                   screen.
                 </p>
                 <p>
-                  I am currently enrolled in Bachelors in Computer Science (Hons.) with Artificial Intillegence at Sunway College Kathmandu @ Birmingham City University. I am a AI/ML researcher as well as a full-stack website developer.
+                  I am currently enrolled in Bachelors in Computer Science
+                  (Hons.) with Artificial Intillegence at Sunway College
+                  Kathmandu @ Birmingham City University. I am a AI/ML
+                  researcher as well as a full-stack website developer.
                 </p>
               </div>
             )}
@@ -300,8 +317,11 @@ x: pr4xnt`,
         <div className="bg-sand ">
           <MarqueeComp />
         </div>
+          <BlogForHOme/>
+          <div className="bg-sand relative">          <AboutMeLandingpage/>
+</div>
         <Poem />
-        <LatestBlog/>
+     
       </main>
     </>
   );
