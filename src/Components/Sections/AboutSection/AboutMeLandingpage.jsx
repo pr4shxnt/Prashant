@@ -6,7 +6,7 @@ const AboutMeLandingpage = () => {
   return (
     <div className="w-[85%]  mx-auto mb-30  z-[999999]">
       <div className="flex flex-col w-full h-max  relative">
-      <h1 className="text-5xl md:text-7xl lg:text-8xl text-center font-bold">Why me ?</h1>
+      <h1 className="text-5xl md:text-7xl lg:text-8xl text-center text-charcoal font-bold">Why me ?</h1>
       <p className="text-lg md:text-xl text-center lg:text-2xl text-brown leading-relaxed mt-2 mb-6">
           </p></div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
