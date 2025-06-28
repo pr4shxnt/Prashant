@@ -18,7 +18,7 @@ const AboutMeLandingpage = () => {
             <Laptop2 size={30} stroke="purple"/>
             <p class="css-v5mywq mt-2 text-xl font-semibold text-gray-300">Client Portal</p>
             <p class="css-14rovie text-gray-300/50">
-              You can Login into client portal &amp; see progress &amp; request for the changes on the products.
+              You can Login into client portal &amp; see progress &amp; request for the changes on the products. Register in <a href="https://www.clientportal.prashantadhikari7.com.np/register" target="_blank" className="text-purple-500 hover:underline">client portal.</a>
             </p>
           </div>
         </SpotlightCard>
