@@ -2,7 +2,7 @@ import React from "react";
 
 const BlogHomePage = () => {
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-gradient-to-bl from-sand to-white">
+    <div className="relative min-h-screen w-full overflow-hidden  bg-gradient-to-bl from-sand to-white">
       <div className="blob-homepage blob-top-left z-0" />
       <div className="blob-homepage blob-bottom-right z-0" />
 

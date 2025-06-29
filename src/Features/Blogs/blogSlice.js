@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import LatestBlog from "../../Components/BlogPage/LatestBlog";
 
 const initialState = {
   loading: false,
@@ -21,6 +20,7 @@ const initialState = {
   blog: {},
   latestBlog: {},
   recommended: [],
+  featured: [],
 };
 
 export const createBlog = createAsyncThunk(
@@ -125,6 +125,22 @@ export const fetchRecommendedBlogs = createAsyncThunk(
   }
 );
 
+export const fetchFeaturedBlogs = createAsyncThunk(
+  "blogs/fetchFeatured",
+  async (_, ThunkAPI) => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_BACKEND}/api/blogs/featured`
+      );
+      return response.data;
+    } catch (error) {
+      return ThunkAPI.rejectWithValue(
+        error.response?.data?.message || "Featured Blogs fetch failed"
+      );
+    }
+  }
+);
+
 const blogSlice = createSlice({
   name: "blogs",
   initialState,
@@ -198,6 +214,19 @@ const blogSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchBlogs.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(fetchFeaturedBlogs.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchFeaturedBlogs.fulfilled, (state, action) => {
+        state.loading = false;
+        state.featured = action.payload;
+        state.error = null;
+      })
+      .addCase(fetchFeaturedBlogs.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });
