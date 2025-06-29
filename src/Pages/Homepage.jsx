@@ -293,8 +293,8 @@ x: pr4xnt`,
                 Projects
                 <div className="h-0.5 group-hover:w-full bg-[brown] rounded-full w-0 transition-all duration-300 group-hover:block"></div>
               </NavLink>
-              <NavLink to="/" className="group flex flex-col rounded-full">
-                Home
+              <NavLink to="/blogs" className="group flex flex-col rounded-full">
+                Blogs
                 <div className="h-0.5 group-hover:w-full bg-[brown] rounded-full w-0 transition-all duration-300 group-hover:block"></div>
               </NavLink>
               <NavLink
