@@ -5,6 +5,8 @@ import { fetchBlogBySlug } from "../Features/Blogs/blogSlice";
 import LoadingPage from "../Utils/loadingpage";
 import RecommendedBlogs from "../Components/BlogPage/RecommendedBlogs";
 import { fetchRecommendedBlogs } from "../Features/Blogs/blogSlice";
+import { meta } from "@eslint/js";
+import { metadata } from "framer-motion/client";
 
 const BlogIndividual = () => {
   const [initialLoad, setInitialLoad] = useState(true);
@@ -37,7 +39,6 @@ const BlogIndividual = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-
   console.log(blog);
 
   useEffect(() => {
@@ -48,7 +49,6 @@ const BlogIndividual = () => {
     }
   }, [loading, blog]);
 
-
   if (initialLoad || loading || !blog)
     return (
       <>
@@ -58,8 +58,18 @@ const BlogIndividual = () => {
       </>
     );
 
+  const metaTags = blog.metaTitle.map((tag) => tag).join(", ");
+
+  console.log(metaTags);
+
   return (
     <>
+      <title>{` ${slug
+        .split("-")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ")} | ${blog.authors[0]}`}</title>
+      <meta name="keywords" content={`${metaTags}`} />
+
       <div className="w-[80%]  mx-auto flex flex-col md:flex-row gap-6">
         <div className="pt-32 container w-full md:w-[70%] h-full flex flex-col mx-auto">
           <p className="mb-8 nunito font-light underline text-gray-400">
@@ -104,12 +114,9 @@ const BlogIndividual = () => {
             Also Read
           </h2>
           <div className="flex flex-col gap-3 ">
-            {
-              recommended?.map((inx, idx)=>{
-                         return   <RecommendedBlogs blog={inx} />
-
-              })
-            }
+            {recommended?.map((inx, idx) => {
+              return <RecommendedBlogs blog={inx} />;
+            })}
           </div>
 
           <div className="">
