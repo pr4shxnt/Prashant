@@ -6,7 +6,8 @@ import { useState } from "react";
 import CertificateBlock from "../Components/ResumePage/CertificateBlock";
 
 export const Intro = () => {
-       return <div className="h-screen flex flex-col justify-center">
+       return <>      <h1 className="p-4 mt-20 md:mt-24 mb-3">Intro</h1>
+<div className=" flex flex-col justify-center">
         <div className=" flex ">
           <div className=" w-full">
             <div className="flex flex-col md:flex-row md:h-[245px] w-full gap-10">
@@ -92,22 +93,25 @@ export const Intro = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div></> 
 }
 
 const Resume = () => {
 
   const [showMenu, setShowMenu] = useState(false)
   return (
-    <div className=" lg:w-[50%] mx-auto w-[80%] mb-11">
+      <div>
       <title> Resume | Prashant Adhikari </title>
       <div className="fixed bottom-2 left-2 z-[10000] ">
         <MenuBar showMenu={showMenu} setShowMenu={setShowMenu} />
       </div>
+      <div className="w-full absolute top-3 "><div className="bg-white shadow-2xl shadow-black md w-[80%] py-2 rounded-full lg:w-[50%] mx-auto text-center z-[9999] font-semibold text-charcoal">📑 Prashant's Resume</div></div>
+      <div className=" lg:w-[50%] mx-auto w-[80%] mb-11">
       <Intro/>
       <ExperienceBlock />
       <EducationBlock />
       <CertificateBlock/>
+      </div>
     </div>
   );
 };
