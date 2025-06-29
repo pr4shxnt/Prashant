@@ -105,7 +105,7 @@ const Resume = () => {
       <div className="fixed bottom-2 left-2 z-[10000] ">
         <MenuBar showMenu={showMenu} setShowMenu={setShowMenu} />
       </div>
-      <div className="w-full absolute top-3 "><div  className="bg-white shadow-2xl shadow-black md w-[80%] py-2 rounded-full lg:w-[50%] mx-auto text-center z-[9999] font-semibold text-charcoal hover:underline"><a href="https://www.voli-milauxu-la-aaja-dhila-vo.com" target="_blank" className="flex justify-center items-center py-1 text-lg gap-2"><Download color="purple"/> Download pdf</a></div></div>
+      <div className="w-full absolute top-3 "><div  className="bg-white shadow-2xl shadow-black md w-[80%] py-2 rounded-full lg:w-[50%] mx-auto text-center z-[9999] font-semibold text-charcoal flex justify-between px-8"><h1 className="text-3xl text-bronze bg-gray-200 p-1 rounded-[50%]">👨🏻‍🦱</h1><a href="https://www.voli-milauxu-la-aaja-dhila-vo.com" target="_blank" className="flex hover:underline font-normal justify-center items-center py-1 text-sm gap-2"><Download size={18} color="purple"/> Download pdf</a></div></div>
       <div className=" lg:w-[50%] mx-auto w-[80%] mb-11">
       <Intro/>
       <ExperienceBlock />
