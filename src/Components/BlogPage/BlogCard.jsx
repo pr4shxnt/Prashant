@@ -14,12 +14,12 @@ export const BlogCard = ({post}) => {
           <div className="flex gap-x-2 flex-wrap mb-3">
           {
             post.tags?.map((tag)=>{
-              return<NavLink to={`s/${tag}`} className="rounded-full bg-charcoal/60 my-1 w-max py-0.5 px-2 backdrop-blur-3xl text-white text-sm">#{tag}</NavLink>
+              return<NavLink to={`s?query=${tag}`} className="rounded-full bg-charcoal/60 my-1 w-max py-0.5 px-2 backdrop-blur-3xl text-white text-sm">#{tag}</NavLink>
 
             })
           }</div>
   
-          <NavLink to={`${post.slug}`} className="px-3 py-2 bg-purple-500 duration-300 hover:bg-purple-700 rounded-sm text-white">Read More</NavLink></div>
+          <NavLink to={`read/${post.slug}`} className="px-3 py-2 bg-purple-500 duration-300 hover:bg-purple-700 rounded-sm text-white">Read More</NavLink></div>
     
       </div>
     </div>

@@ -21,6 +21,7 @@ import NoDirectory from "./Pages/NoDirectory";
 import BlogHome from "./Pages/BlogHome";
 import BlogsAdmin from "./Admin/Pages/BlogsAdmin";
 import BlogIndividual from "./Pages/BlogIndividual";
+import SearchedBlogs from "./Pages/SearchedBlogs";
 
 const router = createBrowserRouter([
   {
@@ -97,12 +98,16 @@ const router = createBrowserRouter([
         element: <BlogHome/>
       },
       {
-        path: ":slug",
+        path: "read/:slug",
         element: <BlogIndividual/>
       },
       {
         path: "all-blogs",
         element: "damn butuch"
+      },
+      {
+        path: "s",
+        element: <SearchedBlogs/>
       }
     ]
   }

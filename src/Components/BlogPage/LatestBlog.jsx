@@ -42,7 +42,7 @@ const LatestBlog = () => {
       <br />
      
     </p>
-     <NavLink to={`/blogs/${latestBlog.slug}`} className={`text-beige hover:underline text-sm`}>Read More...</NavLink>
+     <NavLink to={`/blogs/read/${latestBlog.slug}`} className={`text-beige hover:underline text-sm`}>Read More...</NavLink>
 
     <div className="flex gap-2 flex-wrap mt-2">
       {latestBlog.tags?.map((tag) => (

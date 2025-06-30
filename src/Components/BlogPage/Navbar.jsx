@@ -1,6 +1,6 @@
 import { Menu, Search, X } from "lucide-react";
 import React, { useEffect, useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [search, setSearch] = useState("");
@@ -14,9 +14,12 @@ const Navbar = () => {
     setShadow(pathname !== "/blogs")
   })
 
+  const navigate = useNavigate();
+
   const handleSearch = (e) => {
-    e.preventDefault();
-    alert(`Searching for: ${search}`);
+    e.preventDefault()
+    navigate(`/blogs/s?query=${encodeURIComponent(search.trim())}`);
+    setSearch("")
   };
 
   useEffect(() => {

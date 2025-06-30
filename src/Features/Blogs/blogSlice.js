@@ -21,6 +21,7 @@ const initialState = {
   latestBlog: {},
   recommended: [],
   featured: [],
+  queriedBlogs: []
 };
 
 export const createBlog = createAsyncThunk(
@@ -141,6 +142,22 @@ export const fetchFeaturedBlogs = createAsyncThunk(
   }
 );
 
+export const fetchBlogsByQuery = createAsyncThunk(
+  "blogs/fetchByQuery",
+  async (query, ThunkAPI) => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_BACKEND}/api/blogs/search?query=${query}`
+      );
+      return response.data;
+    } catch (error) {
+      return ThunkAPI.rejectWithValue(
+        error.response?.data?.message || "Blogs fetch by query failed"
+      );
+    }
+  }
+);
+
 const blogSlice = createSlice({
   name: "blogs",
   initialState,
@@ -229,7 +246,20 @@ const blogSlice = createSlice({
       .addCase(fetchFeaturedBlogs.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
-      });
+      })
+      .addCase(fetchBlogsByQuery.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchBlogsByQuery.fulfilled, (state, action) => {
+        state.loading = false;
+        state.queriedBlogs = action.payload;
+        state.error = null;
+      })
+      .addCase(fetchBlogsByQuery.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
   },
 });
 
