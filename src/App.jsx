@@ -22,6 +22,7 @@ import BlogHome from "./Pages/BlogHome";
 import BlogsAdmin from "./Admin/Pages/BlogsAdmin";
 import BlogIndividual from "./Pages/BlogIndividual";
 import SearchedBlogs from "./Pages/SearchedBlogs";
+import AllBlogs from "./Pages/AllBlogs";
 
 const router = createBrowserRouter([
   {
@@ -103,7 +104,7 @@ const router = createBrowserRouter([
       },
       {
         path: "all-blogs",
-        element: "damn butuch"
+        element: <AllBlogs/>
       },
       {
         path: "s",

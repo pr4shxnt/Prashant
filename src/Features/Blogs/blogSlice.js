@@ -21,7 +21,8 @@ const initialState = {
   latestBlog: {},
   recommended: [],
   featured: [],
-  queriedBlogs: []
+  queriedBlogs: [],
+  paginatedBlogs:[],
 };
 
 export const createBlog = createAsyncThunk(
@@ -157,6 +158,17 @@ export const fetchBlogsByQuery = createAsyncThunk(
     }
   }
 );
+export const getPaginatedBlogs = createAsyncThunk(
+  'blogs/paginatedBlogs',
+  async(page, ThunkAPI) => {
+    try {
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND}/api/blogs/paginated?page=${page}`);
+      return response.data;
+    } catch (error) {
+      return ThunkAPI.rejectWithValue(error.response?.data?.message || "Blogs fetching failed");
+    }
+  }
+)
 
 const blogSlice = createSlice({
   name: "blogs",
@@ -257,6 +269,19 @@ const blogSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchBlogsByQuery.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(getPaginatedBlogs.pending, (state, action)=>{
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getPaginatedBlogs.fulfilled, (state, action)=>{
+        state.loading = false;
+        state.paginatedBlogs = action.payload;
+        state.error = null;
+      })
+      .addCase(getPaginatedBlogs.rejected, (state, action)=>{
         state.loading = false;
         state.error = action.payload;
       })

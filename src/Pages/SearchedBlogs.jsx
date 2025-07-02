@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useLocation } from "react-router-dom";
 import { fetchBlogsByQuery } from "../Features/Blogs/blogSlice";
 
-const SearchedBlogCard = ({ title, content, coverImage, authors, createdAt, slug }) => (
+export const SearchedBlogCard = ({ title, content, coverImage, authors, createdAt, slug }) => (
     <><div className="flex flex-col md:flex-row w-full  bg-gray-50/70 shadow-xl rounded-md">
         <img src={coverImage} alt="" className="md:w-[20%] h-44 object-cover rounded-l-md" />
     <div className=" md:w-[80%]  p-3">
