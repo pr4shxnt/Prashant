@@ -7,7 +7,7 @@ export const SearchedBlogCard = ({ title, content, coverImage, authors, createdA
     <><div className="flex flex-col md:flex-row w-full  bg-gray-50/70 shadow-xl rounded-md">
         <img src={coverImage} alt="" className="md:w-[20%] h-44 object-cover rounded-l-md" />
     <div className=" md:w-[80%]  p-3">
-        <h3 className="text-lg font-semibold mb-2">{title}</h3>
+        <h3 className="text-lg line-clamp-1 font-semibold mb-2">{title}</h3>
     <p dangerouslySetInnerHTML={{__html: content}} className="text-gray-700 m-0 line-clamp-2"></p>
     <div className="flex gap-1 text-sm mt-6">
     {
