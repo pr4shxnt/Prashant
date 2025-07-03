@@ -53,7 +53,6 @@ const Navbar = () => {
                 <li>
                   <NavLink
                     to="/blogs"
-                    onClick={()=> setMenuShow(false)}
                     className=" no-underline  hover:text-beige transition"
                   >
                     Home
@@ -62,7 +61,6 @@ const Navbar = () => {
                 <li>
                   <NavLink
                     to="/blogs/all-blogs"
-                    onClick={()=> setMenuShow(false)}
                     className=" no-underline  hover:text-beige transition"
                   >
                     All Blogs
@@ -71,7 +69,6 @@ const Navbar = () => {
                 <li>
                   <NavLink
                     to="/curriculum-vitae"
-                    onClick={()=> setMenuShow(false)}
                     className=" no-underline  hover:text-beige transition"
                   >
                     About
