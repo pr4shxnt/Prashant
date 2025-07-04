@@ -9,23 +9,18 @@ import React, {
 } from "react";
 import gsap from "gsap";
 
-export const Card = forwardRef(
-  ({ customClass, ...rest }, ref) => (
-    <div
-      ref={ref}
-      {...rest}
-      className={`absolute top-1/2 left-1/2 rounded-xl border border-white bg-black [transform-style:preserve-3d] [will-change:transform] [backface-visibility:hidden] ${customClass ?? ""} ${rest.className ?? ""}`.trim()}
-    />
-  )
-);
+export const Card = forwardRef(({ customClass, ...rest }, ref) => (
+  <div
+    ref={ref}
+    {...rest}
+    className={`absolute top-1/2 left-1/2 rounded-xl border border-white bg-black [transform-style:preserve-3d] [will-change:transform] [backface-visibility:hidden] ${
+      customClass ?? ""
+    } ${rest.className ?? ""}`.trim()}
+  />
+));
 Card.displayName = "Card";
 
-const makeSlot = (
-  i,
-  distX,
-  distY,
-  total
-) => ({
+const makeSlot = (i, distX, distY, total) => ({
   x: i * distX,
   y: -i * distY,
   z: -i * distX * 1.5,
@@ -60,34 +55,29 @@ const CardSwap = ({
   const config =
     easing === "elastic"
       ? {
-        ease: "elastic.out(0.6,0.9)",
-        durDrop: 2,
-        durMove: 2,
-        durReturn: 2,
-        promoteOverlap: 0.9,
-        returnDelay: 0.05,
-      }
+          ease: "elastic.out(0.6,0.9)",
+          durDrop: 2,
+          durMove: 2,
+          durReturn: 2,
+          promoteOverlap: 0.9,
+          returnDelay: 0.05,
+        }
       : {
-        ease: "power1.inOut",
-        durDrop: 0.8,
-        durMove: 0.8,
-        durReturn: 0.8,
-        promoteOverlap: 0.45,
-        returnDelay: 0.2,
-      };
+          ease: "power1.inOut",
+          durDrop: 0.8,
+          durMove: 0.8,
+          durReturn: 0.8,
+          promoteOverlap: 0.45,
+          returnDelay: 0.2,
+        };
 
-  const childArr = useMemo(
-    () => Children.toArray(children),
-    [children]
-  );
+  const childArr = useMemo(() => Children.toArray(children), [children]);
   const refs = useMemo(
     () => childArr.map(() => React.createRef()),
     [childArr.length]
   );
 
-  const order = useRef(
-    Array.from({ length: childArr.length }, (_, i) => i)
-  );
+  const order = useRef(Array.from({ length: childArr.length }, (_, i) => i));
 
   const tlRef = useRef(null);
   const intervalRef = useRef();
@@ -192,14 +182,15 @@ const CardSwap = ({
   const rendered = childArr.map((child, i) =>
     isValidElement(child)
       ? cloneElement(child, {
-        key: i,
-        ref: refs[i],
-        style: { width, height, ...(child.props.style ?? {}) },
-        onClick: (e) => {
-          child.props.onClick?.(e);
-          onCardClick?.(i);
-        },
-      }) : child
+          key: i,
+          ref: refs[i],
+          style: { width, height, ...(child.props.style ?? {}) },
+          onClick: (e) => {
+            child.props.onClick?.(e);
+            onCardClick?.(i);
+          },
+        })
+      : child
   );
 
   return (
