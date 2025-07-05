@@ -3,6 +3,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { useContent } from '../Utils/ContextProvider';
 import Footer from '../Components/Sections/Roots/Footer';
 import { useEffect, useState } from 'react';
+import ScrollToTop from '../Utils/ScrollToTop';
 
 const RootComponent = () => {
   const { showContent, setShowContent } = useContent();
@@ -24,6 +25,7 @@ useEffect(() => {
 
   return (
     <>
+    <ScrollToTop/>
        <div className=" ">{ render && 
                 <InitialRender setShowContent={setShowContent} />
                 }      
