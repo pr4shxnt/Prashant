@@ -122,7 +122,7 @@ const Sidebar = ({setShowSidebar}) => {
       </div>
       {logoutModal && (
         <div className="fixed top-0 left-0 w-full h-full font-light bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white p-4 w-[23%] rounded shadow-lg">
+          <div className="bg-white p-4 w-[90%] md:w-[23%] rounded shadow-lg">
             <h2 className="text-lg text-center mx-auto ">
               Hello there admin ! <br /> Are you sure you want to leave the
               admin panel??
