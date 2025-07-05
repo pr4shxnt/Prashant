@@ -1,10 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchAllEducation, addEducation } from '../../Features/Personals/educationSlice';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchAllEducation,
+  addEducation,
+} from "../../Features/Personals/educationSlice";
 
 const ManageEducation = () => {
   const dispatch = useDispatch();
-  const { loading, error, educations } = useSelector((state) => state.education);
+  const { loading, error, educations } = useSelector(
+    (state) => state.education
+  );
 
   const [formData, setFormData] = useState({
     Institution: "",
@@ -14,7 +19,8 @@ const ManageEducation = () => {
     Website: "",
     Grade: "",
     From: "",
-    To: ""
+    To: "",
+    logo: null,
   });
 
   useEffect(() => {
@@ -22,42 +28,56 @@ const ManageEducation = () => {
   }, [dispatch]);
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, files } = e.target;
+
     setFormData((prev) => ({
       ...prev,
-      [name]: value,
+      [name]: files ? files[0] : value,
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const isEmpty = Object.values(formData).some((value) => value.trim() === "");
+    const isEmpty = Object.entries(formData).some(([key, value]) => {
+      if (key === "logo") {
+        return value === null;
+      }
+      if (typeof value === "string") {
+        return value.trim() === "";
+      }
+      return false;
+    });
+
     if (isEmpty) {
       alert("Please fill in all fields.");
       return;
     }
 
-  
     dispatch(addEducation(formData));
-
-    
   };
-
-  
-  
 
   return (
     <div className="min-h-screen bg-sand py-10 px-4 md:px-20">
       <div className="flex flex-col md:flex-row gap-8">
         {/* Education List */}
         <div className="w-full md:w-1/2 h-[650px] overflow-y-scroll custom-scrollbar pr-4">
-          <h2 className="text-xl font-semibold mb-4 text-charcoal">📚 Education List</h2>
+          <h2 className="text-xl font-semibold mb-4 text-charcoal">
+            📚 Education List
+          </h2>
           {educations?.length > 0 ? (
             educations.map((edu) => (
-              <div key={edu._id} className="mb-4 p-4 bg-brown text-beige rounded-lg shadow">
-                <h3 className="text-lg font-bold">{edu.Level} in {edu.Field} @ {edu.Institution}</h3>
-                <p className="text-sm">📅 {new Date(edu.From).toLocaleDateString()} - {new Date(edu.To).toLocaleDateString()}</p>
+              <div
+                key={edu._id}
+                className="mb-4 p-4 bg-brown text-beige rounded-lg shadow"
+              >
+                <h3 className="text-lg font-bold">
+                  {edu.Level} in {edu.Field} @ {edu.Institution}
+                </h3>
+                <p className="text-sm">
+                  📅 {new Date(edu.From).toLocaleDateString()} -{" "}
+                  {new Date(edu.To).toLocaleDateString()}
+                </p>
                 <div className="text-sm mt-2 opacity-80">
                   <p>📍 {edu.Address}</p>
                   <p>🌐 {edu.Website}</p>
@@ -72,11 +92,15 @@ const ManageEducation = () => {
 
         {/* Education Form */}
         <div className="w-full md:w-1/2 bg-white/90 backdrop-blur-lg shadow-2xl rounded-2xl p-8 border border-beige/30">
-          <h2 className="text-2xl md:text-3xl font-semibold text-charcoal mb-6 text-center">🎓 Add Education</h2>
+          <h2 className="text-2xl md:text-3xl font-semibold text-charcoal mb-6 text-center">
+            🎓 Add Education
+          </h2>
           <form onSubmit={handleSubmit} className="flex flex-col gap-5">
             <div className="grid grid-cols-2 gap-2">
               <div>
-                <label className="block text-charcoal text-sm font-medium mb-1">Institution</label>
+                <label className="block text-charcoal text-sm font-medium mb-1">
+                  Institution
+                </label>
                 <input
                   type="text"
                   name="Institution"
@@ -88,7 +112,9 @@ const ManageEducation = () => {
               </div>
 
               <div>
-                <label className="block text-charcoal text-sm font-medium mb-1">Level</label>
+                <label className="block text-charcoal text-sm font-medium mb-1">
+                  Level
+                </label>
                 <input
                   type="text"
                   name="Level"
@@ -100,7 +126,9 @@ const ManageEducation = () => {
               </div>
 
               <div>
-                <label className="block text-charcoal text-sm font-medium mb-1">Field</label>
+                <label className="block text-charcoal text-sm font-medium mb-1">
+                  Field
+                </label>
                 <input
                   type="text"
                   name="Field"
@@ -112,7 +140,9 @@ const ManageEducation = () => {
               </div>
 
               <div>
-                <label className="block text-charcoal text-sm font-medium mb-1">Address</label>
+                <label className="block text-charcoal text-sm font-medium mb-1">
+                  Address
+                </label>
                 <input
                   type="text"
                   name="Address"
@@ -124,7 +154,9 @@ const ManageEducation = () => {
               </div>
 
               <div>
-                <label className="block text-charcoal text-sm font-medium mb-1">Website</label>
+                <label className="block text-charcoal text-sm font-medium mb-1">
+                  Website
+                </label>
                 <input
                   type="url"
                   name="Website"
@@ -136,7 +168,9 @@ const ManageEducation = () => {
               </div>
 
               <div>
-                <label className="block text-charcoal text-sm font-medium mb-1">Grade</label>
+                <label className="block text-charcoal text-sm font-medium mb-1">
+                  Grade
+                </label>
                 <input
                   type="text"
                   name="Grade"
@@ -148,7 +182,22 @@ const ManageEducation = () => {
               </div>
 
               <div>
-                <label className="block text-charcoal text-sm font-medium mb-1">From</label>
+                <label className="block text-charcoal text-sm font-medium mb-1">
+                  Logo
+                </label>
+                <input
+                  type="file"
+                  name="logo"
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-2 border border-beige rounded-lg focus:outline-none focus:ring-2 focus:ring-brown"
+                  accept="image/*"
+                />
+              </div>
+
+              <div>
+                <label className="block text-charcoal text-sm font-medium mb-1">
+                  From
+                </label>
                 <input
                   type="date"
                   name="From"
@@ -159,7 +208,9 @@ const ManageEducation = () => {
               </div>
 
               <div>
-                <label className="block text-charcoal text-sm font-medium mb-1">To</label>
+                <label className="block text-charcoal text-sm font-medium mb-1">
+                  To
+                </label>
                 <input
                   type="date"
                   name="To"

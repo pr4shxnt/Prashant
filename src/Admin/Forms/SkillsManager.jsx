@@ -53,10 +53,10 @@ const SkillsManager = () => {
   }, [skillData.image]);
 
   return (
-    <div className="flex relative mt-10 px-10 bg-gradient-to-br ">
+    <div className="flex flex-col gap-10 md:flex-row relative mt-10 px-10 bg-gradient-to-br ">
       {/* Skills Display */}
       <div className="w-full">
-        <div className="grid grid-cols-2 gap-4 h-[650px] overflow-y-scroll custom-scrollbar pr-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-[650px] overflow-y-scroll custom-scrollbar pr-4">
           {skills?.Skills?.map((skill) => (
             <div key={skill._id} className="text-white flex flex-col">
               <img
@@ -84,7 +84,7 @@ const SkillsManager = () => {
       </div>
 
       {/* Skill Form */}
-      <div className="w-full p-6 h-[650px] bg-white/90 border-beige/30 rounded-2xl shadow-xl border  ml-6">
+      <div className="w-full p-6 h-[650px] bg-white/90 border-beige/30 rounded-2xl shadow-xl border  ">
         <h2 className="text-2xl font-bold mb-6 text-gray-900 ">
           Add New Skill
         </h2>

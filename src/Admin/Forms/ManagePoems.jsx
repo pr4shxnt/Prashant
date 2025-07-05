@@ -54,9 +54,9 @@ const ManagePoems = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-beige to-white py-10 px-4 md:px-20">
-      <div className="flex gap-2">
+      <div className="flex flex-col md:flex-row gap-2">
          <div className="w-full">
-        <div className="grid grid-cols-2 gap-4 h-[650px] overflow-y-scroll custom-scrollbar pr-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-[650px] overflow-y-scroll custom-scrollbar pr-4">
           {poems?.map((poem) => (
             <div key={poem._id} className="text-white flex flex-col">
               <img

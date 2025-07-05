@@ -35,18 +35,21 @@ const EducationBlock = () => {
           return (
             <div
               key={index}
-              className="flex items-center w-full shadow-2xl shadow-charcoal text-charcoal px-4 md:px-7 bg-white  gap-6 py-7 rounded-2xl   transition-all duration-300"
+              className="flex  items-center w-full shadow-2xl shadow-charcoal text-charcoal  bg-white  gap-6 py-7 rounded-2xl   transition-all duration-300"
             >
              
               <div className="w-full">
-                <div className="flex px-5 w-full justify-between mb-2">
+                <div className="flex  px-5 gap-6 w-full justify-between mb-2">
+                  <div className="">
+                    <img src={education.Logo} alt="" className="h-16 w-20 md:w-18 rounded-2xl" />
+                  </div>
                   <div className="w-full">
-                    <div className="flex justify-between w-full">
-                      <h1 className="md:text-xl text-lg w-[60%] font-semibold">
+                    <div className="flex flex-col md:flex-row md:justify-between w-full">
+                      <h1 className="md:text-xl text-lg md:w-[60%] font-semibold">
                         <span className="">{education.Level} - </span>
                         {education.Field}
                       </h1>
-                      <p className="w-[50%] text-end">
+                      <p className="md:w-[50%] md:text-end">
                         <span className="text-xs md:text-lg">
                           {new Date(education.From).toLocaleString("default", {
                             month: "short",

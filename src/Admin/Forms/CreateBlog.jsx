@@ -63,7 +63,7 @@ const CreateBlog = () => {
           ["tags", "Tags (comma-separated)"],
           ["researchId", "Research ID"],
           ["researchLink", "Research Link"],
-          ["metaTitle", "Meta Title (comma-separated)"],
+          ["metaTitle", "Meta tags"],
           ["metaDescription", "Meta Description"],
         ].map(([name, label]) => (
           <div key={name}>
@@ -81,7 +81,7 @@ const CreateBlog = () => {
           </div>
         ))}
 
-        <div>
+        <div className="col-span-2">
           <label className="block text-charcoal text-sm font-medium mb-1">
             Cover Image
           </label>
@@ -89,7 +89,7 @@ const CreateBlog = () => {
             type="file"
             accept="image/*"
             onChange={handleFileChange}
-            className="w-full px-4 py-2 border border-beige rounded-lg bg-white text-charcoal file:mr-4 file:py-1 file:px-2 file:rounded-full file:border-0 file:bg-brown file:text-beige hover:file:bg-charcoal"
+            className="w-full  px-4 py-2 border border-beige rounded-lg bg-white text-charcoal file:mr-4 file:py-1 file:px-2 file:rounded-full file:border-0 file:bg-brown file:text-beige hover:file:bg-charcoal"
             required
           />
         </div>

@@ -10,6 +10,7 @@ import {
   LucideComputer,
   MapPlusIcon,
   Users,
+  X,
 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
@@ -17,7 +18,7 @@ import { useContent } from "../../Utils/ContextProvider";
 import { logoutAdmin } from "../../Features/Auth/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-const Sidebar = () => {
+const Sidebar = ({setShowSidebar}) => {
   const dispatch = useDispatch();
 
   const logOut = () => {
@@ -72,7 +73,7 @@ const Sidebar = () => {
     { name: "Home", path: "/", icon: <Home size={18} /> },
   ];
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-screen md:h-full">
       <div className="w-full relative bg-brown h-full">
         <div className="absolute text-center text-xs w-full bottom-0 left-0  bg-charcoal text-white p-4">
           <h1 className="flex gap-1 justify-center">
@@ -89,9 +90,10 @@ const Sidebar = () => {
           <h1 className="tracking-widest uppercase font-bold items-center text-sm text-white">
             prashant
           </h1>
-          <button onClick={() => setLogoutModal(true)}>
+          <button className="hidden md:block" onClick={() => setLogoutModal(true)}>
             <LogOut size={18} stroke="red" />
           </button>
+          <button className="md:hidden" onClick={()=>{setShowSidebar(false)}}><X/></button>
         </div>
         {navLinks.map((link, index) => (
           <NavLink
