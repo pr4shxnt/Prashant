@@ -110,7 +110,7 @@ console.log(blogData);
         ref={editorRef}
         contentEditable
         onInput={handleInput}
-        className="border border-gray-700 rounded min-h-[300px] p-3 bg-white text-gray-900 focus:outline-none
+        className="border h-96 overflow-auto custom-scrollbar border-gray-700 rounded min-h-[300px] p-3 bg-white text-gray-900 focus:outline-none
           [&_ul]:list-disc [&_ul]:pl-5 [&_ol]:list-decimal [&_ol]:pl-5"
         suppressContentEditableWarning={true}
         data-placeholder="Start typing your content here..."
