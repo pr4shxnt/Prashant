@@ -5,21 +5,15 @@ import HomeMD from "../Components/HomeMD";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { NavLink } from "react-router-dom";
-import { BookCopy, ChevronDown, ChevronUp, Eye, EyeClosed } from "lucide-react";
+import { ChevronDown, ChevronUp, Eye, EyeClosed } from "lucide-react";
 import { useContent } from "../Utils/ContextProvider";
 import MenuBar from "../Components/MenuBar";
 import MarqueeComp from "../Components/MarqueeComp";
 import Accomplishments from "../Components/Sections/Accomplishments/Accomplishments";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import ProjectScreen from "../Components/Sections/ProjectSection.jsx/ProjectScreen";
-import Testimonials from "../Components/Sections/Testimonials/Testimonials";
-import Marquee from "react-fast-marquee";
 import Poem from "../Components/Sections/ArtSection/Poems";
-import { Intro } from "./Resume";
-import LatestBlog from "../Components/BlogPage/LatestBlog";
-import CardSwap, { Card } from "../Components/BlogPage/BlogsViewer";
-import { fetchBlogs } from "../Features/Blogs/blogSlice";
 import BlogForHOme from "../Components/BlogPage/BlogForHOme";
 import AboutMeLandingpage from "../Components/Sections/AboutSection/AboutMeLandingpage";
 
@@ -223,7 +217,7 @@ x: pr4xnt`,
               <a
                 target="_blank"
                 title="email"
-                href="mailto:prashantadhikareeey.dev@gmail.com"
+                href="mailto:contact@prashantadhikari7.com.np"
               >
                 <img src="./email.png" alt="" className="w-6 m-2" />
               </a>
