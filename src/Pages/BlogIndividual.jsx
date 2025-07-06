@@ -7,6 +7,8 @@ import RecommendedBlogs from "../Components/BlogPage/RecommendedBlogs";
 import { fetchRecommendedBlogs } from "../Features/Blogs/blogSlice";
 import { meta } from "@eslint/js";
 import { metadata } from "framer-motion/client";
+import ScrollToTop from "../Utils/ScrollToTop";
+import { Scroll } from "lucide-react";
 
 const BlogIndividual = () => {
   const [initialLoad, setInitialLoad] = useState(true);
@@ -64,6 +66,7 @@ const BlogIndividual = () => {
 
   return (
     <>
+    <ScrollToTop/>
       <title>{` ${slug
         .split("-")
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))

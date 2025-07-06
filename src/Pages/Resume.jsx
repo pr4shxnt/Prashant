@@ -4,9 +4,12 @@ import EducationBlock from "../Components/ResumePage/EducationBlock";
 import MenuBar from "../Components/MenuBar";
 import { useState } from "react";
 import CertificateBlock from "../Components/ResumePage/CertificateBlock";
+import ScrollToTop from "../Utils/ScrollToTop";
 
 export const Intro = () => {
-       return <>      <h1 className="p-4 mt-20 md:mt-24 mb-3">Intro</h1>
+       return <> 
+        <ScrollToTop/>
+            <h1 className="p-4 mt-20 md:mt-24 mb-3">Intro</h1>
 <div className=" flex flex-col justify-center">
         <div className=" flex ">
           <div className=" w-full">
