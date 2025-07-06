@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const BlogHomePage = () => {
   return (
@@ -15,8 +16,8 @@ const BlogHomePage = () => {
             Get ready to dive into the innovative research journey of Prashant Adhikari. 
           </p>
           <div className="flex justify- gap-3 mt-10">
-            <button className="bg-purple-500 py-3 px-6 text-white font-semibold rounded-md hover:bg-green-500/40 transition-all duration-500 w-max">Start Reading</button>
-            <button className="bg-beige p-3 md:px-10 text-charcoal font-semibold rounded-md hover:bg-beige/40 transition-all duration-500 w-max">Writer</button>
+            <NavLink to={`all-blogs`} className="bg-purple-500 py-3 px-6 text-white font-semibold rounded-md hover:bg-green-500/40 transition-all duration-500 w-max">Start Reading</NavLink>
+            <NavLink to={`/`} className="bg-beige p-3 md:px-10 text-charcoal font-semibold rounded-md hover:bg-beige/40 transition-all duration-500 w-max">Writer</NavLink>
           </div>
         </div>
         <div className="w-[80%]">
