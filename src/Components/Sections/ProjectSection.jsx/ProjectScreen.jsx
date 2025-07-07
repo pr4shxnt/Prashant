@@ -178,7 +178,7 @@ const ProjectScreen = () => {
           ref={topRef}
           className="w-full opacity-0 md:hidden lg:w-1/2 flex flex-col items-center justify-center text-center"
         >
-          <h1 className="text-5xl md:text-7xl lg:text-8xl text-charcoal font-bold uppercase">
+          <h1 className="text-5xl md:text-7xl  lg:text-8xl text-charcoal font-bold uppercase">
             Projects?
           </h1>
           <p className="text-lg md:text-xl lg:text-2xl text-brown leading-relaxed mt-2 mb-6">
@@ -186,7 +186,7 @@ const ProjectScreen = () => {
             built with love and honor.
           </p>
           <button className="bg-beige py-3 px-6 text-bronze font-semibold rounded-bl-4xl rounded-tr-4xl rounded-br-2xl rounded-tl-2xl hover:bg-beige/40 transition-all duration-500 w-max">
-            <NavLink to={"/projects"} className="text-charcoal">
+            <NavLink to={"/projects"} className="text-bronze">
               All Projects
             </NavLink>
           </button>
