@@ -5,12 +5,14 @@ import MenuBar from "../Components/MenuBar";
 import { useState } from "react";
 import CertificateBlock from "../Components/ResumePage/CertificateBlock";
 import ScrollToTop from "../Utils/ScrollToTop";
+import ResumeFile from "../Components/Assets/Prashant-Curriculum-Vitae.pdf";
 
 export const Intro = () => {
-       return <> 
-        <ScrollToTop/>
-            <h1 className="p-4 mt-20 md:mt-24 mb-3">Intro</h1>
-<div className=" flex flex-col justify-center">
+  return (
+    <>
+      <ScrollToTop />
+      <h1 className="p-4 mt-20 md:mt-24 mb-3">Intro</h1>
+      <div className=" flex flex-col justify-center">
         <div className=" flex ">
           <div className=" w-full">
             <div className="flex flex-col md:flex-row md:h-[245px] w-full gap-10">
@@ -26,8 +28,8 @@ export const Intro = () => {
                   Prashant Adhikari{" "}
                 </h1>
                 <p className="">
-                  17yo | CS/AI/ML | @ Sunway College | @ Birmingham City Uni | Developer &
-                  AI/ML Researcher
+                  17yo | CS/AI/ML | @ Sunway College | @ Birmingham City Uni |
+                  Developer & AI/ML Researcher
                 </p>
                 <button className="bg-charcoal flex gap-3 text-sand py-2 px-5 rounded-full items-center">
                   Hire Dev <ArrowRight size={15} />
@@ -49,7 +51,11 @@ export const Intro = () => {
             <div className="flex flex-col md:flex-row w-full gap-10">
               <div className="md:w-[30%] w-full rounded-4xl bg-white/80 shadow-2xl shadow-charcoal">
                 <div className="grid grid-cols-4 md:grid-cols-2 gap-4 p-5">
-                  <a href="https://www.github.com/pr4shxnt" target="_blank" className="bg-black group hover:bg-black/50 transition-all ease-in-out duration-200 cursor-pointer rounded-xl p-4">
+                  <a
+                    href="https://www.github.com/pr4shxnt"
+                    target="_blank"
+                    className="bg-black group hover:bg-black/50 transition-all ease-in-out duration-200 cursor-pointer rounded-xl p-4"
+                  >
                     {" "}
                     <svg
                       className="fill-white group-hover:scale-90   transition-all duration-200 ease-in-out"
@@ -58,7 +64,11 @@ export const Intro = () => {
                       <path d="M12,2A10,10,0,0,0,8.84,21.5c.5.08.66-.23.66-.5V19.31C6.73,19.91,6.14,18,6.14,18A2.69,2.69,0,0,0,5,16.5c-.91-.62.07-.6.07-.6a2.1,2.1,0,0,1,1.53,1,2.15,2.15,0,0,0,2.91.83,2.16,2.16,0,0,1,.63-1.34C8,16.17,5.62,15.31,5.62,11.5a3.87,3.87,0,0,1,1-2.71,3.58,3.58,0,0,1,.1-2.64s.84-.27,2.75,1a9.63,9.63,0,0,1,5,0c1.91-1.29,2.75-1,2.75-1a3.58,3.58,0,0,1,.1,2.64,3.87,3.87,0,0,1,1,2.71c0,3.82-2.34,4.66-4.57,4.91a2.39,2.39,0,0,1,.69,1.85V21c0,.27.16.59.67.5A10,10,0,0,0,12,2Z"></path>
                     </svg>
                   </a>
-                  <a href="https://www.linkedin.com/in/prashant-adhikariii/" target="_blank" className="bg-[#0A66C2] group hover:bg-black/50 transition-all ease-in-out duration-200 cursor-pointer rounded-xl p-4">
+                  <a
+                    href="https://www.linkedin.com/in/prashant-adhikariii/"
+                    target="_blank"
+                    className="bg-[#0A66C2] group hover:bg-black/50 transition-all ease-in-out duration-200 cursor-pointer rounded-xl p-4"
+                  >
                     <svg
                       className="fill-white group-hover:scale-90   transition-all duration-200 ease-in-out"
                       viewBox="0 0 310 310"
@@ -68,7 +78,11 @@ export const Intro = () => {
                       <path d="M230.454,94.761c-24.995,0-43.472,10.745-54.679,22.954V104.73c0-2.761-2.238-5-5-5h-59.599 c-2.762,0-5,2.239-5,5v199.928c0,2.762,2.238,5,5,5h62.097c2.762,0,5-2.238,5-5v-98.918c0-33.333,9.054-46.319,32.29-46.319 c25.306,0,27.317,20.818,27.317,48.034v97.204c0,2.762,2.238,5,5,5H305c2.762,0,5-2.238,5-5V194.995 C310,145.43,300.549,94.761,230.454,94.761z"></path>
                     </svg>
                   </a>
-                  <a href="mailto:prashantadhikareeey.dev@gmail.com" target="_blank" className="bg-[#2167ac] group hover:bg-black/50 transition-all ease-in-out duration-200 cursor-pointer rounded-xl p-4">
+                  <a
+                    href="mailto:prashantadhikareeey.dev@gmail.com"
+                    target="_blank"
+                    className="bg-[#2167ac] group hover:bg-black/50 transition-all ease-in-out duration-200 cursor-pointer rounded-xl p-4"
+                  >
                     <svg
                       className="fill-white group-hover:scale-90   transition-all duration-200 ease-in-out"
                       viewBox="0 0 24 24"
@@ -76,7 +90,11 @@ export const Intro = () => {
                       <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path>
                     </svg>
                   </a>
-                  <a href="https://www.x.com/pr4xnt" target="_blank" className="bg-black group  hover:bg-black/50 transition-all ease-in-out duration-200 cursor-pointer rounded-xl p-4">
+                  <a
+                    href="https://www.x.com/pr4xnt"
+                    target="_blank"
+                    className="bg-black group  hover:bg-black/50 transition-all ease-in-out duration-200 cursor-pointer rounded-xl p-4"
+                  >
                     <svg
                       className="fill-white group-hover:scale-90   transition-all duration-200 ease-in-out"
                       viewBox="0 0 300 300"
@@ -96,24 +114,39 @@ export const Intro = () => {
             </div>
           </div>
         </div>
-      </div></> 
-}
+      </div>
+    </>
+  );
+};
 
 const Resume = () => {
-
-  const [showMenu, setShowMenu] = useState(false)
+  const [showMenu, setShowMenu] = useState(false);
   return (
-      <div>
+    <div>
       <title> Resume | Prashant Adhikari </title>
       <div className="fixed bottom-2 left-2 z-[10000] ">
         <MenuBar showMenu={showMenu} setShowMenu={setShowMenu} />
       </div>
-      <div className="w-full absolute top-3 "><div  className="bg-white shadow-2xl shadow-black md w-[80%] py-2 rounded-full lg:w-[50%] mx-auto text-center z-[9999] font-semibold text-charcoal flex justify-between px-8"><h1 className="text-3xl text-bronze bg-gray-200 p-1 rounded-[50%]">👨🏻‍🦱</h1><a href="https://www.voli-milauxu-la-aaja-dhila-vo.com" target="_blank" className="flex hover:underline font-normal justify-center items-center py-1 text-sm gap-2"><Download size={18} color="purple"/> Download pdf</a></div></div>
+      <div className="w-full absolute top-3 ">
+        <div className="bg-white shadow-2xl shadow-black md w-[80%] py-2 rounded-full lg:w-[50%] mx-auto text-center z-[9999] font-semibold text-charcoal flex justify-between px-2 pr-8">
+          <h1 className="text-3xl text-bronze bg-gray-200 p-1 rounded-[50%]">
+            👨🏻‍🦱
+          </h1>
+          <a
+            href={ResumeFile}
+            download="Prashant's Resume file"
+            target="_blank"
+            className="flex hover:underline font-normal justify-center items-center py-1 text-sm gap-2"
+          >
+            <Download size={18} color="purple" /> Download pdf
+          </a>
+        </div>
+      </div>
       <div className=" lg:w-[50%] mx-auto w-[80%] mb-11">
-      <Intro/>
-      <ExperienceBlock />
-      <EducationBlock />
-      <CertificateBlock/>
+        <Intro />
+        <ExperienceBlock />
+        <EducationBlock />
+        <CertificateBlock />
       </div>
     </div>
   );

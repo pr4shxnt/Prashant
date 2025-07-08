@@ -63,6 +63,7 @@ const AboutMeLandingpage = () => {
       y: 0,
       opacity: 1,
       duration: 0.5,
+      ease: "power2.out",
       scrollTrigger:{
         trigger: ".frame-container",
         start: "top 80%",
