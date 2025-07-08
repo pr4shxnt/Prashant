@@ -30,12 +30,12 @@ const EducationBlock = () => {
   return (
     <div>
       <h1 className="p-4 mt-12 md:mt-10">Education</h1>
-      <div className="grid grid-cols-1 gap-5">
+      <div className="grid grid-cols-1">
         {educations.map((education, index) => {
           return (
             <div
               key={index}
-              className="flex  items-center w-full shadow-2xl shadow-charcoal text-charcoal  bg-white  gap-6 py-7 rounded-2xl   transition-all duration-300"
+              className="flex  items-center w-full  text-charcoal  bg-white  gap-6 py-5 my-1 hover:bg-gray-100 rounded-2xl   transition-all duration-300"
             >
              
               <div className="w-full">

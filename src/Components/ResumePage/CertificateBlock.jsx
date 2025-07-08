@@ -41,24 +41,24 @@ const CertificateBlock = () => {
 
   return (
     <div className="mt-14">
-      <div className="">Certificates</div>
-    <div className="w-full mt-5 grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="px-5">Certificates</div>
+    <div className="w-full mt-5 grid grid-cols-1 md:grid-cols-3 gap-6">
       {certificates.map((certificate, index) => (
         <div
           key={certificate._id || certificate.issuer}
           ref={(el) => (containerRefs.current[index] = el)}
-          className=" shadow bg-white flex flex-col items-center "
-          title={certificate.issuer + " - "+ certificate.title}
+          className=" bg-white flex flex-col items-center "
         >
           <Document
             file={certificate.certificate}
             onLoadError={(err) => console.error('PDF load error:', err)}
           >
-            <Page pageNumber={1} width={widths[index] || 300} />
+            <Page  pageNumber={1} width={widths[index] || 300} />
           </Document>
-          <div className="mt-4 px-4 text-lg font-semibold">
-            <h1 className="">{certificate.issuer} certified {certificate.title}</h1>
+          <div className="mt-4 px-4 pb-3 text-center">
+            <h1 className="text-sm">{certificate.issuer} certified {certificate.title}</h1>
             <p className="">{}</p>
+            <a href={certificate.certificateUrl} target='_blank' className="text-xs text-blue-500 hover:underline">View {certificate.credentialId}</a>
           </div>
         </div>
       ))}

@@ -6,13 +6,14 @@ import { useState } from "react";
 import CertificateBlock from "../Components/ResumePage/CertificateBlock";
 import ScrollToTop from "../Utils/ScrollToTop";
 import ResumeFile from "../Components/Assets/Prashant-Curriculum-Vitae.pdf";
+import Footer from "../Components/Sections/Roots/Footer"
 
 export const Intro = () => {
   return (
     <>
       <ScrollToTop />
       <h1 className="p-4 mt-20 md:mt-24 mb-3">Intro</h1>
-      <div className=" flex flex-col justify-center">
+      <div className="px-5 md:px-0 flex flex-col justify-center">
         <div className=" flex ">
           <div className=" w-full">
             <div className="flex flex-col md:flex-row md:h-[245px] w-full gap-10">
@@ -122,13 +123,13 @@ export const Intro = () => {
 const Resume = () => {
   const [showMenu, setShowMenu] = useState(false);
   return (
-    <div>
+    <div className="md:bg-sand bg-white">
       <title> Resume | Prashant Adhikari </title>
       <div className="fixed bottom-2 left-2 z-[10000] ">
         <MenuBar showMenu={showMenu} setShowMenu={setShowMenu} />
       </div>
-      <div className="w-full absolute top-3 ">
-        <div className="bg-white shadow-2xl shadow-black md w-[80%] py-2 rounded-full lg:w-[50%] mx-auto text-center z-[9999] font-semibold text-charcoal flex justify-between px-2 pr-8">
+      <div className="w-full absolute top-0 py-3 bg-white md:bg-sand">
+        <div className="bg-white shadow-2xl shadow-charcoal md w-[95%] py-2 rounded-full lg:w-[53%] mx-auto text-center z-[9999] font-semibold text-charcoal flex justify-between px-2 pr-8">
           <h1 className="text-3xl text-bronze bg-gray-200 p-1 rounded-[50%]">
             👨🏻‍🦱
           </h1>
@@ -142,12 +143,13 @@ const Resume = () => {
           </a>
         </div>
       </div>
-      <div className=" lg:w-[50%] mx-auto w-[80%] mb-11">
+      <div className=" lg:w-[53%] pb-10 md:px-8 md:pt-0 pt-16 bg-white md:shadow-2xl shadow-charcoal md:rounded-[40px] mx-auto w-[100%] ">
         <Intro />
         <ExperienceBlock />
         <EducationBlock />
         <CertificateBlock />
       </div>
+      <Footer/>
     </div>
   );
 };

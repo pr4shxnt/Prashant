@@ -32,7 +32,7 @@ const ExperienceBlock = () => {
         const isExpanded = expandedIndex === index;
 
         return (
-          <div className="flex w-full my-3  text-charcoal px-7  gap-6 py-7 rounded-2xl bg-white shadow-2xl shadow-black  transition-all duration-300">
+          <div className="flex hover:bg-gray-100 w-full my-3  text-charcoal px-7  gap-6 py-7 rounded-md  transition-all duration-300">
             <div className="bg-brown h-max p-2 rounded-xl hidden md:block">
               <Laptop size={35} color="wheat" />
             </div>
