@@ -13,17 +13,12 @@ const ExperienceBlock = () => {
   const dispatch = useDispatch();
   const [initialLoad, setInitialLoad] = useState(true);
   const [expandedIndex, setExpandedIndex] = useState(null);
-   const [duration, setDuration] = useState(null);
 
   useEffect(() => {
     dispatch(fetchAllExperience());
   }, [dispatch]);
 
   const { experiences, loading } = useSelector((state) => state.experience);
-
-   useEffect(()=>{
-    setDuration(experiences?.length/4)
-  },[experiences])
 
   useEffect(() => {
     setInitialLoad(loading === undefined || loading === true);
@@ -33,31 +28,6 @@ const ExperienceBlock = () => {
     setExpandedIndex((prev) => (prev === index ? null : index));
   };
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const expCards = gsap.utils.toArray(".experience-card");
-
-      if (expCards.length === 0) return;
-
-      gsap.set(expCards, { opacity: 0, x: -30, });
-
-      gsap.to(expCards, {
-        opacity: 1,
-        x: 0,
-       duration: duration,
-      stagger: 0.2,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".exp-card-holder",
-          start: "top 90%",
-          toggleActions: "play none none none",
-          once: true, // Added once: true for single play on scroll
-        },
-      });
-    });
-
-    return () => ctx.revert();
-  }, [experiences]); // Added experiences to dependency array to re-run GSAP on data change
 
   if (initialLoad) return <LoadingPage />;
 

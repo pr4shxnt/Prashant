@@ -11,7 +11,6 @@ gsap.registerPlugin(ScrollTrigger);
 const EducationBlock = () => {
   const dispatch = useDispatch();
   const [initialLoad, setInitialLoad] = useState(true);
-  const [duration, setDuration] = useState(null);
 
   useEffect(() => {
     dispatch(fetchAllEducation());
@@ -19,44 +18,12 @@ const EducationBlock = () => {
 
   const { educations, loading } = useSelector((state) => state.education);
 
-  useEffect(()=>{
-    setDuration(educations?.length/4)
-  },[educations])
-  
-
-  console.log(duration);
   
 
   useEffect(() => {
     setInitialLoad(loading === undefined || loading === true);
   }, [loading]);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const eduCards = gsap.utils.toArray(".education-card");
-
-      if (eduCards.length === 0) return;
-
-      gsap.set(eduCards, { opacity: 0, x: -30 });
-
-      gsap.to(eduCards, {
-        opacity: 1,
-        x: 0,
-        duration: duration,
-        stagger: 0.5,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".edu-card-holder",
-          start: "top 90%",
-          toggleActions: "play none none none",
-          once: true,
-          markers: false,
-        },
-      });
-    });
-
-    return () => ctx.revert();
-  }, [educations]); 
 
   if (initialLoad) return <LoadingPage />;
 
