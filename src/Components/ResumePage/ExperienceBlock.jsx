@@ -71,7 +71,7 @@ const ExperienceBlock = () => {
           return (
             <div
               key={index}
-              className="experience-card opacity-0 flex hover:bg-gray-100 w-full my-3 text-charcoal px-7 gap-6 py-7 rounded-md transition-all duration-300"
+              className="experience-card flex hover:bg-gray-100 w-full my-3 text-charcoal px-7 gap-6 py-7 rounded-md transition-all duration-300"
             >
               <div className="bg-brown h-max p-2 rounded-xl hidden md:block">
                 <Laptop size={35} color="wheat" />
