@@ -1,5 +1,7 @@
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 import { Menu, Search, X } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
@@ -7,6 +9,19 @@ const Navbar = () => {
   const [isScroller, setIsScroller] = useState(null);
   const [menuShow, setMenuShow] = useState(false);
   const [shadow, setShadow]  = useState(false);
+  const blogNavRef = useRef(null);
+
+  useGSAP(() => {
+    gsap.set(blogNavRef.current, { opacity: 0, y: -30 });
+
+    gsap.to(blogNavRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 0.4,
+      ease: "expo.in"
+    });
+  }, [])
+
 
   const {pathname} = useLocation();
 
@@ -39,7 +54,8 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`flex z-[9999] ${shadow ? " md:border-b-[1px]  border-charcoal/20" : ""} fixed w-full bg-beige/50 backdrop-blur-sm  py-5 h-max transition-all duration-300 items-center justify-between px-8 md:py-3 text-charcoal  ${
+      ref={blogNavRef}
+        className={`flex opacity-0 z-[9999] ${shadow ? " md:border-b-[1px]  border-charcoal/20" : ""} fixed w-full bg-beige/50 backdrop-blur-sm  py-5 h-max transition-all duration-300 items-center justify-between px-8 md:py-3 text-charcoal  ${
           isScroller
             ? "shadow-sm md:bg-beige/50 backdrop-blur-2xl border-none"
             : "md:bg-transparent md:backdrop-blur-none"

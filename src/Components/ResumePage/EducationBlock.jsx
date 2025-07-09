@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LoadingPage from "../../Utils/loadingpage";
-import {
-  Circle,
-  Mail,
-  Phone,
-  ChevronDown,
-  Laptop,
-  University,
-} from "lucide-react";
+import { Mail, Phone, ChevronDown } from "lucide-react";
 import { fetchAllEducation } from "../../Features/Personals/educationSlice";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const EducationBlock = () => {
   const dispatch = useDispatch();
   const [initialLoad, setInitialLoad] = useState(true);
+  const [duration, setDuration] = useState(null);
 
   useEffect(() => {
     dispatch(fetchAllEducation());
@@ -21,21 +19,56 @@ const EducationBlock = () => {
 
   const { educations, loading } = useSelector((state) => state.education);
 
+  useEffect(()=>{
+    setDuration(educations?.length/4)
+  },[educations])
+  
+
+  console.log(duration);
+  
+
   useEffect(() => {
     setInitialLoad(loading === undefined || loading === true);
   }, [loading]);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const eduCards = gsap.utils.toArray(".education-card");
+
+      if (eduCards.length === 0) return;
+
+      gsap.set(eduCards, { opacity: 0, x: -30 });
+
+      gsap.to(eduCards, {
+        opacity: 1,
+        x: 0,
+        duration: duration,
+        stagger: 0.5,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".edu-card-holder",
+          start: "top 90%",
+          toggleActions: "play none none none",
+          once: true,
+          markers: false,
+        },
+      });
+    });
+
+    return () => ctx.revert();
+  }, [educations]); 
 
   if (initialLoad) return <LoadingPage />;
 
   return (
     <div>
       <h1 className="p-4 mt-12 md:mt-10">Education</h1>
-      <div className="grid grid-cols-1">
+      <div className="grid grid-cols-1 edu-card-holder">
         {educations.map((education, index) => {
           return (
             <div
               key={index}
-              className="flex  items-center w-full  text-charcoal  bg-white  gap-6 py-5 my-1 hover:bg-gray-100 rounded-2xl   transition-all duration-300"
+              className="flex education-card items-center w-full  text-charcoal  bg-white  gap-6 py-5 my-1 hover:bg-gray-100 rounded-2xl   transition-all duration-300"
             >
              
               <div className="w-full">

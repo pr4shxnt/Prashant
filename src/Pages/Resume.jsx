@@ -2,15 +2,64 @@ import { ArrowRight, Download } from "lucide-react";
 import ExperienceBlock from "../Components/ResumePage/ExperienceBlock";
 import EducationBlock from "../Components/ResumePage/EducationBlock";
 import MenuBar from "../Components/MenuBar";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import CertificateBlock from "../Components/ResumePage/CertificateBlock";
 import ScrollToTop from "../Utils/ScrollToTop";
 import ResumeFile from "../Components/Assets/Prashant-Curriculum-Vitae.pdf";
-import Footer from "../Components/Sections/Roots/Footer"
+import Footer from "../Components/Sections/Roots/Footer";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+
 
 export const Intro = () => {
+  const aboutRef = useRef(null)
+  const imageRef = useRef(null)
+  const iconsRef = useRef(null)
+  const streakRef = useRef(null)
+
+  useGSAP(()=>{
+    gsap.set(aboutRef.current, {x: -30, opacity: 0});
+
+    gsap.to(aboutRef.current, {
+      x: 0,
+      scale: 1,
+      opacity: 1,
+      delay: 1,
+      duration: 0.5,
+    })
+
+    gsap.set(imageRef.current, {x: 30, opacity: 0});
+
+    gsap.to(imageRef.current, {
+      x: 0,
+      scale: 1,
+      opacity: 1,
+      delay: 1.3,
+      duration: 0.5,
+    })
+
+    gsap.set(iconsRef.current, {x: -30, opacity: 0});
+
+    gsap.to(iconsRef.current, {
+      x: 0,
+      scale: 1,
+      opacity: 1,
+      delay: 1.5,
+      duration: 0.5,
+    })
+
+    gsap.set(streakRef.current, {x: 30, opacity: 0});
+
+    gsap.to(streakRef.current, {
+      x: 0,
+      scale: 1,
+      opacity: 1,
+      delay: 1.7,
+      duration: 0.5,
+    })
+  })
   return (
-    <>
+    <div className="" >
       <ScrollToTop />
       <h1 className="p-4 mt-20 md:mt-24 mb-3">Intro</h1>
       <div className="px-5 md:px-0 flex flex-col justify-center">
@@ -24,7 +73,7 @@ export const Intro = () => {
                   className="h-[245px] w-full rounded-4xl object-cover"
                 />
               </div>
-              <div className="w-full md:w-[70%] h-max bg-white/80 shadow-2xl shadow-charcoal px-5 rounded-4xl pt-5 flex items-start flex-col gap-8">
+              <div ref={aboutRef} className="w-full scale-95 md:w-[70%] h-max bg-white/80 shadow-2xl shadow-charcoal px-5 rounded-4xl pt-5 flex items-start flex-col gap-8">
                 <h1 className="text-2xl font-semibold pt-2">
                   Prashant Adhikari{" "}
                 </h1>
@@ -37,7 +86,7 @@ export const Intro = () => {
                 </button>
                 <div className=""></div>
               </div>
-              <div className="md:w-[30%] hidden md:block w-full rounded-4xl bg-white/80 shadow-2xl shadow-charcoal">
+              <div ref={imageRef} className="md:w-[30%] scale-95 hidden md:block w-full rounded-4xl bg-white/80 shadow-2xl shadow-charcoal">
                 <img
                   src="https://res.cloudinary.com/drddkl4on/image/upload/v1749902173/Snapchat-1809450548_leoj34.jpg"
                   alt=""
@@ -50,7 +99,7 @@ export const Intro = () => {
         <div className="flex mt-6">
           <div className=" w-full">
             <div className="flex flex-col md:flex-row w-full gap-10">
-              <div className="md:w-[30%] w-full rounded-4xl bg-white/80 shadow-2xl shadow-charcoal">
+              <div ref={iconsRef} className="md:w-[30%] w-full rounded-4xl bg-white/80 shadow-2xl shadow-charcoal">
                 <div className="grid grid-cols-4 md:grid-cols-2 gap-4 p-5">
                   <a
                     href="https://www.github.com/pr4shxnt"
@@ -105,7 +154,7 @@ export const Intro = () => {
                   </a>
                 </div>
               </div>
-              <div className="w-0 md:w-[70%] md:px-3 bg-white  shadow-2xl shadow-charcoal rounded-4xl ">
+              <div ref={streakRef}  className="w-0 md:w-[70%] md:px-3 bg-white  shadow-2xl shadow-charcoal rounded-4xl ">
                 <img
                   src="https://streak-stats.demolab.com?user=pr4shxnt&hide_border=true"
                   alt="GitHub Streak"
@@ -116,19 +165,42 @@ export const Intro = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
 const Resume = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const navRef = useRef(null)
+  const bodyRef = useRef(null)
+  useGSAP(()=>{
+    gsap.set(navRef.current, {top: -30, opacity: 0});
+
+    gsap.to(navRef.current, {
+      top: 3,
+      scale: 1,
+      opacity: 1,
+      delay: 0.2,
+      duration: 0.5,
+    })
+
+    gsap.set(bodyRef.current, {y: 30, opacity: 0});
+
+    gsap.to(bodyRef.current, {
+      y: 0,
+      scale: 1,
+      opacity: 1,
+      delay: 0.6,
+      duration: 0.5,
+    })
+  })
   return (
     <div className="md:bg-sand bg-white">
       <title> Resume | Prashant Adhikari </title>
       <div className="fixed bottom-2 left-2 z-[10000] ">
         <MenuBar showMenu={showMenu} setShowMenu={setShowMenu} />
       </div>
-      <div className="w-full absolute top-0 py-3 bg-white md:bg-sand">
+      <div ref={navRef} className="w-full absolute top-0 py-3 bg-white md:bg-sand">
         <div className="bg-white shadow-2xl shadow-charcoal md w-[95%] py-2 rounded-full lg:w-[53%] mx-auto text-center z-[9999] font-semibold text-charcoal flex justify-between px-2 pr-8">
           <h1 className="text-3xl text-bronze bg-gray-200 p-1 rounded-[50%]">
             👨🏻‍🦱
@@ -143,7 +215,7 @@ const Resume = () => {
           </a>
         </div>
       </div>
-      <div className=" lg:w-[53%] pb-10 md:px-8 md:pt-0 pt-16 bg-white md:shadow-2xl shadow-charcoal md:rounded-[40px] mx-auto w-[100%] ">
+      <div ref={bodyRef} className=" lg:w-[53%] pb-10 md:px-8 md:pt-0 pt-16 bg-white md:shadow-2xl shadow-charcoal md:rounded-[40px] mx-auto w-[100%] ">
         <Intro />
         <ExperienceBlock />
         <EducationBlock />
