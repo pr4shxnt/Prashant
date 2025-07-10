@@ -42,20 +42,20 @@ const CertificateBlock = () => {
   return (
     <div className="mt-14">
       <div className="px-5">Certificates</div>
-      <div className="w-full mt-5 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="w-full px-5 mt-5 grid grid-cols-1 md:grid-cols-3 gap-6">
         {certificates.map((certificate, i) => {
-          const pageWidth = widths[i] > 100 ? widths[i] - 50 : 300;
+          const pageWidth = widths[i] > 100 ? widths[i] - 50 : 250;
           return (
             <div
               key={certificate._id || certificate.issuer + i}
               ref={(el) => (containerRefs.current[i] = el)}
               aria-label={`Certificate issued by ${certificate.issuer} for ${certificate.title}`}
-              className="bg-white md:w-full w-max mx-auto flex flex-col items-center"
+              className={`bg-white flex flex-col items-center`}
               style={{
-                maxHeight: 420,      // limit height to reduce extra space
-                overflow: 'hidden',  // hide overflow below PDF page
-                marginBottom: 12,    // space between items
-                paddingBottom: 0,    // remove extra padding bottom
+                maxHeight: 420,      
+                overflow: 'hidden',  
+                marginBottom: 12,    
+                paddingBottom: 0,   
               }}
             >
               <Document
@@ -64,7 +64,7 @@ const CertificateBlock = () => {
               >
                 {widths[i] > 0 && <Page pageNumber={1} width={pageWidth} />}
               </Document>
-              <div className="mt-4 px-4 pb-2 text-center">
+              <div className="mt-4  px-4 pb-2 text-center">
                 <h1 className="text-sm">
                   {certificate.issuer} certified {certificate.title}
                 </h1>
