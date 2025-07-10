@@ -47,13 +47,13 @@ const CertificateBlock = () => {
         <div
           key={certificate._id || certificate.issuer}
           ref={(el) => (containerRefs.current[index] = el)}
-          className=" bg-white flex flex-col items-center "
+          className=" bg-white md:w-full w-max mx-auto flex flex-col items-center "
         >
           <Document
             file={certificate.certificate}
             onLoadError={(err) => console.error('PDF load error:', err)}
           >
-            <Page  pageNumber={1} width={widths[index] || 300} />
+            <Page  pageNumber={1} width={widths[index]-50} />
           </Document>
           <div className="mt-4 px-4 pb-3 text-center">
             <h1 className="text-sm">{certificate.issuer} certified {certificate.title}</h1>

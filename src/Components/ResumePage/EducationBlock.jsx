@@ -35,7 +35,7 @@ const EducationBlock = () => {
           return (
             <div
               key={index}
-              className="flex education-card items-center w-full  text-charcoal  bg-white  gap-6 py-5 my-1 hover:bg-gray-100 rounded-2xl   transition-all duration-300"
+              className="flex education-card items-center w-full  text-charcoal  gap-6 py-5 my-1 hover:bg-gray-100 rounded-2xl   transition-all duration-300"
             >
              
               <div className="w-full">

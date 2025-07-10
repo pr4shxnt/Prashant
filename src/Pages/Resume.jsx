@@ -195,12 +195,12 @@ const Resume = () => {
     })
   })
   return (
-    <div className="md:bg-sand bg-white">
+    <div className="md:bg-sand ">
       <title> Resume | Prashant Adhikari </title>
       <div className="fixed bottom-2 left-2 z-[10000] ">
         <MenuBar showMenu={showMenu} setShowMenu={setShowMenu} />
       </div>
-      <div ref={navRef} className="w-full absolute top-0 py-3 bg-white md:bg-sand">
+      <div ref={navRef} className="w-full absolute z-[10] top-0 py-3  md:bg-sand">
         <div className="bg-white shadow-2xl shadow-charcoal md w-[95%] py-2 rounded-full lg:w-[53%] mx-auto text-center z-[9999] font-semibold text-charcoal flex justify-between px-2 pr-8">
           <h1 className="text-3xl text-bronze bg-gray-200 p-1 rounded-[50%]">
             👨🏻‍🦱
@@ -215,7 +215,7 @@ const Resume = () => {
           </a>
         </div>
       </div>
-      <div ref={bodyRef} className=" lg:w-[53%] pb-10 md:px-8 md:pt-0 pt-16 bg-white md:shadow-2xl shadow-charcoal md:rounded-[40px] mx-auto w-[100%] ">
+      <div ref={bodyRef} className=" lg:w-[53%] pb-10 md:px-8 md:pt-0 pt-0 md:bg-white md:shadow-2xl shadow-charcoal md:rounded-[40px] mx-auto w-[100%] ">
         <Intro />
         <ExperienceBlock />
         <EducationBlock />
