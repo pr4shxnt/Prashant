@@ -53,7 +53,10 @@ const CertificateBlock = () => {
             file={certificate.certificate}
             onLoadError={(err) => console.error('PDF load error:', err)}
           >
-            <Page  pageNumber={1} width={widths[index]-50} />
+            {
+              widths[index] &&
+              <Page  pageNumber={1} width={widths[index]-50} />
+            }
           </Document>
           <div className="mt-4 px-4 pb-3 text-center">
             <h1 className="text-sm">{certificate.issuer} certified {certificate.title}</h1>
