@@ -42,7 +42,7 @@ const CertificateBlock = () => {
   return (
     <div className="mt-14">
       <div className="px-5">Certificates</div>
-      <div className="w-full px-5 mt-5 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="w-full px-5 md:px-0 mt-5 grid grid-cols-1 md:grid-cols-3 gap-6">
         {certificates.map((certificate, i) => {
           const pageWidth = widths[i] > 100 ? widths[i] - 50 : 250;
           return (
