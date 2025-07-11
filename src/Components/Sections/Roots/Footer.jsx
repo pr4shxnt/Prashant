@@ -90,8 +90,8 @@ const Footer = () => {
       </div>
       <div className="absolute bottom-0 w-full justify-center flex bg-beige py-3">
         <p className="  text-center  text-gray-700 text-xs md:text-sm">
-          PrashFolio <sup>©</sup> Copyright 2025 | Design and
-          Developed by{" "}
+          PrashFolio <sup>©</sup> Copyright 2025 | Design,
+          Developed and Deployed by{" "}
           <a
             className="underline text-blue-500"
             target="_blank"
