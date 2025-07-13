@@ -5,43 +5,31 @@ const Footer = () => {
   return (
     <footer className=" z-[9999999999]  py-20  mt-20 relative bg-charcoal w-full">
       <div className="flex w-[85%] mx-auto container flex-col md:flex-row gap-10 items-center default_m justify-center ">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 text-beige">
-          <div className="">
-            <h1 className="text-xl md:text-2xl font-bold mb-1">Quick Links</h1>
-            <ul className="ml-2">
-              <li className="text-xs md:text-sm hover:underline cursor-pointer ">
-                Home
-              </li>
-              <li className="text-xs md:text-sm hover:underline cursor-pointer ">
-                Contact
-              </li>
-              <li className="text-xs md:text-sm hover:underline cursor-pointer ">
-                Projects
-              </li>
-              <li className="text-xs md:text-sm hover:underline cursor-pointer ">
-                Arts Gallery
-              </li>
-              <li className="text-xs md:text-sm hover:underline cursor-pointer ">
-                Blogs
-              </li>
-            </ul>
-          </div>
+        <div className="flex flex-wrap py-20 md:py-0 justify-around w-[80%] mx-auto gap-10 text-beige">
+        
 
           <div className="">
-            <h1 className="text-xl md:text-2xl font-bold mb-1">Redirect </h1>
+            <h1 className="text-xl md:text-2xl font-bold mb-1">Take me to </h1>
             <ul className="ml-2">
               <NavLink>
                 {" "}
                 <li className="text-xs md:text-sm   cursor-pointer hover:underline">
-                  Youtube
+                  Home
                 </li>
               </NavLink>
               <NavLink>
                 {" "}
                 <li className="text-xs md:text-sm   cursor-pointer hover:underline">
-                  Source Code
+                  Blogs
                 </li>
               </NavLink>
+              <NavLink>
+                {" "}
+                <li className="text-xs md:text-sm   cursor-pointer hover:underline">
+                  Hire
+                </li>
+              </NavLink>
+             
             </ul>
           </div>
           <div className=" rounded-4xl ">
@@ -99,11 +87,34 @@ const Footer = () => {
               </a>
             </div>
           </div>
+          <div className="">
+            <h1 className="text-xl md:text-2xl font-bold mb-1">Redirect </h1>
+            <ul className="ml-2">
+              <NavLink>
+                {" "}
+                <li className="text-xs md:text-sm   cursor-pointer hover:underline">
+                  Youtube
+                </li>
+              </NavLink>
+              <NavLink>
+                {" "}
+                <li className="text-xs md:text-sm   cursor-pointer hover:underline">
+                  Source Code
+                </li>
+              </NavLink>
+               <NavLink>
+                {" "}
+                <li className="text-xs md:text-sm   cursor-pointer hover:underline">
+                  Client Portal
+                </li>
+              </NavLink>
+            </ul>
+          </div>
         </div>
       </div>
       <div className="absolute bottom-0 w-full justify-center flex bg-charcoal py-3">
         <p className="  text-center  text-white text-xs md:text-sm">
-          PrashFolio <sup>©</sup> Copyright 2025 | Design, Developed and
+           <sup>MIT</sup> License 2025 | Design, Developed and
           Deployed by{" "}
           <a
             className="underline text-blue-500"
