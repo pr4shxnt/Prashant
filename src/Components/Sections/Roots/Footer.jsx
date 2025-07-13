@@ -11,24 +11,24 @@ const Footer = () => {
           <div className="">
             <h1 className="text-xl md:text-2xl font-bold mb-1">Take me to </h1>
             <ul className="ml-2">
-              <NavLink>
+              <NavLink to={`/`}>
                 {" "}
                 <li className="text-xs md:text-sm   cursor-pointer hover:underline">
                   Home
                 </li>
               </NavLink>
-              <NavLink>
+              <NavLink to={`/blogs`}>
                 {" "}
                 <li className="text-xs md:text-sm   cursor-pointer hover:underline">
                   Blogs
                 </li>
               </NavLink>
-              <NavLink>
+              <a href="https://www.clientportal.prashantadhikari7.com.np" target="_blank">
                 {" "}
                 <li className="text-xs md:text-sm   cursor-pointer hover:underline">
-                  Hire
+                  Hire now
                 </li>
-              </NavLink>
+              </a>
              
             </ul>
           </div>
@@ -90,24 +90,24 @@ const Footer = () => {
           <div className="">
             <h1 className="text-xl md:text-2xl font-bold mb-1">Redirect </h1>
             <ul className="ml-2">
-              <NavLink>
+              <a href="#">
                 {" "}
                 <li className="text-xs md:text-sm   cursor-pointer hover:underline">
                   Youtube
                 </li>
-              </NavLink>
-              <NavLink>
+              </a>
+              <a href="github.com/pr4shxnt/Prashant" target="_blank">
                 {" "}
                 <li className="text-xs md:text-sm   cursor-pointer hover:underline">
                   Source Code
                 </li>
-              </NavLink>
-               <NavLink>
+              </a>
+               <a href="https://www.clientportal.prashantadhikari7.com.np">
                 {" "}
                 <li className="text-xs md:text-sm   cursor-pointer hover:underline">
                   Client Portal
                 </li>
-              </NavLink>
+              </a>
             </ul>
           </div>
         </div>
