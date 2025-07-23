@@ -5,7 +5,7 @@ import MenuBar from "../Components/MenuBar";
 import { useRef, useState } from "react";
 import CertificateBlock from "../Components/ResumePage/CertificateBlock";
 import ScrollToTop from "../Utils/ScrollToTop";
-import ResumeFile from "../Components/Assets/Prashant-Curriculum-Vitae.pdf";
+import ResumeFile from "../Components/Assets/Prashant-Adhikari.pdf";
 import Footer from "../Components/Sections/Roots/Footer";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";

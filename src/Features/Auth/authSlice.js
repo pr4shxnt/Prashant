@@ -3,8 +3,9 @@ import axios from "axios";
 
 const tokenFromStorage = localStorage.getItem("admin_session");
 
-export const isTokenExpired = (jwtToken) => {
+export const isTokenExpired = async(jwtToken) => {
   try {
+    
     const payload = JSON.parse(atob(jwtToken.split(".")[1]));
     const currentTime = Date.now() / 1000;
     if(payload.exp < currentTime){
