@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { createProject } from "../../Features/ClientPortal/projectsSlice";
 
 const initialState = {
   Revenue: 0,
@@ -16,7 +18,7 @@ const initialState = {
 
 const CreateClientProject = () => {
   const [project, setProject] = useState(initialState);
-
+  const dispatch = useDispatch();
   const handleChange = (e) => {
     const { name, value, type } = e.target;
     setProject((prev) => ({
@@ -27,6 +29,7 @@ const CreateClientProject = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(createProject(project))
     alert(JSON.stringify(project, null, 2));
   };
 
@@ -50,7 +53,7 @@ const CreateClientProject = () => {
           <h2 className="text-2xl md:text-3xl font-semibold text-charcoal mb-6 text-center">
             🏗️ Create a new Client Project
           </h2>
-          <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+          <form className="flex flex-col gap-5">
             <div className="grid grid-cols-2 gap-2">
               <div>
                 <label className="block text-charcoal text-sm font-medium mb-1">
@@ -109,10 +112,15 @@ const CreateClientProject = () => {
                   Agreement
                 </label>
                 <input
-                  type="text"
+                  type="file"
                   name="Agreement"
-                  value={project.Agreement}
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    const file = e.target.files[0];
+                    setProject((prev) => ({
+                      ...prev,
+                      Agreement: file || "",
+                    }));
+                  }}
                   placeholder="Agreement"
                   className="w-full px-4 py-2 border border-beige rounded-lg focus:outline-none focus:ring-2 focus:ring-brown"
                 />
@@ -198,6 +206,7 @@ const CreateClientProject = () => {
             </div>
             <button
               type="submit"
+              onClick={handleSubmit}
               className="mt-6 bg-brown hover:bg-charcoal text-beige font-medium py-2 rounded-lg transition-all duration-300"
             >
               🚀 Create Project

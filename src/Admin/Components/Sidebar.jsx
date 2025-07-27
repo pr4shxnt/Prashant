@@ -14,7 +14,6 @@ import {
 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useContent } from "../../Utils/ContextProvider";
 import { isTokenExpired, logoutAdmin } from "../../Features/Auth/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -61,11 +60,6 @@ const Sidebar = ({setShowSidebar}) => {
       icon: <Code2 size={18} />,
     },
     {
-      name: "Panel Settings",
-      path: "/admin/Certificates",
-      icon: <BookAudio size={18} />,
-    },
-    {
       name: "Poems manager",
       path: "/admin/poems",
       icon: <BookAudio size={18}/>
@@ -77,9 +71,14 @@ const Sidebar = ({setShowSidebar}) => {
     },
     { name: "Blogs manager", path: "/admin/blogs", icon: <Users size={18} /> },
     {
-      name: "Contacts",
-      path: "/admin/contacts",
+      name: "Client manager",
+      path: "/admin/clients",
       icon: <BookTypeIcon size={18} />,
+    },
+    {
+      name: "Client Projects Manager",
+      path: "/admin/client-projects",
+      icon: <BookAudio size={18} />,
     },
     
     { name: "Home", path: "/", icon: <Home size={18} /> },
