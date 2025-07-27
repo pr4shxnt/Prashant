@@ -1,26 +1,39 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const tokenFromStorage = localStorage.getItem("admin_session");
-
-export const isTokenExpired = async(jwtToken) => {
+// ✅ Synchronous token expiration check for initial state
+const isTokenExpiredSync = (jwtToken) => {
   try {
-    
     const payload = JSON.parse(atob(jwtToken.split(".")[1]));
     const currentTime = Date.now() / 1000;
-    if(payload.exp < currentTime){
-            localStorage.removeItem("admin_session");
+    return payload.exp < currentTime;
+  } catch {
+    return true;
+  }
+};
+
+// ✅ Async version for later use (e.g. in useEffect)
+export const isTokenExpired = async (jwtToken) => {
+  try {
+    const payload = JSON.parse(atob(jwtToken.split(".")[1]));
+    const currentTime = Date.now() / 1000;
+    if (payload.exp < currentTime) {
+      localStorage.removeItem("admin_session");
+      logoutAdmin();
+      window.Location.href('/admin/login')
     }
     return payload.exp < currentTime;
   } catch {
+    console.log("Invalid token, logging out...");
     localStorage.removeItem("admin_session");
     return true;
   }
 };
 
+const tokenFromStorage = localStorage.getItem("admin_session");
+
 const initialState = {
-  isAdminAuthenticated:
-    (tokenFromStorage && !isTokenExpired(tokenFromStorage)) || false,
+  isAdminAuthenticated: tokenFromStorage && !isTokenExpiredSync(tokenFromStorage),
   token: tokenFromStorage || null,
   adminData: {
     cred: "",

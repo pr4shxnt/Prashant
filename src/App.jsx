@@ -10,7 +10,7 @@ import Rootdir from "./Admin/Pages/rootdir";
 import ProjectDisplay from "./Admin/Components/ProjectDisplay";
 import CreateProject from "./Admin/Forms/CreateProject";
 import SkillsManager from "./Admin/Forms/SkillsManager";
-import ProjectIndividual from "./Components/Sections/ProjectSection.jsx/ProjectIndividual"; 
+import ProjectIndividual from "./Components/Sections/ProjectSection.jsx/ProjectIndividual";
 import ManagePoems from "./Admin/Forms/ManagePoems";
 import Projects from "./Components/Sections/ProjectSection.jsx/Projects";
 import ResumeManager from "./Admin/Components/ResumeManager";
@@ -23,6 +23,7 @@ import BlogsAdmin from "./Admin/Pages/BlogsAdmin";
 import BlogIndividual from "./Pages/BlogIndividual";
 import SearchedBlogs from "./Pages/SearchedBlogs";
 import AllBlogs from "./Pages/AllBlogs";
+import CreateClientProject from "./Admin/Forms/CreateClientProject";
 
 const router = createBrowserRouter([
   {
@@ -33,12 +34,11 @@ const router = createBrowserRouter([
         path: "",
         element: <Homepage />,
       },
-       
     ],
   },
   {
     path: "/admin/login",
-    element: <AdminLogin/>,
+    element: <AdminLogin />,
   },
   {
     path: "/admin",
@@ -46,87 +46,85 @@ const router = createBrowserRouter([
     children: [
       {
         path: "projects",
-        element: <ProjectDisplay/>
+        element: <ProjectDisplay />,
       },
       {
         path: "projects-create",
-        element: <CreateProject/>
+        element: <CreateProject />,
       },
       {
         path: "skills-management",
-        element: <SkillsManager/>
+        element: <SkillsManager />,
       },
       {
         path: "poems",
-        element: <ManagePoems/>
+        element: <ManagePoems />,
       },
       {
         path: "resume",
-        element: <ResumeManager/>
+        element: <ResumeManager />,
       },
       {
         path: "blogs",
-        element: <BlogsAdmin/>
-      }
-
-    ]
+        element: <BlogsAdmin />,
+      },
+      { 
+        path: "client-projects", 
+        element: <CreateClientProject /> 
+      },
+    ],
   },
   {
-    path: '/projects',
+    path: "/projects",
     element: <ProjectDisplay />,
     children: [
       {
-        path: '',
-        element: <Projects/>
+        path: "",
+        element: <Projects />,
       },
       {
-        path: ':name',
-        element: <ProjectIndividual />
+        path: ":name",
+        element: <ProjectIndividual />,
       },
-      
     ],
-    
   },
-  {path: "/curriculum-vitae",
-  element: <Resume />,}
-  ,
+  { path: "/curriculum-vitae", element: <Resume /> },
   {
     path: "blogs",
-    element: <BlogRoot/>,
+    element: <BlogRoot />,
     children: [
       {
         path: "",
-        element: <BlogHome/>
+        element: <BlogHome />,
       },
       {
         path: "read/:slug",
-        element: <BlogIndividual/>
+        element: <BlogIndividual />,
       },
       {
         path: "all-blogs",
-        element: <AllBlogs/>
+        element: <AllBlogs />,
       },
       {
         path: "s",
-        element: <SearchedBlogs/>
-      }
-    ]
-  }
-  ,
+        element: <SearchedBlogs />,
+      },
+    ],
+  },
   {
     path: "*",
-    element: <NoDirectory/>
-  }
+    element: <NoDirectory />,
+  },
 ]);
 
 export default function App() {
   return (
-  <>
-  
-    <Provider store={store}>
-       <ContentProvider>
-      <RouterProvider router={router} />
-    </ContentProvider></Provider>
-   </> 
+    <>
+      <Provider store={store}>
+        <ContentProvider>
+          <RouterProvider router={router} />
+        </ContentProvider>
+      </Provider>
+    </>
   );
 }

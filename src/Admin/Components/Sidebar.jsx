@@ -13,13 +13,25 @@ import {
   X,
 } from "lucide-react";
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useContent } from "../../Utils/ContextProvider";
-import { logoutAdmin } from "../../Features/Auth/authSlice";
+import { isTokenExpired, logoutAdmin } from "../../Features/Auth/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const Sidebar = ({setShowSidebar}) => {
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const checkToken = async () => {
+      const response = await isTokenExpired(localStorage.getItem('admin_session'));
+      if(response === true){
+        navigate('/admin/login')
+      };
+    };
+    checkToken();
+  }, []);
 
   const logOut = () => {
     dispatch(logoutAdmin());

@@ -18,6 +18,11 @@ const AdminLogin = () => {
     }
   }, [isAdminAuthenticated, navigate]);
 
+  useEffect(()=>{
+  const response = isTokenExpired(localStorage.getItem('admin_session'))
+  console.log(response)
+  },[])
+
   console.log(isAdminAuthenticated, "isAdminAuthenticated");
   
 
