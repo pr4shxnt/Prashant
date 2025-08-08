@@ -63,13 +63,15 @@ const BlogIndividual = () => {
   const metaTags = blog.metaTitle.map((tag) => tag).join(", ");
 
   const authorPunctuation = (authors) => {
-    if (authors.length === 0) return "";
-    if (authors.length === 1) return authors[0];
-    if (authors.length === 2) return `${authors[0]} and ${authors[1]}`;
-    
-    const lastAuthor = authors.pop();
-    return `${authors.join(", ")} and ${lastAuthor}`;
+  if (authors.length === 0) return "";
+  if (authors.length === 1) return authors[0];
+  if (authors.length === 2) return `${authors[0]} and ${authors[1]}`;
+  
+  const copiedAuthors = [...authors];
+  const lastAuthor = copiedAuthors.pop();
+  return `${copiedAuthors.join(", ")}, and ${lastAuthor} `;
 };
+
 
   return (
     <>
@@ -96,9 +98,8 @@ const BlogIndividual = () => {
           <h1 className="text-2xl font-bold mb-1">{blog.title}</h1>
           <h1 className=" font-light">
             Authored by{" "}
-            {blog?.authors?.map((author) => {
-              return <span>{author}</span>;
-            })}{" "}
+                      <span>{authorPunctuation(blog.authors)}</span>
+
             at {new Date(blog.createdAt).toLocaleDateString()}
           </h1>
           <img src={blog.coverImage} alt="" className="mt-4" />
