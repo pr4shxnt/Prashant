@@ -62,7 +62,14 @@ const BlogIndividual = () => {
 
   const metaTags = blog.metaTitle.map((tag) => tag).join(", ");
 
-  console.log(metaTags);
+  const authorPunctuation = (authors) => {
+    if (authors.length === 0) return "";
+    if (authors.length === 1) return authors[0];
+    if (authors.length === 2) return `${authors[0]} and ${authors[1]}`;
+    
+    const lastAuthor = authors.pop();
+    return `${authors.join(", ")} and ${lastAuthor}`;
+};
 
   return (
     <>
@@ -101,9 +108,8 @@ const BlogIndividual = () => {
           ></p>
           <p className="mt-40 text-sm font-light">
             Last updated at {new Date(blog.updatedAt).toLocaleDateString()} |{" "}
-            {blog?.authors?.map((author) => {
-              return <span>{author}</span>;
-            })}{" "}
+            <span>{authorPunctuation(blog.authors)}</span>
+           {" "}
           </p>
         </div>
         <div

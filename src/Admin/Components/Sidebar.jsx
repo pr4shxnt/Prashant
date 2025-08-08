@@ -79,8 +79,7 @@ const Sidebar = ({setShowSidebar}) => {
       name: "Client Projects Manager",
       path: "/admin/client-projects",
       icon: <BookAudio size={18} />,
-    },
-    
+    }, 
     { name: "Home", path: "/", icon: <Home size={18} /> },
   ];
   return (
