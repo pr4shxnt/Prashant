@@ -34,7 +34,7 @@ useEffect(() => {
        {showContent && (
         <>
                   <Outlet />
-                  <div className="container mx-auto">                  <Footer/>
+                  <div className="">                  <Footer/>
 </div>
         </>
       )}
