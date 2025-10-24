@@ -168,7 +168,7 @@ x: pr4xnt`,
       )}
 
       <main>
-        <div className="relative h-screen container mx-auto overflow-hidden">
+        <div className="relative h-screen  overflow-hidden">
           <div className="showcontent hidden md:block absolute top-3 right-4 z-[800] items-center justify-center">
             <button
               className="text-xs text-cream cursor-pointer uppercase tracking-widest font-semibold"
