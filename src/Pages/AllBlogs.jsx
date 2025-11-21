@@ -15,7 +15,7 @@ const AllBlogs = () => {
   }, [dispatch, page]);
 
   return (
-    <div className="">
+    <div className="min-h-screen">
       <div className="md:w-[80%] mx-auto p-6 pt-32">
         <p className="mb-8 nunito font-light underline text-gray-400">
           Blog / <span className="text-black">All Blogs</span> /  {page}
