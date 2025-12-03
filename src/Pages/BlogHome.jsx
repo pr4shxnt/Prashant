@@ -4,7 +4,7 @@ import LatestBlog from '../Components/BlogPage/LatestBlog'
 import FeaturedBlogs from '../Components/BlogPage/BlogCard'
 import RecentlyAdded from '../Components/BlogPage/RecentlyAdded'
 
-// const BlogHome = () => {
+const BlogHome = () => {
 //     if (import.meta.env.MODE === 'production') {
  
   
@@ -33,14 +33,14 @@ import RecentlyAdded from '../Components/BlogPage/RecentlyAdded'
 //     </>
 //   )
 // }
-//   return (
-//     <>
-//     <BlogHomePage/>
-//     <FeaturedBlogs/>
-//     <LatestBlog/>
-//     <RecentlyAdded/>
-//     </>
-// )
-// }
+  return (
+    <>
+    <BlogHomePage/>
+    <FeaturedBlogs/>
+    <LatestBlog/>
+    <RecentlyAdded/>
+    </>
+)
+}
 
 export default BlogHome
