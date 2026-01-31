@@ -82,8 +82,10 @@ export const Intro = () => {
                   17yo | CS/AI/ML | @ Sunway College | @ Birmingham City Uni |
                   Developer & AI/ML Researcher
                 </p>
-                <button className="bg-charcoal flex gap-3 text-sand py-2 px-5 rounded-full items-center">
-                  Hire Dev <ArrowRight size={15} />
+                <button className="bg-charcoal rounded-full">
+                  <a href="https://book.prashantadhikari7.com.np/" target="_blank" className="flex gap-3 text-sand py-2 px-5  items-center">
+                    Hire Dev <ArrowRight size={15} />
+                </a>
                 </button>
                 <div className=""></div>
               </div>
