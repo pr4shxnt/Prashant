@@ -24,6 +24,7 @@ import BlogIndividual from "./Pages/BlogIndividual";
 import SearchedBlogs from "./Pages/SearchedBlogs";
 import AllBlogs from "./Pages/AllBlogs";
 import CreateClientProject from "./Admin/Forms/CreateClientProject";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 const router = createBrowserRouter([
   {
@@ -123,6 +124,7 @@ export default function App() {
       <Provider store={store}>
         <ContentProvider>
           <RouterProvider router={router} />
+          <SpeedInsights />
         </ContentProvider>
       </Provider>
     </>
